@@ -26,6 +26,8 @@
   --olive-2:   #7c8a5e;
   --stone:     #8c8a7c;
   --stone-dark:#56554a;
+  --terracotta:      #b3592e;
+  --terracotta-dark: #8f4522;
   --line:      rgba(38,38,32,0.14);
   --line-soft: rgba(38,38,32,0.08);
 
@@ -229,6 +231,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 }
 .card-body { padding: 1.4rem 1.5rem 1.7rem; transform: translateZ(30px); }
 .card-tag { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--olive-dark); font-weight: 700; }
+.card-tag.is-warm { color: var(--terracotta-dark); }
 .card-title { font-family: var(--serif); font-size: 1.35rem; margin-top: .35rem; }
 .card-desc { color: var(--ink-mute); font-size: .93rem; margin-top: .5rem; }
 .card-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-weight: 600; font-size: .88rem; color: var(--olive-dark); }
@@ -306,6 +309,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   color: var(--ink-mute); padding-inline: 1.1rem;
 }
 .marquee-track span.dot { font-style: normal; color: var(--olive); font-size: 1rem; }
+.marquee-track span.is-warm { color: var(--terracotta-dark); }
 
 /* Reveal */
 [data-reveal] {
@@ -473,6 +477,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 /* Manifesto / intro split */
 .split-intro { display: grid; gap: 2rem; }
 .split-intro-num { font-family: var(--serif); font-style: italic; font-size: 4rem; color: var(--olive); line-height: 1; }
+.split-intro-num.is-warm { color: var(--terracotta); }
 
 /* Bento services grid (4 pillars, home) */
 .bento { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
