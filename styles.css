@@ -270,6 +270,36 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .nav-link:hover::after, .nav-link.is-active::after { transform: scaleX(1); transform-origin: left; }
 .nav-link.is-active { color: var(--olive-dark); }
 .nav-cta { display: none; }
+
+/* Nav dropdown (Servicios) */
+.nav-item-dropdown { position: relative; }
+.nav-link-dropdown { display: inline-flex; align-items: center; gap: .35rem; }
+.nav-dropdown-caret { width: 10px; height: 10px; transition: transform .35s var(--ease-out); }
+.nav-item-dropdown.is-open .nav-dropdown-caret,
+.nav-item-dropdown:hover .nav-dropdown-caret,
+.nav-item-dropdown:focus-within .nav-dropdown-caret { transform: rotate(180deg); }
+.nav-dropdown-panel {
+  position: absolute; top: calc(100% + 1rem); left: 50%;
+  transform: translate(-50%, -6px);
+  min-width: 216px; padding: .6rem;
+  background: var(--paper); border-radius: var(--radius-sm);
+  box-shadow: 0 20px 40px -12px rgba(38,38,32,0.22), 0 1px 0 var(--line-soft);
+  display: flex; flex-direction: column; gap: .1rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s var(--ease-out), transform .3s var(--ease-out);
+  z-index: 50;
+}
+.nav-item-dropdown.is-open .nav-dropdown-panel,
+.nav-item-dropdown:hover .nav-dropdown-panel,
+.nav-item-dropdown:focus-within .nav-dropdown-panel {
+  opacity: 1; pointer-events: auto; transform: translate(-50%, 0);
+}
+.nav-dropdown-panel a {
+  padding: .6rem .8rem; border-radius: 7px;
+  font-size: .85rem; font-weight: 500; color: var(--ink-soft);
+  text-transform: none; letter-spacing: normal;
+}
+.nav-dropdown-panel a:hover { background: var(--bg-2); color: var(--olive-dark); }
 .nav-burger {
   display: grid; place-items: center; width: 42px; height: 42px;
   border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line);
@@ -540,9 +570,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .feature-list li { display: flex; align-items: flex-start; gap: .7rem; font-size: .95rem; color: var(--ink-soft); line-height: 1.5; }
 .feature-list li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: .5em; border-radius: 50%; background: var(--olive); }
 
-/* Compact discipline grid (servicios) */
-.activity-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
-
 /* Space options grid */
 .space-grid { display: grid; gap: 1.4rem; }
 .space-card { border-radius: var(--radius); overflow: hidden; position: relative; background: var(--paper); box-shadow: 0 1px 0 var(--line-soft); }
@@ -580,6 +607,28 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .pillar-title { font-family: var(--serif); font-size: 1.2rem; margin-top: .5rem; }
 .pillar-desc { color: var(--ink-mute); margin-top: .5rem; font-size: .93rem; }
 
+/* Servicios page — denser pass: smaller type, tighter sections, more legible */
+.page-servicios h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); max-width: 22ch; }
+.page-servicios .section { padding-block: clamp(2.6rem, 5vw, 4.5rem); }
+.page-servicios .narrative-figure { aspect-ratio: 4 / 3.1; }
+.page-servicios .body-copy { font-size: .94rem; max-width: 54ch; }
+.page-servicios .feature-list li { font-size: .89rem; }
+
+/* Compact card modifier — used on the Servicios overview grid */
+.card-compact .card-img-wrap { aspect-ratio: 5 / 3.3; }
+.card-compact .card-body { padding: 1rem 1.1rem 1.25rem; }
+.card-compact .card-tag { font-size: .68rem; }
+.card-compact .card-title { font-size: 1.12rem; margin-top: .25rem; }
+.card-compact .card-desc { font-size: .84rem; margin-top: .35rem; }
+
+/* Chip list — disciplines shown as small tags instead of a heavy image grid */
+.chip-list { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip {
+  padding: .5rem 1.05rem; border-radius: 999px;
+  background: var(--paper); box-shadow: inset 0 0 0 1px var(--line);
+  font-size: .85rem; font-weight: 500; color: var(--ink-soft);
+}
+
 /* Contact layout */
 .contact-grid { display: grid; gap: 2.6rem; align-items: start; }
 .contact-info-item { padding-block: 1.2rem; border-top: 1px solid var(--line); }
@@ -612,7 +661,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 @media (min-width: 540px) {
   .space-grid { grid-template-columns: repeat(2, 1fr); }
   .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-  .activity-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 720px) {
@@ -628,7 +676,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   .nav-cta { display: inline-flex; }
   .nav-burger { display: none; }
   .space-grid { grid-template-columns: repeat(3, 1fr); }
-  .activity-grid { grid-template-columns: repeat(3, 1fr); }
   .narrative-grid { grid-template-columns: .9fr 1.1fr; }
   .stats-grid { grid-template-columns: repeat(4, 1fr); }
   .contact-grid { grid-template-columns: 1.2fr .8fr; }

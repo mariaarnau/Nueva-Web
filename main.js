@@ -34,6 +34,31 @@
     });
   }
 
+  /* ---------- Nav dropdown (Servicios) ---------- */
+  function initNavDropdown() {
+    $$(".nav-item-dropdown").forEach(function (item) {
+      var trigger = $(".nav-link-dropdown", item);
+      if (!trigger) return;
+      trigger.addEventListener("click", function (e) {
+        if (!fineHover) return; // on touch, let the link navigate normally
+        e.preventDefault();
+        var open = item.classList.toggle("is-open");
+        trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        $$(".nav-item-dropdown.is-open").forEach(function (other) {
+          if (other !== item) { other.classList.remove("is-open"); }
+        });
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest(".nav-item-dropdown")) return;
+      $$(".nav-item-dropdown.is-open").forEach(function (item) {
+        item.classList.remove("is-open");
+        var trigger = $(".nav-link-dropdown", item);
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
   /* ---------- Smooth anchor scroll (native) ---------- */
   function initSmoothAnchors() {
     document.addEventListener("click", function (e) {
@@ -342,6 +367,7 @@
 
   function boot() {
     safe(initNav, "initNav");
+    safe(initNavDropdown, "initNavDropdown");
     safe(initSmoothAnchors, "initSmoothAnchors");
     safe(initReveals, "initReveals");
     safe(initTilt, "initTilt");
