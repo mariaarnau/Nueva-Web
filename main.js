@@ -59,6 +59,58 @@
     });
   }
 
+  /* ---------- Service tabs (Servicios page) ---------- */
+  function initServiceTabs() {
+    var root = $("[data-service-tabs]");
+    if (!root) return;
+    var triggers = $$(".tab-trigger", root);
+    var panels = $$(".tab-panel", root);
+    if (!triggers.length || !panels.length) return;
+
+    function activate(tab, scrollToPanel) {
+      var matched = false;
+      triggers.forEach(function (t) {
+        var on = t.dataset.tab === tab;
+        if (on) matched = true;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      if (!matched) return;
+      panels.forEach(function (p) {
+        var on = p.dataset.tabPanel === tab;
+        p.classList.toggle("is-active", on);
+        p.hidden = !on;
+      });
+      if (scrollToPanel) {
+        var panel = root.querySelector('[data-tab-panel="' + tab + '"]');
+        if (panel) {
+          var navOffset = 90;
+          window.scrollTo({
+            top: panel.getBoundingClientRect().top + window.scrollY - navOffset,
+            behavior: reduced ? "auto" : "smooth"
+          });
+        }
+      }
+    }
+
+    triggers.forEach(function (t) {
+      t.addEventListener("click", function () {
+        if (t.classList.contains("is-active")) return;
+        history.replaceState(null, "", "#" + t.dataset.tab);
+        activate(t.dataset.tab, true);
+      });
+    });
+
+    window.addEventListener("hashchange", function () {
+      activate((location.hash || "").replace("#", ""), true);
+    });
+
+    var initial = (location.hash || "").replace("#", "");
+    if (initial && triggers.some(function (t) { return t.dataset.tab === initial; })) {
+      activate(initial, true);
+    }
+  }
+
   /* ---------- Smooth anchor scroll (native) ---------- */
   function initSmoothAnchors() {
     document.addEventListener("click", function (e) {
@@ -68,6 +120,7 @@
       if (!id || id === "#") return;
       var el = document.querySelector(id);
       if (!el) return;
+      if (el.hidden) return; // handled by initServiceTabs instead
       e.preventDefault();
       var navOffset = 90;
       window.scrollTo({
@@ -368,6 +421,7 @@
   function boot() {
     safe(initNav, "initNav");
     safe(initNavDropdown, "initNavDropdown");
+    safe(initServiceTabs, "initServiceTabs");
     safe(initSmoothAnchors, "initSmoothAnchors");
     safe(initReveals, "initReveals");
     safe(initTilt, "initTilt");

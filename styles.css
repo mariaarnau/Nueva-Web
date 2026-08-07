@@ -654,6 +654,20 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .card-compact .card-title { font-size: 1.12rem; margin-top: .25rem; }
 .card-compact .card-desc { font-size: .84rem; margin-top: .35rem; }
 
+/* Service tabs — click one of the 4 cards, only that category's detail shows */
+.tab-trigger {
+  display: block; width: 100%; text-align: left; padding: 0;
+  transition: opacity .35s var(--ease-out), box-shadow .55s var(--ease-soft), transform .55s var(--ease-soft);
+}
+.tab-trigger:not(.is-active) { opacity: .72; }
+.tab-trigger:not(.is-active):hover { opacity: 1; }
+.tab-trigger.is-active { box-shadow: 0 0 0 2px var(--olive), 0 1px 0 var(--line-soft); }
+.tab-panels { padding-block: clamp(2.6rem, 5vw, 4rem); }
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; animation: tabFadeIn .55s var(--ease-soft); }
+@keyframes tabFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .tab-panel.is-active { animation: none; } }
+
 /* Chip list — disciplines shown as small tags instead of a heavy image grid */
 .chip-list { display: flex; flex-wrap: wrap; gap: .6rem; }
 .chip {
