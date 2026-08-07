@@ -406,17 +406,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .faq-a-inner { padding-bottom: 1.4rem; color: var(--ink-mute); max-width: 58ch; }
 .faq-item.is-open .faq-a { max-height: 240px; }
 
-/* Floating decorative stones */
-.decor-stones {
-  position: absolute; pointer-events: none; z-index: 2;
-  filter: drop-shadow(0 30px 40px rgba(38,38,32,0.18));
-  animation: floatY 8s ease-in-out infinite;
-}
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-}
-
 /* Footer */
 .footer { background: var(--ink-deep); color: var(--cream-dk-mute); padding-block: clamp(3.5rem, 7vw, 5.5rem) 2.2rem; }
 .footer-top { display: grid; gap: 2.6rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(241,239,226,0.14); }
@@ -470,8 +459,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .hero-meta-float { position: absolute; left: 1.6rem; bottom: 1.6rem; z-index: 2; color: #fff; }
 .hero-meta-label { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; opacity: .82; }
 .hero-meta-loc { font-family: var(--serif); font-style: italic; font-size: 1.15rem; margin-top: .15rem; }
-.hero-stones-full-a { top: 6.6rem; left: 1.6rem; width: 110px; }
-.hero-stones-full-b { bottom: 1.6rem; right: 1.6rem; width: 110px; }
 
 /* Nav rendered light over the full-bleed hero photo, dark once scrolled/solid */
 .has-photo-hero .nav:not(.is-scrolled) { color: var(--cream-dk); }
@@ -557,8 +544,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
    8. Responsive
    ============================================================= */
 @media (max-width: 539px) {
-  .hero-stones-full-a { width: 72px; top: 5.4rem; left: 1rem; }
-  .hero-stones-full-b { width: 72px; bottom: 5.6rem; right: 1rem; }
   .hero-meta-float { left: 1rem; bottom: 1.2rem; }
 }
 @media (min-width: 540px) {
@@ -598,6 +583,5 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
    ============================================================= */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .decor-stones { animation: none; }
   .cta-mesh::before { animation: none; }
 }
