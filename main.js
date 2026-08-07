@@ -281,7 +281,7 @@
         var nameField = form.elements.nombre;
         var firstName = nameField && nameField.value ? nameField.value.trim().split(/\s+/)[0] : "";
         if (msg) {
-          msg.textContent = (firstName ? firstName + ", h" : "H") + "emos recibido tu solicitud. Te escribimos en menos de 24 horas laborables.";
+          msg.textContent = (firstName ? firstName + ", h" : "H") + "emos recibido su solicitud. Le escribiremos en menos de 24 horas laborables.";
         }
         form.classList.remove("is-sending");
         form.classList.add("is-sent");
