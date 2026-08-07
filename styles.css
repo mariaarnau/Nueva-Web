@@ -142,6 +142,39 @@ ul { list-style: none; padding: 0; }
 .section-tint .stat-num .unit { color: var(--olive); }
 .section-tint .stat-label { color: var(--ink-mute); }
 
+/* Forest section — a deeper olive break, used sparingly so the site keeps
+   rhythm instead of reading as one flat tone throughout */
+.section-forest {
+  background: var(--olive-dark);
+  color: var(--cream-dk);
+  border-block: 1px solid rgba(241,239,226,0.1);
+}
+.section-forest .stat-num { color: var(--cream-dk); }
+.section-forest .stat-num .unit { color: var(--olive-2); }
+.section-forest .stat-label { color: var(--cream-dk-mute); }
+
+/* Photo-backed section — a full-bleed real photo behind a text block (steps,
+   reasons) with a scrim for legibility. Used once per page, not everywhere,
+   so it reads as a deliberate accent rather than a theme. */
+.section-photo { position: relative; isolation: isolate; color: var(--cream-dk); }
+.section-photo-media { position: absolute; inset: 0; z-index: -2; }
+.section-photo-media img { width: 100%; height: 100%; object-fit: cover; }
+.section-photo-media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(29,32,24,.86) 0%, rgba(29,32,24,.78) 55%, rgba(29,32,24,.9) 100%);
+}
+.section-photo .eyebrow { color: var(--olive-2); }
+.section-photo .eyebrow::before { background: var(--olive-2); }
+.section-photo h2 { color: var(--cream-dk); }
+.section-photo em { color: var(--olive-2); }
+.section-photo .lede { color: var(--cream-dk-mute); }
+.section-photo .step { border-top: 1px solid rgba(241,239,226,0.18); }
+.section-photo .step-num { color: var(--olive-2); }
+.section-photo .step-title { color: var(--cream-dk); }
+.section-photo .step-desc { color: var(--cream-dk-mute); }
+.section-photo .btn-ghost { color: var(--cream-dk); box-shadow: inset 0 0 0 1.5px rgba(241,239,226,0.28); }
+.section-photo .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--olive-2); color: var(--olive-2); }
+
 /* =============================================================
    4. Typography
    ============================================================= */
