@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="styles.css?v=20260807">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
-<body>
+<body class="has-photo-hero">
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
 <div class="cursor" data-cursor-root aria-hidden="true">
@@ -52,27 +52,27 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy" data-reveal>
+  <section class="hero hero-full">
+    <div class="hero-media" aria-hidden="true">
+      <img class="hero-photo" src="assets/img/hero-yoga-atardecer.webp" alt="" fetchpriority="high" loading="eager" decoding="sync">
+      <div class="hero-scrim"></div>
+    </div>
+    <img class="decor-stones hero-stones-full-a" src="assets/img/decor-piedras-esterilla.webp" alt="" aria-hidden="true" loading="lazy">
+    <img class="decor-stones hero-stones-full-b" src="assets/img/decor-piedras-spa.webp" alt="" aria-hidden="true" loading="lazy">
+    <div class="container">
+      <div class="hero-copy-center" data-reveal>
         <p class="eyebrow">Bienestar corporativo · A tu manera</p>
-        <h1 class="hero-title">El profesor adecuado, <em>en el espacio que elijáis</em>.</h1>
-        <p class="lede hero-sub">Somos el intermediario entre tu empresa y los mejores profesores de yoga, pilates, GAP, HIIT, zumba y entrenamiento funcional. Vosotros elegís dónde: vuestra oficina, un gimnasio o al aire libre.</p>
-        <div class="cta-row hero-cta">
+        <h1 class="hero-title-center">El profesor adecuado, <em>en el espacio que elijáis</em>.</h1>
+        <p class="lede hero-sub-center">Somos el intermediario entre tu empresa y los mejores profesores de yoga, pilates, GAP, HIIT, zumba y entrenamiento funcional. Vosotros elegís dónde: vuestra oficina, un gimnasio o al aire libre.</p>
+        <div class="cta-row hero-cta-center">
           <a class="btn btn-primary" href="contacto.html" data-magnetic data-magnetic-strength="0.3">Cuéntanos qué necesitáis</a>
-          <a class="btn btn-ghost" href="servicios.html">Ver los servicios</a>
+          <a class="btn btn-ghost btn-ghost-on-photo" href="servicios.html">Ver los servicios</a>
         </div>
       </div>
-      <div class="hero-figure">
-        <img class="hero-photo" src="assets/img/hero-yoga-atardecer.webp" alt="Grupo practicando yoga al atardecer en una terraza frente al mar" fetchpriority="high" loading="eager" decoding="sync">
-        <div class="hero-figure-tint" aria-hidden="true"></div>
-        <div class="hero-meta">
-          <p class="hero-meta-label">Clase en curso</p>
-          <p class="hero-meta-loc">Yoga · Sesión al aire libre</p>
-        </div>
-        <img class="decor-stones hero-stones-a" src="assets/img/decor-piedras-esterilla.webp" alt="" aria-hidden="true" loading="lazy">
-        <img class="decor-stones hero-stones-b" src="assets/img/decor-piedras-spa.webp" alt="" aria-hidden="true" loading="lazy">
-      </div>
+    </div>
+    <div class="hero-meta hero-meta-float">
+      <p class="hero-meta-label">Clase en curso</p>
+      <p class="hero-meta-loc">Yoga · Sesión al aire libre</p>
     </div>
   </section>
 
