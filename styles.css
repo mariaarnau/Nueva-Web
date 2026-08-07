@@ -712,6 +712,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   .narrative-grid { grid-template-columns: .9fr 1.1fr; }
   .stats-grid { grid-template-columns: repeat(4, 1fr); }
   .contact-grid { grid-template-columns: 1.2fr .8fr; }
+  .bento-row { grid-template-columns: repeat(4, 1fr); }
 }
 
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
