@@ -128,14 +128,19 @@ ul { list-style: none; padding: 0; }
 .eyebrow::before {
   content: ""; width: 22px; height: 1px; background: var(--olive);
 }
-.section-theme-dark .eyebrow { color: var(--olive-2); }
-.section-theme-dark .eyebrow::before { background: var(--olive-2); }
 
 .section { padding-block: clamp(4rem, 9vw, 8rem); position: relative; }
-.section-theme-dark {
-  background: var(--ink-deep);
-  color: var(--cream-dk);
+
+/* Tinted section — soft beige break used for closing CTAs / trust strips.
+   Kept deliberately light: the site avoids heavy dark blocks outside the hero photo and footer. */
+.section-tint {
+  background: var(--bg-2);
+  color: var(--ink);
+  border-block: 1px solid var(--line-soft);
 }
+.section-tint .stat-num { color: var(--olive-dark); }
+.section-tint .stat-num .unit { color: var(--olive); }
+.section-tint .stat-label { color: var(--ink-mute); }
 
 /* =============================================================
    4. Typography
@@ -155,7 +160,6 @@ h3, .h3 {
   font-size: clamp(1.3rem, 2.2vw, 1.7rem);
 }
 em, .accent-italic { font-style: italic; color: var(--olive-dark); }
-.section-theme-dark em { color: var(--olive-2); }
 
 .lede {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
@@ -163,7 +167,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   max-width: 46ch;
   line-height: 1.55;
 }
-.section-theme-dark .lede { color: var(--cream-dk-mute); }
 
 .body-copy { max-width: 62ch; color: var(--ink-soft); }
 .body-copy p + p { margin-top: 1rem; }
@@ -188,8 +191,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .btn-primary:hover { background: var(--olive-dark); }
 .btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
 .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--olive); color: var(--olive-dark); }
-.section-theme-dark .btn-ghost { color: var(--cream-dk); box-shadow: inset 0 0 0 1.5px rgba(241,239,226,0.28); }
-.section-theme-dark .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--olive-2); color: var(--olive-2); }
 .btn-light { background: var(--cream-dk); color: var(--ink-deep); }
 .btn-light:hover { background: #fff; }
 
@@ -254,8 +255,12 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   color: var(--ink); letter-spacing: -0.01em;
 }
 .brand strong { font-style: normal; font-weight: 600; color: var(--olive-dark); }
-.nav-links { display: none; align-items: center; gap: 2.1rem; }
-.nav-link { position: relative; padding: .25rem 0; font-size: .93rem; font-weight: 500; }
+.nav-links { display: none; align-items: center; gap: 2.3rem; }
+.nav-link {
+  position: relative; padding: .25rem 0;
+  font-size: .74rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .12em;
+}
 .nav-link::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
   height: 1px; background: currentColor;
@@ -321,15 +326,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .stat-num .unit { font-size: .55em; color: var(--olive-2); font-style: italic; }
 .stat-label { margin-top: .4rem; font-size: .88rem; color: var(--cream-dk-mute); max-width: 22ch; }
 
-.stats-grid-light .stat-num { color: var(--olive-dark); }
-.stats-grid-light .stat-num .unit { color: var(--olive); }
-.stats-grid-light .stat-label { color: var(--ink-mute); }
-
-/* Growing bar under any count-up number (Home teaser + Ventajas cinema) */
-.count-track { margin-top: .7rem; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.22); overflow: hidden; max-width: 220px; }
-.stats-grid-light .count-track { background: var(--line-soft); }
-.count-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive-2), var(--olive-dark)); }
-
 /* Cinematic stat grid (Ventajas) — cascading reveal like a title sequence */
 .stat-cinema-grid { display: grid; grid-template-columns: 1fr; gap: 2.6rem; }
 .stat-cinema-grid .stat-cinema:nth-child(1) { transition-delay: 0s; }
@@ -360,7 +356,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   max-width: 40ch;
 }
 .quote-cite { margin-top: 1.6rem; font-style: normal; font-family: var(--sans); font-size: .9rem; color: var(--ink-mute); }
-.section-theme-dark .quote-cite { color: var(--cream-dk-mute); }
 
 /* Forms */
 .form-grid { display: grid; gap: 1.2rem; }
@@ -478,6 +473,24 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .btn-ghost-on-photo { color: var(--cream-dk); box-shadow: inset 0 0 0 1.5px rgba(241,239,226,.5); }
 .btn-ghost-on-photo:hover { box-shadow: inset 0 0 0 1.5px var(--olive-2); color: var(--olive-2); }
 
+/* Scroll cue — small label + bouncing circle, echoes a boutique-resort hero */
+.scroll-cue {
+  position: absolute; left: 50%; bottom: clamp(1.6rem, 4vw, 3rem); z-index: 2;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: .8rem;
+  color: var(--cream-dk-mute);
+}
+.scroll-cue-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; }
+.scroll-cue-ring {
+  width: 34px; height: 34px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(241,239,226,.5);
+  display: grid; place-items: center;
+  animation: scrollCueBob 2.4s var(--ease-soft) infinite;
+}
+.scroll-cue-ring svg { width: 13px; height: 13px; }
+@keyframes scrollCueBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .scroll-cue-ring { animation: none; } }
+
 /* Nav rendered light over the full-bleed hero photo, dark once scrolled/solid */
 .has-photo-hero .nav:not(.is-scrolled) { color: var(--cream-dk); }
 .has-photo-hero .nav:not(.is-scrolled) .brand strong { color: var(--olive-2); }
@@ -521,8 +534,8 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   background:
     radial-gradient(55% 45% at var(--mesh-x) var(--mesh-y), rgba(124,138,94,.5), transparent 65%),
     conic-gradient(from var(--mesh-angle), rgba(124,138,94,.22), rgba(140,138,124,.1), rgba(92,106,69,.24), rgba(124,138,94,.22));
-  filter: blur(90px) saturate(120%);
-  opacity: .85;
+  filter: blur(90px) saturate(115%);
+  opacity: .4;
   animation: meshShift 24s linear infinite;
 }
 @keyframes meshShift {
