@@ -26,8 +26,6 @@
   --olive-2:   #7c8a5e;
   --stone:     #8c8a7c;
   --stone-dark:#56554a;
-  --terracotta:      #b3592e;
-  --terracotta-dark: #8f4522;
   --line:      rgba(38,38,32,0.14);
   --line-soft: rgba(38,38,32,0.08);
 
@@ -231,7 +229,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 }
 .card-body { padding: 1.4rem 1.5rem 1.7rem; transform: translateZ(30px); }
 .card-tag { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--olive-dark); font-weight: 700; }
-.card-tag.is-warm { color: var(--terracotta-dark); }
 .card-title { font-family: var(--serif); font-size: 1.35rem; margin-top: .35rem; }
 .card-desc { color: var(--ink-mute); font-size: .93rem; margin-top: .5rem; }
 .card-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-weight: 600; font-size: .88rem; color: var(--olive-dark); }
@@ -309,7 +306,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   color: var(--ink-mute); padding-inline: 1.1rem;
 }
 .marquee-track span.dot { font-style: normal; color: var(--olive); font-size: 1rem; }
-.marquee-track span.is-warm { color: var(--terracotta-dark); }
 
 /* Reveal */
 [data-reveal] {
@@ -326,13 +322,13 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .stat-label { margin-top: .4rem; font-size: .88rem; color: var(--cream-dk-mute); max-width: 22ch; }
 
 .stats-grid-light .stat-num { color: var(--olive-dark); }
-.stats-grid-light .stat-num .unit { color: var(--terracotta); }
+.stats-grid-light .stat-num .unit { color: var(--olive); }
 .stats-grid-light .stat-label { color: var(--ink-mute); }
 
 /* Growing bar under any count-up number (Home teaser + Ventajas cinema) */
 .count-track { margin-top: .7rem; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.22); overflow: hidden; max-width: 220px; }
 .stats-grid-light .count-track { background: var(--line-soft); }
-.count-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive-2), var(--terracotta)); }
+.count-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive-2), var(--olive-dark)); }
 
 /* Cinematic stat grid (Ventajas) — cascading reveal like a title sequence */
 .stat-cinema-grid { display: grid; grid-template-columns: 1fr; gap: 2.6rem; }
@@ -341,9 +337,9 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .stat-cinema-grid .stat-cinema:nth-child(3) { transition-delay: .24s; }
 .stat-cinema-grid .stat-cinema:nth-child(4) { transition-delay: .36s; }
 .stat-cinema-num { font-family: var(--serif); font-size: clamp(3.4rem, 8vw, 5.6rem); color: var(--olive-dark); line-height: .95; }
-.stat-cinema-num .unit { color: var(--terracotta); }
+.stat-cinema-num .unit { color: var(--olive); }
 .stat-cinema-track { margin-top: .9rem; height: 7px; border-radius: 999px; background: var(--line-soft); overflow: hidden; max-width: 320px; }
-.stat-cinema-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive), var(--terracotta)); }
+.stat-cinema-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive), var(--olive-2)); }
 .stat-cinema-label { margin-top: .8rem; color: var(--ink-mute); font-size: .95rem; max-width: 32ch; }
 
 /* Numbered step */
@@ -495,10 +491,14 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 /* Manifesto / intro split */
 .split-intro { display: grid; gap: 2rem; }
 .split-intro-num { font-family: var(--serif); font-style: italic; font-size: 4rem; color: var(--olive); line-height: 1; }
-.split-intro-num.is-warm { color: var(--terracotta); }
 
 /* Bento services grid (4 pillars, home) */
 .bento { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+
+/* Feature list (servicios detail sections) */
+.feature-list { margin-top: 1.1rem; display: flex; flex-direction: column; gap: .6rem; }
+.feature-list li { display: flex; align-items: flex-start; gap: .7rem; font-size: .95rem; color: var(--ink-soft); line-height: 1.5; }
+.feature-list li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: .5em; border-radius: 50%; background: var(--olive); }
 
 /* Compact discipline grid (servicios) */
 .activity-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
