@@ -160,15 +160,21 @@
     $$("[data-count-to]").forEach(function (el) {
       var target = parseFloat(el.dataset.countTo);
       var decimals = (el.dataset.countTo.split(".")[1] || "").length;
+      var container = el.closest(".stat, .stat-cinema");
+      var fillEl = container ? container.querySelector(".count-fill, .stat-cinema-fill") : null;
       var obj = { v: 0 };
       var trigger = function () {
         if (window.gsap) {
           window.gsap.to(obj, {
-            v: target, duration: 1.6, ease: "power2.out",
-            onUpdate: function () { el.textContent = obj.v.toFixed(decimals); }
+            v: target, duration: 1.8, ease: "power2.out",
+            onUpdate: function () {
+              el.textContent = obj.v.toFixed(decimals);
+              if (fillEl) fillEl.style.width = Math.min(Math.abs(obj.v), 100) + "%";
+            }
           });
         } else {
           el.textContent = target.toFixed(decimals);
+          if (fillEl) fillEl.style.width = Math.min(Math.abs(target), 100) + "%";
         }
       };
       var io = new IntersectionObserver(function (entries) {

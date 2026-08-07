@@ -329,12 +329,22 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .stats-grid-light .stat-num .unit { color: var(--terracotta); }
 .stats-grid-light .stat-label { color: var(--ink-mute); }
 
-/* Chart bars (Beneficios) */
-.chart-bars { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 1.3rem; max-width: 640px; }
-.chart-bar-head { display: flex; justify-content: space-between; gap: 1rem; font-size: .9rem; color: var(--ink-soft); margin-bottom: .5rem; }
-.chart-bar-value { font-family: var(--serif); font-style: italic; color: var(--olive-dark); font-weight: 600; flex: none; }
-.chart-bar-track { height: 10px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
-.chart-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--olive), var(--olive-2)); }
+/* Growing bar under any count-up number (Home teaser + Ventajas cinema) */
+.count-track { margin-top: .7rem; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.22); overflow: hidden; max-width: 220px; }
+.stats-grid-light .count-track { background: var(--line-soft); }
+.count-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive-2), var(--terracotta)); }
+
+/* Cinematic stat grid (Ventajas) — cascading reveal like a title sequence */
+.stat-cinema-grid { display: grid; grid-template-columns: 1fr; gap: 2.6rem; }
+.stat-cinema-grid .stat-cinema:nth-child(1) { transition-delay: 0s; }
+.stat-cinema-grid .stat-cinema:nth-child(2) { transition-delay: .12s; }
+.stat-cinema-grid .stat-cinema:nth-child(3) { transition-delay: .24s; }
+.stat-cinema-grid .stat-cinema:nth-child(4) { transition-delay: .36s; }
+.stat-cinema-num { font-family: var(--serif); font-size: clamp(3.4rem, 8vw, 5.6rem); color: var(--olive-dark); line-height: .95; }
+.stat-cinema-num .unit { color: var(--terracotta); }
+.stat-cinema-track { margin-top: .9rem; height: 7px; border-radius: 999px; background: var(--line-soft); overflow: hidden; max-width: 320px; }
+.stat-cinema-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--olive), var(--terracotta)); }
+.stat-cinema-label { margin-top: .8rem; color: var(--ink-mute); font-size: .95rem; max-width: 32ch; }
 
 /* Numbered step */
 .step {
@@ -570,6 +580,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   .form-grid-2 { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1.4fr 1fr 1fr; }
   .bento-4 { grid-template-columns: repeat(2, 1fr); }
+  .stat-cinema-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 2.6rem; }
 }
 
 @media (min-width: 960px) {
