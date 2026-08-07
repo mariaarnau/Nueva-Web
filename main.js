@@ -142,7 +142,7 @@
       track.parentNode.appendChild(clone);
       if (!window.gsap) return;
       var distance = track.scrollWidth;
-      var speed = 46;
+      var speed = parseFloat(track.dataset.marqueeSpeed || "46");
       window.gsap.to([track, clone], {
         x: -distance,
         duration: distance / speed,
@@ -152,6 +152,43 @@
           x: window.gsap.utils.unitize(function (x) { return parseFloat(x) % distance; })
         }
       });
+    });
+  }
+
+  /* ---------- Fade carousel (stacked photos crossfading in place) ---------- */
+  function initFadeCarousel() {
+    $$(".fade-carousel").forEach(function (car) {
+      var imgs = $$("img", car);
+      if (imgs.length < 2) return;
+      imgs[0].classList.add("is-active");
+
+      var dotsWrap = null, dots = [];
+      if (imgs.length > 1) {
+        dotsWrap = document.createElement("div");
+        dotsWrap.className = "fade-carousel-dots";
+        dotsWrap.setAttribute("aria-hidden", "true");
+        imgs.forEach(function (_, idx) {
+          var d = document.createElement("span");
+          if (idx === 0) d.className = "is-active";
+          dotsWrap.appendChild(d);
+          dots.push(d);
+        });
+        car.appendChild(dotsWrap);
+      }
+
+      if (reduced) return;
+
+      var i = 0, paused = false;
+      car.addEventListener("mouseenter", function () { paused = true; });
+      car.addEventListener("mouseleave", function () { paused = false; });
+      setInterval(function () {
+        if (paused) return;
+        imgs[i].classList.remove("is-active");
+        if (dots[i]) dots[i].classList.remove("is-active");
+        i = (i + 1) % imgs.length;
+        imgs[i].classList.add("is-active");
+        if (dots[i]) dots[i].classList.add("is-active");
+      }, parseInt(car.dataset.interval || "4200", 10));
     });
   }
 
@@ -313,6 +350,7 @@
     safe(initScrollProgress, "initScrollProgress");
     safe(initFaq, "initFaq");
     safe(initContactForm, "initContactForm");
+    safe(initFadeCarousel, "initFadeCarousel");
 
     if (window.gsap) {
       if (window.ScrollTrigger) {

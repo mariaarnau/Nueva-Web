@@ -299,7 +299,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .nav-mobile-foot { position: absolute; bottom: 2.4rem; left: 0; right: 0; text-align: center; color: var(--cream-dk-mute); font-size: .88rem; }
 
 /* Marquee */
-.marquee { overflow: hidden; position: relative; border-block: 1px solid var(--line); }
+.marquee { display: flex; flex-wrap: nowrap; overflow: hidden; position: relative; border-block: 1px solid var(--line); }
 .marquee::before, .marquee::after {
   content: ""; position: absolute; top: 0; bottom: 0; width: 28px; z-index: 2; pointer-events: none;
 }
@@ -311,6 +311,33 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   color: var(--ink-mute); padding-inline: 1.1rem;
 }
 .marquee-track span.dot { font-style: normal; color: var(--olive); font-size: 1rem; }
+
+/* Photo reel — continuous auto-scrolling strip of real photos (uses the same
+   engine as .marquee: main.js clones [data-marquee] content and animates it) */
+.photo-reel { display: flex; flex-wrap: nowrap; overflow: hidden; border-radius: var(--radius); }
+.photo-reel-track { display: inline-flex; gap: 1rem; will-change: transform; }
+.photo-reel-track img {
+  flex: none; width: clamp(200px, 22vw, 280px); height: clamp(150px, 15vw, 210px);
+  object-fit: cover; border-radius: var(--radius-sm);
+}
+
+/* Fade carousel — a set of stacked photos crossfading in place, dropped into
+   a .narrative-figure or .card-img-wrap in lieu of a single static image */
+.fade-carousel { position: relative; width: 100%; height: 100%; }
+.fade-carousel img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 1.4s var(--ease-soft);
+}
+.fade-carousel img.is-active { opacity: 1; }
+.fade-carousel-dots {
+  position: absolute; z-index: 2; left: 1.1rem; bottom: 1.1rem;
+  display: flex; gap: .4rem;
+}
+.fade-carousel-dots span {
+  width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.55);
+  transition: width .35s var(--ease-out), background .35s var(--ease-out);
+}
+.fade-carousel-dots span.is-active { width: 16px; background: var(--cream-dk); }
 
 /* Reveal */
 [data-reveal] {
