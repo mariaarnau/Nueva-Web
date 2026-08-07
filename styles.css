@@ -299,7 +299,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 /* Marquee */
 .marquee { overflow: hidden; position: relative; border-block: 1px solid var(--line); }
 .marquee::before, .marquee::after {
-  content: ""; position: absolute; top: 0; bottom: 0; width: 90px; z-index: 2; pointer-events: none;
+  content: ""; position: absolute; top: 0; bottom: 0; width: 28px; z-index: 2; pointer-events: none;
 }
 .marquee::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
 .marquee::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
@@ -324,6 +324,17 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .stat-num { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--cream-dk); }
 .stat-num .unit { font-size: .55em; color: var(--olive-2); font-style: italic; }
 .stat-label { margin-top: .4rem; font-size: .88rem; color: var(--cream-dk-mute); max-width: 22ch; }
+
+.stats-grid-light .stat-num { color: var(--olive-dark); }
+.stats-grid-light .stat-num .unit { color: var(--terracotta); }
+.stats-grid-light .stat-label { color: var(--ink-mute); }
+
+/* Chart bars (Beneficios) */
+.chart-bars { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 1.3rem; max-width: 640px; }
+.chart-bar-head { display: flex; justify-content: space-between; gap: 1rem; font-size: .9rem; color: var(--ink-soft); margin-bottom: .5rem; }
+.chart-bar-value { font-family: var(--serif); font-style: italic; color: var(--olive-dark); font-weight: 600; flex: none; }
+.chart-bar-track { height: 10px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
+.chart-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--olive), var(--olive-2)); }
 
 /* Numbered step */
 .step {
@@ -460,9 +471,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .hero-cta-center { justify-content: center; margin-top: 2.1rem; }
 .btn-ghost-on-photo { color: var(--cream-dk); box-shadow: inset 0 0 0 1.5px rgba(241,239,226,.5); }
 .btn-ghost-on-photo:hover { box-shadow: inset 0 0 0 1.5px var(--olive-2); color: var(--olive-2); }
-.hero-meta-float { position: absolute; left: 1.6rem; bottom: 1.6rem; z-index: 2; color: #fff; }
-.hero-meta-label { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; opacity: .82; }
-.hero-meta-loc { font-family: var(--serif); font-style: italic; font-size: 1.15rem; margin-top: .15rem; }
 
 /* Nav rendered light over the full-bleed hero photo, dark once scrolled/solid */
 .has-photo-hero .nav:not(.is-scrolled) { color: var(--cream-dk); }
@@ -551,9 +559,6 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 /* =============================================================
    8. Responsive
    ============================================================= */
-@media (max-width: 539px) {
-  .hero-meta-float { left: 1rem; bottom: 1.2rem; }
-}
 @media (min-width: 540px) {
   .space-grid { grid-template-columns: repeat(2, 1fr); }
   .pillars-grid { grid-template-columns: repeat(2, 1fr); }
