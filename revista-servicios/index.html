@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boost Wellness — Revista de Servicios</title>
+<style>
+
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 700;src:url('assets/fonts/playfair-regular.woff2') format('woff2');}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 700;src:url('assets/fonts/playfair-italic.woff2') format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400 600;src:url('assets/fonts/cormorant-regular.woff2') format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400 600;src:url('assets/fonts/cormorant-italic.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 600;src:url('assets/fonts/montserrat-regular.woff2') format('woff2');}
+
+:root{
+  --green:#5E6651;
+  --green-dark:#3B4030;
+  --green-deep:#2C2F25;
+  --beige:#BAB1A6;
+  --beige-light:#E9E3D8;
+  --cream:#F7F4EE;
+  --ink:#2A2924;
+  --paper:#FBFAF7;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Montserrat',sans-serif;
+  color:var(--ink);
+  background:#dedede;
+}
+
+.kicker{
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  font-size:10.5pt;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+}
+
+h1,h2,h3,.serif{font-family:'Playfair Display',serif;}
+.script{font-family:'Cormorant Garamond',serif; font-style:italic;}
+
+.page{
+  width:210mm;
+  height:297mm;
+  position:relative;
+  overflow:hidden;
+  background:var(--paper);
+  page-break-after:always;
+}
+.page:last-child{page-break-after:auto;}
+
+img{display:block; max-width:100%;}
+
+/* ---------- decorative bits ---------- */
+.hairline{
+  width:44px; height:1px; background:var(--green); opacity:.7;
+}
+.hairline.light{background:var(--beige);}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;}
+
+.pagenum{
+  position:absolute; bottom:14mm; font-family:'Montserrat'; font-size:8.5pt;
+  letter-spacing:.18em; color:var(--green-dark); opacity:.65;
+}
+.pagenum.left{left:18mm;}
+.pagenum.right{right:18mm; text-align:right;}
+.runhead{
+  position:absolute; top:14mm; font-family:'Montserrat'; font-size:8pt;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--green-dark); opacity:.55;
+}
+
+/* =========================================================
+   PAGE 1 — COVER
+   ========================================================= */
+#p-cover{
+  background:#111;
+}
+#p-cover .photo{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:saturate(1.03) brightness(0.86);
+}
+#p-cover .veil{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(44,47,37,.55) 0%, rgba(44,47,37,.08) 30%, rgba(44,47,37,.18) 62%, rgba(35,38,29,.86) 100%);
+}
+#p-cover .frame{
+  position:absolute; inset:9mm; border:1px solid rgba(250,248,242,.55);
+}
+#p-cover .content{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
+  color:var(--paper); text-align:center;
+}
+#p-cover .top{margin-top:20mm;}
+#p-cover .logo{width:34mm; opacity:.97; margin:0 auto 4mm;}
+#p-cover .brand{
+  font-family:'Montserrat'; font-weight:600; letter-spacing:.5em; font-size:12pt; margin-left:.5em;
+}
+#p-cover .middle{margin-top:auto; margin-bottom:auto;}
+#p-cover h1{
+  font-size:64pt; line-height:0.98; margin:0; font-weight:500;
+}
+#p-cover h1 em{font-style:italic; font-weight:400;}
+#p-cover .sub{
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:17pt; letter-spacing:.03em;
+  margin-top:6mm; color:var(--beige-light);
+}
+#p-cover .bottom{
+  margin-bottom:16mm; display:flex; flex-direction:column; align-items:center; gap:4mm;
+}
+#p-cover .issue{
+  font-family:'Montserrat'; font-size:9pt; letter-spacing:.34em; text-transform:uppercase; color:var(--beige-light);
+}
+
+/* =========================================================
+   PAGE 2 — INDEX
+   ========================================================= */
+#p-index{background:var(--cream); padding:26mm 20mm;}
+#p-index .kicker{color:var(--green);}
+#p-index h2{font-size:34pt; margin:4mm 0 14mm; color:var(--green-deep);}
+#p-index .toc-item{
+  display:flex; align-items:baseline; gap:4mm; padding:5.2mm 0;
+  border-bottom:1px solid rgba(94,102,81,.22);
+}
+#p-index .toc-num{
+  font-family:'Playfair Display'; font-style:italic; font-size:13pt; color:var(--green); width:9mm;
+}
+#p-index .toc-title{font-family:'Playfair Display'; font-size:15.5pt; font-weight:500;}
+#p-index .toc-desc{
+  font-family:'Montserrat'; font-size:8.6pt; color:var(--ink); opacity:.62; margin-top:1mm;
+}
+#p-index .toc-page{
+  margin-left:auto; font-family:'Cormorant Garamond'; font-style:italic; font-size:14pt; color:var(--green);
+}
+#p-index .toc-flex{display:flex; flex-direction:column; flex:1;}
+#p-index .foot-note{
+  position:absolute; bottom:20mm; left:20mm; right:20mm;
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:13pt; color:var(--green-dark);
+  border-top:1px solid rgba(94,102,81,.3); padding-top:6mm;
+}
+
+/* =========================================================
+   PAGE 3 — WELCOME / QUIENES SOMOS
+   ========================================================= */
+#p-welcome{background:var(--paper);}
+#p-welcome .imgcol{
+  position:absolute; left:0; top:0; bottom:0; width:82mm; overflow:hidden;
+}
+#p-welcome .imgcol img{width:100%; height:100%; object-fit:cover;}
+#p-welcome .imgcol::after{
+  content:''; position:absolute; inset:0; background:linear-gradient(90deg, transparent 60%, var(--paper) 100%);
+}
+#p-welcome .txtcol{
+  position:absolute; left:96mm; right:20mm; top:26mm; bottom:20mm; display:flex; flex-direction:column;
+}
+#p-welcome .kicker{color:var(--green);}
+#p-welcome h2{font-size:30pt; margin:5mm 0 8mm; color:var(--green-deep); line-height:1.08;}
+#p-welcome p{font-size:11pt; line-height:1.85; color:var(--ink); margin:0 0 5mm; font-weight:300;}
+#p-welcome .lede{
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:16.5pt; line-height:1.5; color:var(--green-dark);
+  margin-bottom:6mm;
+}
+#p-welcome .sign{
+  margin-top:auto; padding-top:6mm; border-top:1px solid rgba(94,102,81,.3);
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:14pt; color:var(--green);
+}
+
+/* =========================================================
+   PAGE 4 — PHILOSOPHY (3 pillars)
+   ========================================================= */
+#p-phil{background:var(--green-deep); color:var(--paper); padding:24mm 20mm;}
+#p-phil .kicker{color:var(--beige);}
+#p-phil h2{font-size:30pt; margin:5mm 0 3mm; color:var(--paper);}
+#p-phil .intro{
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:14.5pt; color:var(--beige-light);
+  max-width:150mm; line-height:1.6; margin-bottom:12mm;
+}
+#p-phil .pillars{display:flex; flex-direction:column; gap:8mm;}
+#p-phil .pillar{display:flex; gap:8mm; align-items:flex-start; border-top:1px solid rgba(250,248,242,.22); padding-top:7mm;}
+#p-phil .pillar .num{font-family:'Playfair Display'; font-style:italic; font-size:22pt; color:var(--beige); width:16mm;}
+#p-phil .pillar h3{font-size:19pt; margin:0 0 2mm; color:var(--paper); font-weight:500;}
+#p-phil .pillar p{font-size:10.3pt; line-height:1.7; margin:0; font-weight:300; color:var(--beige-light); max-width:135mm;}
+
+/* =========================================================
+   SERVICE SPREADS (fuerza / mente / diversion / empresa / coaching / retiros / amedida)
+   ========================================================= */
+.service{background:var(--paper);}
+.service .photo{
+  position:absolute; top:0; left:0; right:0; height:150mm; overflow:hidden;
+}
+.service .photo img{width:100%; height:100%; object-fit:cover;}
+.service .photo .tint{position:absolute; inset:0; background:linear-gradient(0deg, var(--paper) 0%, transparent 22%);}
+.service .tag{
+  position:absolute; top:130mm; left:20mm;
+  background:var(--green); color:var(--paper); padding:4mm 8mm;
+  font-family:'Montserrat'; font-weight:600; letter-spacing:.28em; font-size:9.5pt; text-transform:uppercase;
+}
+.service .body{position:absolute; left:20mm; right:20mm; top:162mm; bottom:20mm; display:flex; flex-direction:column;}
+.service h2{font-size:30pt; margin:0 0 6mm; color:var(--green-deep);}
+.service .lede{
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:15pt; color:var(--green-dark); line-height:1.55;
+  margin-bottom:6mm; max-width:165mm;
+}
+.service .cols{display:flex; gap:14mm;}
+.service .cols p{font-size:10pt; line-height:1.75; font-weight:300; margin:0 0 3mm;}
+.service .cols .col{flex:1;}
+.service ul{margin:0; padding:0; list-style:none;}
+.service ul li{
+  font-size:10pt; line-height:1.6; padding-left:5mm; position:relative; margin-bottom:2.4mm; font-weight:300;
+}
+.service ul li::before{
+  content:''; position:absolute; left:0; top:2.4mm; width:3.5px; height:3.5px; border-radius:50%; background:var(--green);
+}
+
+/* =========================================================
+   PROCESS PAGE
+   ========================================================= */
+#p-proceso{background:var(--beige-light); padding:26mm 20mm;}
+#p-proceso .kicker{color:var(--green);}
+#p-proceso h2{font-size:30pt; margin:5mm 0 4mm; color:var(--green-deep);}
+#p-proceso .intro{font-family:'Cormorant Garamond'; font-style:italic; font-size:14.5pt; color:var(--green-dark); max-width:160mm; line-height:1.6; margin-bottom:10mm;}
+#p-proceso .steps{display:flex; flex-direction:column; gap:6mm;}
+#p-proceso .step{display:flex; gap:7mm; align-items:flex-start;}
+#p-proceso .step .n{
+  font-family:'Playfair Display'; font-style:italic; font-size:24pt; color:var(--green); width:14mm; flex-shrink:0;
+}
+#p-proceso .step h3{margin:0 0 1.5mm; font-size:14.5pt; color:var(--green-deep); font-weight:600;}
+#p-proceso .step p{margin:0; font-size:9.7pt; line-height:1.65; font-weight:300; max-width:140mm;}
+#p-proceso .quote{
+  position:absolute; left:20mm; right:20mm; bottom:22mm; padding-top:8mm; border-top:1px solid rgba(94,102,81,.3);
+  font-family:'Cormorant Garamond'; font-style:italic; font-size:17pt; color:var(--green-dark); line-height:1.5;
+}
+
+/* =========================================================
+   BACK COVER
+   ========================================================= */
+#p-back{background:var(--green-deep); color:var(--paper);}
+#p-back .stones{position:absolute; right:-10mm; bottom:-6mm; width:95mm; opacity:.92;}
+#p-back .wrap{position:absolute; inset:0; display:flex; flex-direction:column; padding:26mm 20mm;}
+#p-back .logo{width:28mm;}
+#p-back h2{font-size:30pt; margin:10mm 0 4mm; max-width:120mm; line-height:1.15;}
+#p-back .lede{font-family:'Cormorant Garamond'; font-style:italic; font-size:14.5pt; color:var(--beige-light); max-width:110mm; line-height:1.6;}
+#p-back .contact{margin-top:auto; display:flex; flex-direction:column; gap:4mm;}
+#p-back .contact .row{display:flex; align-items:baseline; gap:5mm;}
+#p-back .contact .lbl{font-family:'Montserrat'; font-size:8.5pt; letter-spacing:.24em; text-transform:uppercase; color:var(--beige); width:28mm;}
+#p-back .contact .val{font-family:'Cormorant Garamond'; font-style:italic; font-size:15pt; color:var(--paper);}
+#p-back .foot{
+  margin-top:14mm; padding-top:6mm; border-top:1px solid rgba(250,248,242,.25);
+  font-family:'Montserrat'; font-size:8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--beige-light); opacity:.75;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 : COVER ============ -->
+<div class="page" id="p-cover">
+  <img class="photo" src="assets/img/cover.jpg" alt="">
+  <div class="veil"></div>
+  <div class="frame"></div>
+  <div class="content">
+    <div class="top">
+      <img class="logo" src="assets/img/logo-white.png" alt="Boost Wellness">
+    </div>
+    <div class="middle">
+      <h1>Bienestar<br><em>a medida</em></h1>
+      <div class="sub">Revista de servicios para empresas</div>
+    </div>
+    <div class="bottom">
+      <div class="hairline light"></div>
+      <div class="issue">Boost&nbsp;Wellness&nbsp;·&nbsp;Edición&nbsp;2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 : INDEX ============ -->
+<div class="page" id="p-index">
+  <div class="kicker">Sumario</div>
+  <h2>En esta edición</h2>
+
+  <div class="toc-item">
+    <div class="toc-num">01</div>
+    <div class="toc-flex"><div class="toc-title">Carta de bienvenida</div><div class="toc-desc">Quiénes somos y cómo entendemos el bienestar corporativo</div></div>
+    <div class="toc-page">03</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">02</div>
+    <div class="toc-flex"><div class="toc-title">Fuerza · Mente · Diversión</div><div class="toc-desc">Nuestra filosofía en tres pilares</div></div>
+    <div class="toc-page">04</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">03</div>
+    <div class="toc-flex"><div class="toc-title">Fuerza</div><div class="toc-desc">Entrenamiento funcional, fuerza guiada y retos en equipo</div></div>
+    <div class="toc-page">05</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">04</div>
+    <div class="toc-flex"><div class="toc-title">Mente</div><div class="toc-desc">Yoga, pilates, mindfulness y gestión del estrés</div></div>
+    <div class="toc-page">06</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">05</div>
+    <div class="toc-flex"><div class="toc-title">Diversión &amp; Team Building</div><div class="toc-desc">Dinámicas y experiencias que unen equipos</div></div>
+    <div class="toc-page">07</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">06</div>
+    <div class="toc-flex"><div class="toc-title">Bienestar en la empresa</div><div class="toc-desc">Programas recurrentes dentro de vuestras oficinas</div></div>
+    <div class="toc-page">08</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">07</div>
+    <div class="toc-flex"><div class="toc-title">Formación &amp; Coaching</div><div class="toc-desc">Talleres de liderazgo, comunicación y gestión emocional</div></div>
+    <div class="toc-page">09</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">08</div>
+    <div class="toc-flex"><div class="toc-title">Experiencias a medida</div><div class="toc-desc">Retiros, masters y actividades especiales</div></div>
+    <div class="toc-page">10</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">09</div>
+    <div class="toc-flex"><div class="toc-title">Cómo trabajamos</div><div class="toc-desc">Nuestro proceso y presupuestos personalizados</div></div>
+    <div class="toc-page">11</div>
+  </div>
+
+  <div class="foot-note">"Nos amoldamos a lo que pida cada cliente."</div>
+</div>
+
+<!-- ============ PAGE 3 : WELCOME ============ -->
+<div class="page" id="p-welcome">
+  <div class="imgcol"><img src="assets/img/intro.jpg" alt=""></div>
+  <div class="txtcol">
+    <div class="kicker">Bienvenida</div>
+    <h2>Quiénes<br>somos</h2>
+    <div class="lede">Creemos que el bienestar de un equipo se entrena, se cuida y también se celebra.</div>
+    <p>En Boost Wellness diseñamos experiencias de bienestar para empresas que quieren cuidar a sus equipos de una forma real, activa y memorable. Trabajamos la fuerza física, la calma mental y los momentos de diversión compartida como tres caras de una misma idea: las personas rinden y conviven mejor cuando se sienten bien.</p>
+    <p>Cada organización es distinta, y por eso no ofrecemos un catálogo cerrado. Escuchamos primero qué necesita cada cliente —una sesión puntual, un programa recurrente o una experiencia especial— y a partir de ahí construimos una propuesta y un presupuesto totalmente personalizados.</p>
+    <div class="sign">Boost Wellness — bienestar corporativo con propósito</div>
+  </div>
+  <div class="pagenum right">03 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 4 : PHILOSOPHY ============ -->
+<div class="page" id="p-phil">
+  <div class="kicker">Nuestra filosofía</div>
+  <h2>Fuerza, mente<br>y diversión</h2>
+  <div class="intro">Tres pilares que sostienen cualquier programa que diseñamos, ya sea una sesión suelta o un plan anual completo.</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="num">01</div>
+      <div><h3>Fuerza</h3><p>Entrenamiento físico y funcional adaptado a todos los niveles: sesiones de fuerza, cardio, HIIT y retos que activan el cuerpo y la energía del equipo.</p></div>
+    </div>
+    <div class="pillar">
+      <div class="num">02</div>
+      <div><h3>Mente</h3><p>Espacios de calma y foco: yoga, pilates, respiración y mindfulness para gestionar el estrés y mejorar la concentración dentro y fuera de la oficina.</p></div>
+    </div>
+    <div class="pillar">
+      <div class="num">03</div>
+      <div><h3>Diversión</h3><p>Dinámicas, juegos y experiencias compartidas que refuerzan la cohesión de equipo y dejan un buen recuerdo colectivo.</p></div>
+    </div>
+  </div>
+  <div class="pagenum left" style="color:var(--beige-light); opacity:.7;">04 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 5 : FUERZA ============ -->
+<div class="page service" id="p-fuerza">
+  <div class="photo"><img src="assets/img/fuerza.jpg" alt=""><div class="tint"></div></div>
+  <div class="tag">01 — Fuerza</div>
+  <div class="body">
+    <h2>Entrenamiento y energía</h2>
+    <div class="lede">Sesiones que activan el cuerpo, mejoran la condición física y generan un subidón de energía compartido.</div>
+    <div class="cols">
+      <div class="col">
+        <p>Programas de entrenamiento funcional, fuerza guiada, HIIT o circuitos adaptados al espacio y al nivel de cada grupo, tanto en formato puntual como recurrente.</p>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Entrenamiento funcional y fuerza guiada</li>
+          <li>Sesiones de cardio, HIIT y circuitos</li>
+          <li>Retos físicos y carreras en equipo</li>
+          <li>Actividades al aire libre y deportivas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum right">05 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 6 : MENTE ============ -->
+<div class="page service" id="p-mente">
+  <div class="photo"><img src="assets/img/mente.jpg" alt=""><div class="tint"></div></div>
+  <div class="tag">02 — Mente</div>
+  <div class="body">
+    <h2>Calma, foco y equilibrio</h2>
+    <div class="lede">Momentos para respirar, soltar tensión y volver al trabajo con la mente más clara.</div>
+    <div class="cols">
+      <div class="col">
+        <p>Sesiones de yoga, pilates y mindfulness pensadas para integrarse en el día a día de la oficina o como pausa activa dentro de una jornada especial.</p>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Yoga y pilates para todos los niveles</li>
+          <li>Mindfulness y técnicas de respiración</li>
+          <li>Gestión del estrés y descanso activo</li>
+          <li>Pausas de bienestar en horario laboral</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum right">06 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 7 : DIVERSION / TEAM BUILDING ============ -->
+<div class="page service" id="p-diversion">
+  <div class="photo"><img src="assets/img/diversion.jpg" alt=""><div class="tint"></div></div>
+  <div class="tag">03 — Diversión</div>
+  <div class="body">
+    <h2>Team building con alma</h2>
+    <div class="lede">Experiencias que unen al equipo fuera del contexto habitual de trabajo y dejan una huella compartida.</div>
+    <div class="cols">
+      <div class="col">
+        <p>Dinámicas de grupo, juegos colaborativos y jornadas de convivencia diseñadas para reforzar la confianza y la comunicación entre compañeros, con un punto de diversión siempre presente.</p>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Dinámicas y juegos de cohesión de equipo</li>
+          <li>Jornadas de convivencia al aire libre</li>
+          <li>Celebraciones y cierres de proyecto</li>
+          <li>Actividades sorpresa a medida del grupo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum right">07 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 8 : EMPRESA (recurrente) ============ -->
+<div class="page service" id="p-empresa">
+  <div class="photo"><img src="assets/img/empresa.jpg" alt=""><div class="tint"></div></div>
+  <div class="tag">04 — En la empresa</div>
+  <div class="body">
+    <h2>Bienestar dentro de la oficina</h2>
+    <div class="lede">Programas recurrentes que se integran en la rutina de vuestro equipo, semana tras semana.</div>
+    <div class="cols">
+      <div class="col">
+        <p>Llevamos actividades de fuerza, mente y diversión directamente a vuestro espacio de trabajo, con una cadencia semanal, quincenal o mensual, y las ajustamos según la respuesta del equipo.</p>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Clases recurrentes en vuestras instalaciones</li>
+          <li>Calendario flexible: semanal, quincenal o mensual</li>
+          <li>Seguimiento y ajuste continuo del programa</li>
+          <li>Combinación de disciplinas según el equipo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum right">08 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 9 : COACHING / FORMACION ============ -->
+<div class="page service" id="p-coaching">
+  <div class="photo"><img src="assets/img/coaching.jpg" alt=""><div class="tint"></div></div>
+  <div class="tag">05 — Formación</div>
+  <div class="body">
+    <h2>Formación &amp; coaching</h2>
+    <div class="lede">Herramientas para liderar, comunicar y gestionar las emociones dentro del equipo.</div>
+    <div class="cols">
+      <div class="col">
+        <p>Talleres prácticos y sesiones de coaching grupal o individual, orientados a mandos y equipos que quieren seguir creciendo en habilidades personales además de técnicas.</p>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Talleres de liderazgo y comunicación</li>
+          <li>Coaching individual y grupal</li>
+          <li>Gestión emocional y del estrés</li>
+          <li>Dinámicas de inteligencia de equipo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum right">09 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 10 : RETIROS / A MEDIDA ============ -->
+<div class="page service" id="p-retiros">
+  <div class="photo"><img src="assets/img/retiros.jpg" alt=""><div class="tint"></div></div>
+  <div class="tag">06 — A medida</div>
+  <div class="body">
+    <h2>Experiencias y retiros especiales</h2>
+    <div class="lede">Para masters, jornadas de incentivo o eventos que merecen algo fuera de lo habitual.</div>
+    <div class="cols">
+      <div class="col">
+        <p>Cuando el evento lo pide, vamos más allá del catálogo recurrente: esgrima, pádel, senderismo, spa o yoga frente al mar o sobre tabla son solo algunos ejemplos de lo que hemos organizado a petición de nuestros clientes.</p>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Retiros de bienestar de uno o varios días</li>
+          <li>Actividades especiales: esgrima, pádel, yoga en el mar...</li>
+          <li>Jornadas de incentivo y celebraciones singulares</li>
+          <li>Diseño 100% a medida de la petición del cliente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum right">10 · Boost Wellness</div>
+</div>
+
+<!-- ============ PAGE 11 : PROCESO ============ -->
+<div class="page" id="p-proceso">
+  <div class="kicker">Cómo trabajamos</div>
+  <h2>De la idea al presupuesto</h2>
+  <div class="intro">Un proceso sencillo, pensado para adaptarnos a cada empresa y a cada petición, por específica que sea.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="n">01</div>
+      <div><h3>Escuchamos</h3><p>Nos cuentas qué necesita tu equipo: una sesión puntual, un programa recurrente o una experiencia especial.</p></div>
+    </div>
+    <div class="step">
+      <div class="n">02</div>
+      <div><h3>Diseñamos la propuesta</h3><p>Construimos una propuesta a medida combinando fuerza, mente y diversión según el objetivo del grupo.</p></div>
+    </div>
+    <div class="step">
+      <div class="n">03</div>
+      <div><h3>Presupuesto personalizado</h3><p>Cada presupuesto se ajusta al número de personas, la duración, la ubicación y el tipo de actividad elegida. Los precios varían caso a caso.</p></div>
+    </div>
+    <div class="step">
+      <div class="n">04</div>
+      <div><h3>Ejecutamos y acompañamos</h3><p>Coordinamos al equipo de profesionales adecuado y hacemos seguimiento antes, durante y después de cada actividad.</p></div>
+    </div>
+  </div>
+  <div class="quote">"Estamos abiertos a todo: luego ya buscamos a la gente adecuada para cada propuesta."</div>
+</div>
+
+<!-- ============ PAGE 12 : BACK COVER ============ -->
+<div class="page" id="p-back">
+  <img class="stones" src="assets/img/stones.webp" alt="">
+  <div class="wrap">
+    <img class="logo" src="assets/img/logo-white.png" alt="Boost Wellness">
+    <h2>Hablemos de<br>vuestro próximo<br>proyecto</h2>
+    <div class="lede">Cuéntanos qué necesita tu equipo y te preparamos una propuesta y un presupuesto a medida, sin compromiso.</div>
+    <div class="contact">
+      <div class="row"><div class="lbl">Teléfono</div><div class="val">611 492 592</div></div>
+      <div class="row"><div class="lbl">Email</div><div class="val">boostwellness@gmail.com</div></div>
+      <div class="row"><div class="lbl">Instagram</div><div class="val">@boostwellness</div></div>
+    </div>
+    <div class="foot">Boost Wellness · Bienestar corporativo a medida · 2026</div>
+  </div>
+</div>
+
+</body>
+</html>
