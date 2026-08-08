@@ -12,8 +12,8 @@ with sync_playwright() as p:
     page.wait_for_timeout(500)
     page.pdf(
         path=OUT,
-        width="210mm",
-        height="297mm",
+        width="297mm",
+        height="210mm",
         print_background=True,
         margin={"top": "0mm", "bottom": "0mm", "left": "0mm", "right": "0mm"},
         prefer_css_page_size=False,
