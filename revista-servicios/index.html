@@ -145,6 +145,12 @@ img{display:block; max-width:100%;}
 .showcase .card .pg{margin-top:auto; padding-top:3mm; font-family:'Cormorant Garamond'; font-style:italic; font-size:13.5pt; color:var(--beige); opacity:.9;}
 .showcase.light .card .pg{color:var(--green);}
 
+.showcase .cards.four{gap:8mm;}
+.showcase .cards.four .thumb{height:46mm; margin-bottom:4mm;}
+.showcase .cards.four .num{font-size:13pt;}
+.showcase .cards.four h3{font-size:17.5pt; margin:0 0 2mm;}
+.showcase .cards.four p{font-size:11pt; line-height:1.55;}
+
 /* =========================================================
    ACTIVIDADES — hero + two insets
    ========================================================= */
@@ -234,8 +240,9 @@ img{display:block; max-width:100%;}
       <div class="toc-item"><div class="toc-num">06</div><div class="toc-title">Nuestros servicios</div><div class="toc-page">08</div></div>
       <div class="toc-item"><div class="toc-num">07</div><div class="toc-title">Actividades</div><div class="toc-page">09</div></div>
       <div class="toc-item"><div class="toc-num">08</div><div class="toc-title">Team Building</div><div class="toc-page">10</div></div>
-      <div class="toc-item"><div class="toc-num">09</div><div class="toc-title">Eventos y charlas</div><div class="toc-page">11</div></div>
-      <div class="toc-item"><div class="toc-num">10</div><div class="toc-title">Cómo trabajamos</div><div class="toc-page">12</div></div>
+      <div class="toc-item"><div class="toc-num">09</div><div class="toc-title">Eventos</div><div class="toc-page">11</div></div>
+      <div class="toc-item"><div class="toc-num">10</div><div class="toc-title">Charlas</div><div class="toc-page">12</div></div>
+      <div class="toc-item"><div class="toc-num">11</div><div class="toc-title">Cómo trabajamos</div><div class="toc-page">13</div></div>
     </div>
   </div>
   <div class="foot-note">"Nos amoldamos a lo que quiera cada empresa."</div>
@@ -335,8 +342,8 @@ img{display:block; max-width:100%;}
 <div class="page showcase light" id="p-servicios">
   <div class="kicker">06 · Nuestros servicios</div>
   <h2>Todo lo que hacemos</h2>
-  <div class="intro">Se agrupan en tres grandes bloques. Y siempre, siempre, se adaptan a lo que pida cada empresa.</div>
-  <div class="cards">
+  <div class="intro">Se agrupan en cuatro grandes bloques. Y siempre, siempre, se adaptan a lo que pida cada empresa.</div>
+  <div class="cards four">
     <div class="card">
       <div class="thumb"><img src="assets/img/serv-actividades.jpg" alt=""></div>
       <div class="num">01</div>
@@ -354,9 +361,16 @@ img{display:block; max-width:100%;}
     <div class="card">
       <div class="thumb"><img src="assets/img/serv-eventos.jpg" alt=""></div>
       <div class="num">03</div>
-      <h3>Eventos y charlas</h3>
-      <p>Formaciones, ponencias y charlas de bienestar para jornadas y eventos especiales.</p>
+      <h3>Eventos</h3>
+      <p>Jornadas completas de deporte con almuerzo o comida incluidos, o incluso una escapada de fin de semana.</p>
       <div class="pg">Página 11</div>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="assets/img/serv-charlas.jpg" alt=""></div>
+      <div class="num">04</div>
+      <h3>Charlas</h3>
+      <p>Formaciones, ponencias y charlas de salud y bienestar para cualquier evento corporativo.</p>
+      <div class="pg">Página 12</div>
     </div>
   </div>
   <div class="pagenum left">08 · Boost Wellness</div>
@@ -408,12 +422,30 @@ img{display:block; max-width:100%;}
   </div>
 </div>
 
-<!-- ============ EVENTOS Y CHARLAS ============ -->
+<!-- ============ EVENTOS ============ -->
 <div class="page split" id="p-eventos">
   <div class="imgcol"><img src="assets/img/eventos-hero.jpg" alt=""></div>
   <div class="txtcol">
-    <div class="kicker">09 · Servicios · Eventos y charlas</div>
-    <h2>Eventos<br>y charlas</h2>
+    <div class="kicker">09 · Servicios · Eventos</div>
+    <h2>Jornadas y<br>experiencias completas</h2>
+    <div class="lede">Desde un día de deporte con almuerzo incluido hasta un fin de semana de equipo fuera de la oficina.</div>
+    <p>Organizamos la jornada de principio a fin: actividad física o dinámicas de grupo, comidas y almuerzos incluidos, y todo el descanso y la logística para que el equipo solo tenga que disfrutar.</p>
+    <ul>
+      <li>Jornadas deportivas de un día completo</li>
+      <li>Almuerzos y comidas de equipo incluidos</li>
+      <li>Fines de semana con dinámicas de grupo</li>
+      <li>Escapadas y retiros de empresa</li>
+    </ul>
+    <div class="sign"><span class="msg">Del día completo al fin de semana fuera: vosotros elegís.</span><span class="pg">11 · Boost Wellness</span></div>
+  </div>
+</div>
+
+<!-- ============ CHARLAS ============ -->
+<div class="page split right" id="p-charlas">
+  <div class="imgcol"><img src="assets/img/charlas-hero.jpg" alt=""></div>
+  <div class="txtcol">
+    <div class="kicker">10 · Servicios · Charlas</div>
+    <h2>Charlas y<br>formaciones</h2>
     <div class="lede">Contenido y ponentes para jornadas, masters y encuentros que buscan dejar huella.</div>
     <p>Preparamos charlas y formaciones sobre salud, hábitos y bienestar, así como ponencias motivacionales para acompañar cualquier evento corporativo.</p>
     <ul>
@@ -422,13 +454,13 @@ img{display:block; max-width:100%;}
       <li>Ponencias motivacionales</li>
       <li>Presentaciones en jornadas y masters</li>
     </ul>
-    <div class="sign"><span class="msg">Adaptamos el contenido a cada público y evento.</span><span class="pg">11 · Boost Wellness</span></div>
+    <div class="sign"><span class="msg">Adaptamos el contenido a cada público y evento.</span><span class="pg">12 · Boost Wellness</span></div>
   </div>
 </div>
 
 <!-- ============ COMO TRABAJAMOS ============ -->
 <div class="page" id="p-proceso">
-  <div class="kicker">10 · Cómo trabajamos</div>
+  <div class="kicker">11 · Cómo trabajamos</div>
   <h2>De la idea al presupuesto</h2>
   <div class="intro">Un proceso sencillo, pensado para adaptarnos a cada empresa y a cada petición, por específica que sea.</div>
   <div class="layout">
@@ -443,7 +475,7 @@ img{display:block; max-width:100%;}
       <p>"Nos adaptamos a lo que quiera cada empresa. Si lo pides, lo miramos."</p>
     </div>
   </div>
-  <div class="pagenum left">12 · Boost Wellness</div>
+  <div class="pagenum left">13 · Boost Wellness</div>
 </div>
 
 <!-- ============ BACK COVER ============ -->
