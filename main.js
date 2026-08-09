@@ -301,45 +301,6 @@
     });
   }
 
-  /* ---------- Cursor ---------- */
-  function initCursor() {
-    var root = $("[data-cursor-root]");
-    if (!root || !fineHover) return;
-    document.documentElement.classList.add("has-cursor");
-    var ring = $(".cursor-ring", root);
-    var dot = $(".cursor-dot", root);
-    var tx = 0, ty = 0, rx = 0, ry = 0, firstMove = false;
-
-    window.addEventListener("mousemove", function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (dot) dot.style.transform = "translate3d(" + tx + "px, " + ty + "px, 0)";
-      if (!firstMove) {
-        firstMove = true;
-        rx = tx; ry = ty;
-        if (ring) ring.style.transform = "translate3d(" + rx + "px, " + ry + "px, 0)";
-        root.classList.add("is-ready");
-      }
-    }, { passive: true });
-
-    function tick() {
-      rx += (tx - rx) * 0.18; ry += (ty - ry) * 0.18;
-      if (ring) ring.style.transform = "translate3d(" + rx + "px, " + ry + "px, 0)";
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-
-    var HOVERABLES = "[data-cursor], .card, .btn, .space-card, a[href]";
-    document.addEventListener("mouseover", function (e) {
-      if (e.target.closest && e.target.closest(HOVERABLES)) root.classList.add("is-interactive");
-    });
-    document.addEventListener("mouseout", function (e) {
-      var related = e.relatedTarget;
-      if (e.target.closest && e.target.closest(HOVERABLES) && !(related && related.closest && related.closest(HOVERABLES))) {
-        root.classList.remove("is-interactive");
-      }
-    });
-  }
-
   /* ---------- Scroll progress ---------- */
   function initScrollProgress() {
     var bar = $("[data-scroll-progress]");
@@ -426,7 +387,6 @@
     safe(initReveals, "initReveals");
     safe(initTilt, "initTilt");
     safe(initMagnetic, "initMagnetic");
-    safe(initCursor, "initCursor");
     safe(initScrollProgress, "initScrollProgress");
     safe(initFaq, "initFaq");
     safe(initContactForm, "initContactForm");
