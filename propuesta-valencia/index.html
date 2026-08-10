@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Valencia · Un día, tres mundos — Propuesta a medida</title>
+<style>
+
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 700;src:url('assets/fonts/playfair-regular.woff2') format('woff2');}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 700;src:url('assets/fonts/playfair-italic.woff2') format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400 600;src:url('assets/fonts/cormorant-regular.woff2') format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400 600;src:url('assets/fonts/cormorant-italic.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 700;src:url('assets/fonts/montserrat-regular.woff2') format('woff2');}
+
+:root{
+  --green:#5E6651;
+  --green-dark:#3B4030;
+  --green-deep:#2C2F25;
+  --beige:#BAB1A6;
+  --beige-light:#E9E3D8;
+  --cream:#F7F4EE;
+  --ink:#242319;
+  --paper:#FBFAF7;
+  --rust:#A6572E;
+  --rust-light:#C97C4E;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Montserrat',sans-serif;
+  color:var(--ink);
+  background:#dedede;
+  font-weight:400;
+}
+
+.kicker{
+  font-family:'Montserrat',sans-serif;
+  font-weight:700;
+  font-size:13.5pt;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+h1,h2,h3,.serif{font-family:'Playfair Display',serif;}
+.script{font-family:'Cormorant Garamond',serif; font-style:italic;}
+
+.page{
+  width:297mm;
+  height:210mm;
+  position:relative;
+  overflow:hidden;
+  background:var(--paper);
+  page-break-after:always;
+}
+.page:last-child{page-break-after:auto;}
+
+img{display:block; max-width:100%;}
+
+.hairline{width:50px; height:2px; background:var(--green); opacity:.8;}
+.hairline.light{background:var(--beige);}
+.hairline.rust{background:var(--rust);}
+
+.pagenum{
+  position:absolute; bottom:12mm; font-family:'Montserrat'; font-size:11pt; font-weight:500;
+  letter-spacing:.12em; color:var(--green-dark); opacity:.7;
+}
+.pagenum.left{left:18mm;}
+.pagenum.right{right:18mm; text-align:right;}
+.pagenum.onpaper{color:var(--paper); opacity:.85;}
+
+/* =========================================================
+   PAGE — COVER
+   ========================================================= */
+#p-cover{background:#111;}
+#p-cover .photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 55%; filter:saturate(1.05) brightness(0.9);}
+#p-cover .veil{position:absolute; inset:0; background:linear-gradient(100deg, rgba(35,38,29,.86) 0%, rgba(35,38,29,.58) 32%, rgba(35,38,29,.08) 58%, rgba(35,38,29,.2) 100%);}
+#p-cover .frame{position:absolute; inset:8mm; border:1px solid rgba(250,248,242,.55);}
+#p-cover .content{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:14mm 20mm; color:var(--paper);}
+#p-cover .top{display:flex; justify-content:space-between; align-items:center;}
+#p-cover .logo{width:30mm;}
+#p-cover .top .place{font-family:'Montserrat'; font-size:11pt; letter-spacing:.24em; text-transform:uppercase; color:var(--beige-light); font-weight:600;}
+#p-cover .middle{max-width:175mm;}
+#p-cover .eyebrow{font-family:'Montserrat'; font-weight:700; font-size:12pt; letter-spacing:.24em; text-transform:uppercase; color:var(--rust-light); margin-bottom:5mm;}
+#p-cover h1{font-size:60pt; line-height:1.03; margin:0; font-weight:600;}
+#p-cover h1 em{font-style:italic; font-weight:400;}
+#p-cover .sub{font-family:'Cormorant Garamond'; font-style:italic; font-size:18pt; letter-spacing:.02em; margin-top:6mm; color:var(--beige-light); max-width:140mm; line-height:1.4;}
+#p-cover .bottom{display:flex; align-items:center; justify-content:space-between;}
+#p-cover .bottom-left{display:flex; align-items:center; gap:6mm;}
+#p-cover .issue{font-family:'Montserrat'; font-size:11pt; letter-spacing:.28em; text-transform:uppercase; color:var(--beige-light); font-weight:500;}
+#p-cover .facts{display:flex; gap:12mm;}
+#p-cover .facts .f{display:flex; flex-direction:column; gap:1.5mm;}
+#p-cover .facts .lbl{font-family:'Montserrat'; font-size:9.5pt; letter-spacing:.18em; text-transform:uppercase; color:var(--beige); font-weight:600;}
+#p-cover .facts .val{font-family:'Cormorant Garamond'; font-style:italic; font-size:15pt; color:var(--paper);}
+
+/* =========================================================
+   PAGE — RESUMEN
+   ========================================================= */
+#p-resumen{background:var(--cream); padding:14mm 20mm;}
+#p-resumen .kicker{color:var(--green);}
+#p-resumen h2{font-size:30pt; margin:3mm 0 4mm; color:var(--green-deep);}
+#p-resumen .intro{font-family:'Cormorant Garamond'; font-style:italic; font-size:15.5pt; line-height:1.42; color:var(--green-dark); max-width:180mm; margin-bottom:5mm;}
+#p-resumen .intro b{font-style:normal; font-weight:600;}
+#p-resumen .layout{display:flex; gap:16mm;}
+#p-resumen .schedule{flex:1.05; display:flex; flex-direction:column;}
+#p-resumen .schedule .row{display:flex; align-items:baseline; gap:6mm; padding:2.8mm 0; border-bottom:1px solid rgba(94,102,81,.25);}
+#p-resumen .schedule .time{font-family:'Playfair Display'; font-style:italic; font-weight:600; font-size:14.5pt; color:var(--rust); width:26mm; flex-shrink:0;}
+#p-resumen .schedule .lbl{font-size:11.6pt; font-weight:600; color:var(--green-deep);}
+#p-resumen .schedule .lbl .sub{display:block; font-weight:400; font-size:9.8pt; color:var(--ink); opacity:.75; margin-top:.5mm;}
+#p-resumen .side{flex:0.8; display:flex; flex-direction:column; gap:4mm;}
+#p-resumen .quickfact{background:var(--paper); border:1px solid rgba(94,102,81,.25); border-radius:2mm; padding:5mm 6.5mm;}
+#p-resumen .quickfact .lbl{font-family:'Montserrat'; font-size:10pt; letter-spacing:.16em; text-transform:uppercase; color:var(--green); font-weight:700; margin-bottom:2mm;}
+#p-resumen .quickfact .val{font-family:'Playfair Display'; font-size:16pt; color:var(--green-deep); font-weight:600;}
+#p-resumen .quickfact .val small{display:block; font-family:'Cormorant Garamond'; font-style:italic; font-size:12.5pt; font-weight:400; color:var(--ink); margin-top:1mm;}
+
+/* =========================================================
+   GENERIC SPLIT LAYOUT (image left, text right)
+   ========================================================= */
+.split{background:var(--paper);}
+.split .imgcol{position:absolute; left:0; top:0; bottom:0; width:126mm; overflow:hidden;}
+.split .imgcol img{width:100%; height:100%; object-fit:cover;}
+.split .txtcol{position:absolute; left:142mm; right:20mm; top:17mm; bottom:16mm; display:flex; flex-direction:column;}
+.split .kicker{color:var(--green);}
+.split h2{font-size:33pt; margin:4mm 0 5mm; color:var(--green-deep); line-height:1.1;}
+.split .lede{font-family:'Cormorant Garamond'; font-style:italic; font-size:17.5pt; line-height:1.4; color:var(--green-dark); margin-bottom:4mm; max-width:150mm;}
+.split p{font-size:12.4pt; line-height:1.6; color:var(--ink); margin:0 0 3.2mm; font-weight:400; max-width:150mm;}
+.split .sign{margin-top:auto; padding-top:4mm; border-top:1px solid rgba(94,102,81,.3); display:flex; justify-content:space-between; align-items:baseline; gap:8mm;}
+.split .sign .msg{font-family:'Cormorant Garamond'; font-style:italic; font-size:15pt; color:var(--green);}
+.split .sign .pg{font-family:'Montserrat'; font-size:11pt; font-weight:500; letter-spacing:.1em; color:var(--green-dark); opacity:.7; white-space:nowrap;}
+
+/* variant: image on the right */
+.split.right .imgcol{left:auto; right:0;}
+.split.right .txtcol{left:20mm; right:142mm;}
+
+/* mini timeline embedded inside split text column */
+.mini-sched{margin:0 0 4mm; display:flex; flex-direction:column; max-width:150mm;}
+.mini-sched .row{display:flex; align-items:baseline; gap:5mm; padding:2.4mm 0; border-bottom:1px solid rgba(94,102,81,.2);}
+.mini-sched .time{font-family:'Playfair Display'; font-style:italic; font-weight:600; font-size:12.5pt; color:var(--rust); width:16mm; flex-shrink:0;}
+.mini-sched .lbl{font-size:11pt; color:var(--ink);}
+
+/* =========================================================
+   THREE-COLUMN / TWO-COLUMN SHOWCASE
+   ========================================================= */
+.showcase{background:var(--green-deep); color:var(--paper); padding:15mm 20mm;}
+.showcase.light{background:var(--beige-light); color:var(--ink);}
+.showcase .kicker{color:var(--beige);}
+.showcase.light .kicker{color:var(--green);}
+.showcase h2{font-size:34pt; margin:4mm 0 3mm; color:var(--paper);}
+.showcase.light h2{color:var(--green-deep);}
+.showcase .intro{font-family:'Cormorant Garamond'; font-style:italic; font-size:17pt; max-width:220mm; line-height:1.45; margin-bottom:8mm; color:var(--beige-light);}
+.showcase.light .intro{color:var(--green-dark);}
+.showcase .cards{display:flex; gap:11mm;}
+.showcase .card{flex:1; display:flex; flex-direction:column;}
+.showcase .card .thumb{width:100%; height:58mm; overflow:hidden; margin-bottom:5mm; position:relative;}
+.showcase .card .thumb img{width:100%; height:100%; object-fit:cover;}
+.showcase .card .thumb .badge{position:absolute; top:4mm; left:4mm; background:rgba(36,35,25,.72); color:var(--paper); font-family:'Montserrat'; font-size:9.5pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:2mm 4mm; border-radius:1mm;}
+.showcase .card .num{font-family:'Playfair Display'; font-style:italic; font-size:14pt; color:var(--beige); margin-bottom:1mm;}
+.showcase.light .card .num{color:var(--green);}
+.showcase .card h3{font-size:20pt; margin:0 0 2.5mm; font-weight:600; color:var(--paper);}
+.showcase.light .card h3{color:var(--green-deep);}
+.showcase .card p{font-size:12.2pt; line-height:1.55; margin:0; font-weight:400; color:var(--beige-light);}
+.showcase.light .card p{color:var(--ink);}
+
+/* =========================================================
+   FULL-BLEED HERO WITH QUOTE (Albufera opener)
+   ========================================================= */
+#p-albufera{background:var(--paper);}
+#p-albufera .hero{position:absolute; top:0; left:0; right:0; height:118mm; overflow:hidden;}
+#p-albufera .hero img{width:100%; height:100%; object-fit:cover; object-position:center 60%;}
+#p-albufera .hero .tag{position:absolute; bottom:6mm; left:20mm; color:var(--paper); font-family:'Montserrat'; font-size:11pt; letter-spacing:.14em;}
+#p-albufera .hero .veil2{position:absolute; inset:0; background:linear-gradient(180deg, rgba(35,38,29,0) 60%, rgba(35,38,29,.55) 100%);}
+#p-albufera .body{position:absolute; top:118mm; left:0; right:0; bottom:0; padding:8mm 20mm 0; display:flex; gap:14mm; align-items:flex-start;}
+#p-albufera .kicker{color:var(--green); margin-bottom:2mm;}
+#p-albufera h2{font-size:26pt; margin:0 0 4mm; color:var(--green-deep); flex:0 0 auto; width:70mm;}
+#p-albufera .quote{font-family:'Cormorant Garamond'; font-style:italic; font-size:15.5pt; line-height:1.5; color:var(--green-dark); border-left:2px solid var(--rust); padding-left:6mm; flex:1;}
+
+/* =========================================================
+   SCHEDULE / PROCESS PAGE (dark closing block)
+   ========================================================= */
+#p-cierre{background:var(--green-deep); color:var(--paper); padding:16mm 22mm;}
+#p-cierre .kicker{color:var(--beige);}
+#p-cierre h2{font-size:34pt; margin:4mm 0 4mm; color:var(--paper);}
+#p-cierre .intro{font-family:'Cormorant Garamond'; font-style:italic; font-size:17pt; color:var(--beige-light); max-width:210mm; line-height:1.45; margin-bottom:9mm;}
+#p-cierre .layout{display:flex; gap:16mm;}
+#p-cierre .steps{flex:1; display:flex; flex-direction:column; gap:4mm;}
+#p-cierre .step{display:flex; gap:6mm; align-items:flex-start;}
+#p-cierre .step .n{font-family:'Playfair Display'; font-style:italic; font-size:22pt; color:var(--rust-light); width:15mm; flex-shrink:0;}
+#p-cierre .step h3{margin:0 0 1mm; font-size:15pt; color:var(--paper); font-weight:700;}
+#p-cierre .step p{margin:0; font-size:11.4pt; line-height:1.5; color:var(--beige-light); font-weight:400;}
+#p-cierre .banner{
+  flex:0.85; background:rgba(250,248,242,.08); border:1px solid rgba(250,248,242,.25); border-radius:2mm;
+  padding:12mm 11mm; display:flex; flex-direction:column; justify-content:center; align-self:stretch;
+}
+#p-cierre .banner .tag{font-family:'Montserrat'; font-size:11pt; letter-spacing:.22em; text-transform:uppercase; color:var(--beige); font-weight:700; margin-bottom:4mm;}
+#p-cierre .banner p{font-family:'Cormorant Garamond'; font-style:italic; font-size:20pt; line-height:1.4; margin:0; color:var(--paper);}
+
+/* =========================================================
+   FICHA TECNICA (checklist + incluye/no incluye + próximos pasos)
+   ========================================================= */
+#p-ficha{background:var(--cream); padding:16mm 20mm;}
+#p-ficha .kicker{color:var(--green);}
+#p-ficha h2{font-size:32pt; margin:4mm 0 6mm; color:var(--green-deep);}
+#p-ficha .cols{display:flex; gap:14mm;}
+#p-ficha .col{flex:1;}
+#p-ficha .col h3{font-family:'Playfair Display'; font-size:16.5pt; color:var(--green-deep); margin:0 0 4mm; padding-bottom:2.5mm; border-bottom:1px solid rgba(94,102,81,.3);}
+#p-ficha ul{list-style:none; margin:0; padding:0;}
+#p-ficha ul li{font-size:11.6pt; line-height:1.5; padding-left:5.5mm; position:relative; margin-bottom:3mm; font-weight:400;}
+#p-ficha ul.check li::before{content:'✓'; position:absolute; left:0; top:0; color:var(--green); font-weight:700;}
+#p-ficha ul.cross li::before{content:'–'; position:absolute; left:0; top:0; color:var(--beige); font-weight:700;}
+#p-ficha .steps4{display:flex; flex-direction:column; gap:3mm;}
+#p-ficha .steps4 .s{display:flex; gap:4mm; align-items:baseline;}
+#p-ficha .steps4 .n{font-family:'Playfair Display'; font-style:italic; color:var(--rust); font-size:14pt; width:8mm;}
+#p-ficha .steps4 p{margin:0; font-size:11.6pt; line-height:1.5;}
+
+/* =========================================================
+   BACK COVER
+   ========================================================= */
+#p-back{background:#111; color:var(--paper);}
+#p-back .photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%;}
+#p-back .veil{position:absolute; inset:0; background:linear-gradient(100deg, rgba(35,38,29,.92) 0%, rgba(35,38,29,.8) 40%, rgba(35,38,29,.35) 100%);}
+#p-back .wrap{position:absolute; inset:0; display:flex; flex-direction:column; padding:16mm 20mm; justify-content:space-between;}
+#p-back .logo{width:26mm;}
+#p-back h2{font-size:36pt; margin:0 0 4mm; max-width:140mm; line-height:1.14;}
+#p-back .lede{font-family:'Cormorant Garamond'; font-style:italic; font-size:17pt; color:var(--beige-light); max-width:130mm; line-height:1.5;}
+#p-back .contact{display:flex; gap:16mm; align-items:flex-end;}
+#p-back .contact .row{display:flex; flex-direction:column; gap:1.5mm;}
+#p-back .contact .lbl{font-family:'Montserrat'; font-size:10.5pt; letter-spacing:.2em; text-transform:uppercase; color:var(--beige); font-weight:600;}
+#p-back .contact .val{font-family:'Cormorant Garamond'; font-style:italic; font-size:18pt; color:var(--paper);}
+#p-back .foot{
+  padding-top:5mm; border-top:1px solid rgba(250,248,242,.3);
+  font-family:'Montserrat'; font-size:10pt; letter-spacing:.16em; text-transform:uppercase; color:var(--beige-light); opacity:.85;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ 01 · COVER ============ -->
+<div class="page" id="p-cover">
+  <img class="photo" src="assets/img/mestalla-panoramica.jpg" alt="">
+  <div class="veil"></div>
+  <div class="frame"></div>
+  <div class="content">
+    <div class="top">
+      <img class="logo" src="assets/img/logo-white.png" alt="Boost Wellness">
+      <div class="place">Valencia · Un día completo</div>
+    </div>
+    <div class="middle">
+      <div class="eyebrow">Propuesta exclusiva a medida</div>
+      <h1>Un día, tres mundos:<br><em>fútbol, Albufera y mar.</em></h1>
+      <div class="sub">De la grada de Mestalla a las aguas quietas del Tancat, y de ahí a la fachada iluminada de Las Arenas. Un itinerario sin prisa, con la calidad de detalle de una experiencia diseñada a medida.</div>
+    </div>
+    <div class="bottom">
+      <div class="bottom-left">
+        <div class="hairline light"></div>
+        <div class="issue">Boost&nbsp;Wellness&nbsp;·&nbsp;Edición&nbsp;2026</div>
+      </div>
+      <div class="facts">
+        <div class="f"><div class="lbl">Duración</div><div class="val">1 día y 1 noche</div></div>
+        <div class="f"><div class="lbl">Inicio</div><div class="val">Las Arenas, 09:00</div></div>
+        <div class="f"><div class="lbl">Cierre</div><div class="val">Las Arenas, 10:30 h +1</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 02 · RESUMEN DEL DÍA ============ -->
+<div class="page" id="p-resumen">
+  <div class="kicker">Resumen del día</div>
+  <h2>Tres tiempos, un solo itinerario</h2>
+  <div class="intro">La jornada se construye en tres tiempos: <b>la mañana deportiva</b> en el templo del Valencia C.F., <b>el mediodía en la Albufera</b>, entre arroz y naturaleza, y <b>la tarde-noche de descanso</b> frente al mar, en Las Arenas. Cada tramo tiene su propio ritmo — y entre ellos, únicamente el paisaje cambiando al otro lado de la ventanilla del bus.</div>
+  <div class="layout">
+    <div class="schedule">
+      <div class="row"><div class="time">09:00</div><div class="lbl">Llegada · Las Arenas<span class="sub">Check-in y acreditaciones del grupo</span></div></div>
+      <div class="row"><div class="time">10:30</div><div class="lbl">Tour + fútbol en Mestalla<span class="sub">O partido directo en la Ciudad Deportiva</span></div></div>
+      <div class="row"><div class="time">13:40</div><div class="lbl">Barca hacia el Tancat<span class="sub">Travesía por l'Albufera</span></div></div>
+      <div class="row"><div class="time">14:20</div><div class="lbl">Concurso de paellas o sobremesa en calma<span class="sub">Entrantes, paella y postre en ambos casos</span></div></div>
+      <div class="row"><div class="time">16:30</div><div class="lbl">Regreso a Las Arenas<span class="sub">Tarde libre: spa, playa o jardines</span></div></div>
+      <div class="row"><div class="time">Noche</div><div class="lbl">Cena buffet y descanso<span class="sub">Sin planes, sin horarios</span></div></div>
+      <div class="row"><div class="time">10:30 +1</div><div class="lbl">Fin de la experiencia<span class="sub">Desayuno tranquilo y salida a su ritmo</span></div></div>
+    </div>
+    <div class="side">
+      <div class="quickfact">
+        <div class="lbl">01 · Mañana</div>
+        <div class="val">Mestalla o Ciudad Deportiva<small>Vestuarios, túnel y partido amistoso — o una versión más ágil y directa</small></div>
+      </div>
+      <div class="quickfact">
+        <div class="lbl">02 · Mediodía</div>
+        <div class="val">El Tancat de l'Albufera<small>Ocho hectáreas entre el agua y el cielo, con más de 350 especies de aves</small></div>
+      </div>
+      <div class="quickfact">
+        <div class="lbl">03 · Tarde-noche</div>
+        <div class="val">Gran Hotel Las Arenas<small>Spa, playa y jardines, con cena buffet frente al Mediterráneo</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 03 · SECCION 01 — APERTURA MAÑANA ============ -->
+<div class="page showcase light" id="p-manana">
+  <div class="kicker">01 · La mañana — 09:00 – 13:00</div>
+  <h2>Con el balón como protagonista</h2>
+  <div class="intro">Dos maneras de vivir la mañana futbolera, igual de cuidadas: la experiencia completa en el estadio de Mestalla, o una versión más ágil y directa en la Ciudad Deportiva, casa del día a día del primer equipo. Se elige una sola — el resto del día es idéntico para todos.</div>
+  <div class="cards">
+    <div class="card">
+      <div class="thumb"><img src="assets/img/mestalla-interior.jpg" alt="Mestalla"><div class="badge">Opción A</div></div>
+      <div class="num">Experiencia completa</div>
+      <h3>Tour y partido en Mestalla</h3>
+      <p>Vestuarios, túnel, banquillo y palco, hasta pisar la hierba del estadio. Después, partido amistoso dentro del propio Mestalla y almuerzo en las instalaciones.</p>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="assets/img/ciudad-deportiva.webp" alt="Ciudad Deportiva"><div class="badge">Opción B</div></div>
+      <div class="num">Directa al partido</div>
+      <h3>Partido en la Ciudad Deportiva</h3>
+      <p>Sin visita guiada: se juega directamente en los campos donde entrena el primer equipo. Más ágil, más económica, la misma energía.</p>
+    </div>
+  </div>
+  <div class="pagenum left" style="color:var(--green-dark); opacity:.75;">03 · Valencia · Un día, tres mundos</div>
+</div>
+
+<!-- ============ 04 · OPCION A — MESTALLA ============ -->
+<div class="page split" id="p-opcion-a">
+  <div class="imgcol"><img src="assets/img/mestalla-interior.jpg" alt="Interior de Mestalla"></div>
+  <div class="txtcol">
+    <div class="kicker">Opción A · Mestalla</div>
+    <h2>Del vestuario al<br>terreno de juego</h2>
+    <div class="lede">El grupo entra por donde entran los jugadores: vestuarios, túnel, banquillo y palco, hasta pisar la hierba del campo.</div>
+    <p>Después de la visita guiada, quien quiera se calza las botas para un partido amistoso dentro de las instalaciones — a otro ritmo para quien prefiera quedarse mirando desde la grada. Al acabar, un almuerzo en las propias instalaciones antes de ducharse, cambiarse y salir hacia l'Albufera.</p>
+    <div class="mini-sched">
+      <div class="row"><div class="time">09:45</div><div class="lbl">Salida en bus desde Las Arenas — check-in ya realizado</div></div>
+      <div class="row"><div class="time">10:15</div><div class="lbl">Llegada a Mestalla</div></div>
+      <div class="row"><div class="time">10:30</div><div class="lbl">Tour guiado por las instalaciones</div></div>
+      <div class="row"><div class="time">12:00</div><div class="lbl">Partido amistoso en el campo</div></div>
+      <div class="row"><div class="time">12:45</div><div class="lbl">Almuerzo en las instalaciones de Mestalla</div></div>
+      <div class="row"><div class="time">13:15</div><div class="lbl">Ducha, cambio y salida hacia l'Albufera</div></div>
+    </div>
+    <div class="sign"><span class="msg">La casa del Valencia C.F., abierta para el grupo.</span><span class="pg">04 · Boost Wellness</span></div>
+  </div>
+</div>
+
+<!-- ============ 05 · OPCION B — CIUDAD DEPORTIVA ============ -->
+<div class="page split right" id="p-opcion-b">
+  <div class="imgcol"><img src="assets/img/ciudad-deportiva.webp" alt="Ciudad Deportiva del Valencia C.F."></div>
+  <div class="txtcol">
+    <div class="kicker">Opción B · Ciudad Deportiva</div>
+    <h2>Todo el juego,<br>sin rodeos</h2>
+    <div class="lede">El bus deja al grupo directamente en los campos donde el Valencia C.F. entrena cada semana.</div>
+    <p>Sin visita guiada, el balón empieza a rodar poco después de llegar: es la misma emoción de jugar como profesionales, en un formato más corto y accesible — ideal si el presupuesto o el tiempo piden una mañana más ligera sin renunciar a nada esencial. Después del partido, almuerzo en la propia Ciudad Deportiva antes de poner rumbo a l'Albufera.</p>
+    <div class="mini-sched">
+      <div class="row"><div class="time">09:45</div><div class="lbl">Salida en bus desde Las Arenas — check-in ya realizado</div></div>
+      <div class="row"><div class="time">10:15</div><div class="lbl">Llegada a la Ciudad Deportiva</div></div>
+      <div class="row"><div class="time">10:30</div><div class="lbl">Partido amistoso en los campos del primer equipo</div></div>
+      <div class="row"><div class="time">11:45</div><div class="lbl">Almuerzo en la Ciudad Deportiva</div></div>
+      <div class="row"><div class="time">12:30</div><div class="lbl">Ducha, cambio y salida hacia l'Albufera</div></div>
+    </div>
+    <div class="sign"><span class="msg">Misma energía, formato más ágil y económico.</span><span class="pg">05 · Boost Wellness</span></div>
+  </div>
+</div>
+
+<!-- ============ 06 · ALBUFERA — APERTURA ============ -->
+<div class="page" id="p-albufera">
+  <div class="hero">
+    <img src="assets/img/tancat-aerea.jpg" alt="El Tancat de l'Albufera">
+    <div class="veil2"></div>
+    <div class="tag">Ocho hectáreas entre el agua y el cielo, a las puertas de la ciudad</div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="kicker">02 · Mediodía — 13:40 – 16:30</div>
+      <h2>El Tancat de l'Albufera:<br>un oasis natural</h2>
+    </div>
+    <div class="quote">Más de 350 especies de aves —algunas en peligro de extinción— rodean sus ocho hectáreas. Garzas reales y flamencos cruzan el cielo mientras se camina entre el horno moruno y las caballerizas originales: un espacio histórico donde la belleza natural del Parque se combina con el carácter de lo auténtico.</div>
+  </div>
+</div>
+
+<!-- ============ 07 · OPCIONES SOBREMESA ============ -->
+<div class="page showcase" id="p-sobremesa">
+  <div class="kicker">02 · Mediodía · Sobremesa</div>
+  <h2>Dos maneras de vivir la sobremesa</h2>
+  <div class="intro">13:40 llegada al Tancat · 14:00 travesía en barca · 14:20 bienvenida con aguas, vino y refrescos · 14:20–16:30 entrantes, paella y postre · 16:30 el bus recoge rumbo a Las Arenas.</div>
+  <div class="cards">
+    <div class="card">
+      <div class="thumb"><img src="assets/img/tancat-mesas.jpeg" alt="Mesas junto al agua"><div class="badge">Opción A</div></div>
+      <div class="num">Espíritu de equipo</div>
+      <h3>Concurso de paellas</h3>
+      <p>El grupo se divide en equipos y cocina su propia paella, guiado por el equipo del Tancat. Se compite, se comparte y, al final, todos comen lo que han preparado.</p>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="assets/img/tancat-thumb.jpg" alt="Flamencos en l'Albufera"><div class="badge">Opción B</div></div>
+      <div class="num">Pura desconexión</div>
+      <h3>Sobremesa en calma</h3>
+      <p>Para quien prefiera desconectar: mesa junto al agua, entrantes, paella y postre, con las garzas y flamencos como único espectáculo.</p>
+    </div>
+  </div>
+  <div class="pagenum left" style="color:var(--beige-light); opacity:.75;">07 · Boost Wellness</div>
+</div>
+
+<!-- ============ 08 · LAS ARENAS — APERTURA ============ -->
+<div class="page split" id="p-arenas">
+  <div class="imgcol"><img src="assets/img/arenas-despertar.jpg" alt="Gran Hotel Las Arenas"></div>
+  <div class="txtcol">
+    <div class="kicker">03 · Tarde-noche — 16:30 – día siguiente 10:30</div>
+    <h2>Frente al mar,<br>sin prisa</h2>
+    <div class="lede">De vuelta en Las Arenas, cada uno decide su ritmo — el cierre de un día intenso, en la playa de Valencia.</div>
+    <p>Circuito de spa y masajes para quienes buscan seguir relajándose, o un paseo junto al mar y por los jardines del hotel para quien prefiera aire libre. Al caer la noche, cena buffet con vistas a la playa y a descansar — sin planes, sin horarios.</p>
+    <div class="mini-sched">
+      <div class="row"><div class="time">16:30</div><div class="lbl">Llegada a Las Arenas — tarde libre</div></div>
+      <div class="row"><div class="time">Tarde</div><div class="lbl">Spa & bienestar, o playa & jardines, a elección de cada uno</div></div>
+      <div class="row"><div class="time">Noche</div><div class="lbl">Cena buffet con vistas a la playa de Valencia</div></div>
+    </div>
+    <div class="sign"><span class="msg">Libertad para elegir cómo desconectar.</span><span class="pg">08 · Boost Wellness</span></div>
+  </div>
+</div>
+
+<!-- ============ 09 · LAS ARENAS — DETALLE ============ -->
+<div class="page showcase light" id="p-arenas-detalle">
+  <div class="kicker">03 · Tarde-noche · Las Arenas</div>
+  <h2>Spa, playa y mesa con vistas</h2>
+  <div class="intro">El circuito termal, los masajes y las salas de aguas del balneario tienen vistas al Mediterráneo; quien prefiera, sale a pasear por la arena o por los jardines interiores del hotel, a la hora que cada uno quiera.</div>
+  <div class="cards">
+    <div class="card">
+      <div class="thumb"><img src="assets/img/arenas-spa-header.jpg" alt="Circuito de spa"></div>
+      <div class="num">01</div>
+      <h3>Spa & bienestar</h3>
+      <p>Circuito termal, masajes y salas de aguas del balneario, con vistas al Mediterráneo.</p>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="assets/img/arenas-cena-vistas.jpg" alt="Cena con vistas a la playa"></div>
+      <div class="num">02</div>
+      <h3>Cena frente al mar</h3>
+      <p>Buffet con vistas a la playa de Valencia, y a la arena y los jardines interiores del hotel para pasear.</p>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="assets/img/arenas-room-service.jpg" alt="Desayuno en Las Arenas"></div>
+      <div class="num">03</div>
+      <h3>Un cierre sin prisa</h3>
+      <p>Desayuno tranquilo a la mañana siguiente y fin de la experiencia, cada uno a su ritmo.</p>
+    </div>
+  </div>
+  <div class="pagenum left">09 · Boost Wellness</div>
+</div>
+
+<!-- ============ 10 · CIERRE — DIA SIGUIENTE ============ -->
+<div class="page" id="p-cierre">
+  <div class="kicker">Día siguiente</div>
+  <h2>Un cierre sin prisa</h2>
+  <div class="intro">Después de un día completo entre el fútbol, el agua y la sobremesa, la última mañana se deja en blanco a propósito: sin actividades programadas, para que el grupo decida cómo despedirse de Valencia.</div>
+  <div class="layout">
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>09:30 · Desayuno tranquilo</h3><p>Servido en Las Arenas, con vistas a la playa de Valencia y sin horario cerrado.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>10:30 · Fin de la experiencia</h3><p>Cada uno a su ritmo: check-out, traslados o unas horas más disfrutando del hotel.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>Equipaje y traslados</h3><p>Coordinamos salidas escalonadas hacia el aeropuerto, la estación o donde el grupo lo necesite.</p></div></div>
+    </div>
+    <div class="banner">
+      <div class="tag">Lo más importante</div>
+      <p>"Un día, tres mundos: fútbol, Albufera y mar — sin prisa, sin extremos, con la calidad de detalle de una experiencia diseñada a medida."</p>
+    </div>
+  </div>
+  <div class="pagenum left" style="color:var(--beige-light); opacity:.75;">10 · Boost Wellness</div>
+</div>
+
+<!-- ============ 11 · FICHA TECNICA ============ -->
+<div class="page" id="p-ficha">
+  <div class="kicker">Ficha técnica</div>
+  <h2>Qué incluye la propuesta</h2>
+  <div class="cols">
+    <div class="col">
+      <h3>Incluido</h3>
+      <ul class="check">
+        <li>Traslados en bus privado durante toda la jornada</li>
+        <li>Tour guiado y partido amistoso (Mestalla o Ciudad Deportiva, a elegir)</li>
+        <li>Almuerzo en las instalaciones del club</li>
+        <li>Travesía en barca y jornada en el Tancat de l'Albufera</li>
+        <li>Concurso de paellas o sobremesa en calma, con entrantes y postre</li>
+        <li>1 noche de alojamiento en el Gran Hotel Las Arenas</li>
+        <li>Cena buffet y desayuno del día siguiente</li>
+        <li>Acceso al circuito de spa del balneario</li>
+        <li>Coordinación integral del grupo, de principio a fin</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>No incluido</h3>
+      <ul class="cross">
+        <li>Vuelos o traslados hasta Valencia</li>
+        <li>Masajes y tratamientos adicionales del spa</li>
+        <li>Bebidas fuera del menú acordado</li>
+        <li>Actividades no descritas en el itinerario</li>
+      </ul>
+      <h3 style="margin-top:8mm;">Próximos pasos</h3>
+      <div class="steps4">
+        <div class="s"><div class="n">01</div><p>Confirmar número de asistentes y opción de mañana (A o B).</p></div>
+        <div class="s"><div class="n">02</div><p>Elegir sobremesa en el Tancat: concurso de paellas o mesa en calma.</p></div>
+        <div class="s"><div class="n">03</div><p>Cerrar fecha y recibir el presupuesto final cerrado.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum left">11 · Boost Wellness</div>
+</div>
+
+<!-- ============ 12 · BACK COVER ============ -->
+<div class="page" id="p-back">
+  <img class="photo" src="assets/img/arenas-spa-header-dk.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap">
+    <img class="logo" src="assets/img/logo-white.png" alt="Boost Wellness">
+    <div>
+      <h2>Hablemos de vuestro próximo día en Valencia</h2>
+      <div class="lede">Cerramos fecha, número de asistentes y opciones elegidas, y preparamos el presupuesto final a medida, sin compromiso.</div>
+    </div>
+    <div class="contact">
+      <div class="row"><div class="lbl">Teléfono</div><div class="val">611 492 592</div></div>
+      <div class="row"><div class="lbl">Email</div><div class="val">boostwellness@gmail.com</div></div>
+      <div class="row"><div class="lbl">Instagram</div><div class="val">@boostwellness</div></div>
+    </div>
+    <div class="foot">Boost Wellness · Propuesta elaborada a medida · Valencia · Mestalla — l'Albufera — Las Arenas · 2026</div>
+  </div>
+</div>
+
+</body>
+</html>
