@@ -33,6 +33,7 @@
     color:var(--gold);
   }
   a{text-decoration:none;color:inherit;}
+  img{display:block; max-width:100%;}
   .container{max-width:1180px;margin:0 auto;padding:0 24px;}
 
   /* NAV */
@@ -41,7 +42,6 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:22px 40px;
     background:linear-gradient(to bottom, rgba(4,38,59,0.75), transparent);
-    transition:background .3s ease;
   }
   nav .logo{
     font-family:'Helvetica Neue', Arial, sans-serif;
@@ -66,48 +66,26 @@
     position:relative; height:100vh; min-height:640px;
     display:flex; align-items:center; justify-content:center;
     text-align:center; overflow:hidden;
-    background:linear-gradient(180deg, var(--deep) 0%, var(--deep2) 45%, #0b3d57 70%, #0f4f6a 100%);
+  }
+  .hero-bg{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   }
   .hero::before{
     content:"";
     position:absolute; inset:0;
-    background:
-      radial-gradient(circle at 20% 15%, rgba(255,255,255,0.10), transparent 25%),
-      radial-gradient(circle at 80% 8%, rgba(255,255,255,0.08), transparent 20%),
-      radial-gradient(ellipse at 50% 120%, rgba(40,201,192,0.35), transparent 60%);
-  }
-  .stars{
-    position:absolute; inset:0 0 55% 0;
-    background-image:
-      radial-gradient(2px 2px at 10% 20%, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 25% 45%, #fff, transparent),
-      radial-gradient(2px 2px at 40% 10%, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 60% 30%, #fff, transparent),
-      radial-gradient(2px 2px at 75% 15%, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 88% 40%, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 55% 5%, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 15% 55%, #fff, transparent);
-    opacity:0.7;
-  }
-  .hero-water{
-    position:absolute; left:0; right:0; bottom:0; height:42%;
-    background:linear-gradient(180deg, rgba(40,201,192,0.0), rgba(40,201,192,0.45) 40%, rgba(15,79,106,0.9));
-  }
-  .hero-water::after{
-    content:"";
-    position:absolute; inset:0;
-    background:repeating-linear-gradient(100deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 60px);
-    mix-blend-mode:overlay;
+    background:linear-gradient(180deg, rgba(4,38,59,0.65) 0%, rgba(4,38,59,0.25) 45%, rgba(4,38,59,0.85) 100%);
+    z-index:1;
   }
   .hero-content{position:relative; z-index:5; color:var(--white); padding-top:40px;}
   .hero-content .eyebrow{color:var(--gold-soft); margin-bottom:18px; display:block;}
   .hero-content h1{
     font-size:clamp(2.6rem, 6vw, 5rem);
     line-height:1.05; margin-bottom:18px; color:var(--white);
+    text-shadow:0 4px 30px rgba(0,0,0,0.35);
   }
   .hero-content h1 em{font-style:italic; color:var(--gold);}
   .hero-dates{
-    display:inline-flex; align-items:center; gap:14px;
+    display:inline-flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;
     font-family:'Helvetica Neue', Arial, sans-serif;
     letter-spacing:2px; font-size:1rem; color:var(--turquoise-soft);
     margin-bottom:36px; text-transform:uppercase;
@@ -119,7 +97,7 @@
     padding:16px 42px; border-radius:40px; font-size:0.85rem;
     letter-spacing:2px; text-transform:uppercase; font-weight:600;
     box-shadow:0 10px 30px rgba(212,175,106,0.35);
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:transform .25s ease, box-shadow .25s ease; border:none; cursor:pointer;
   }
   .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 36px rgba(212,175,106,0.5);}
   .btn-outline{
@@ -142,18 +120,13 @@
   }
   @keyframes scrollmove{0%{opacity:0; transform:scaleY(0.3);}50%{opacity:1;}100%{opacity:0; transform:scaleY(1);}}
 
-  /* palm silhouette svg deco */
-  .palm-deco{position:absolute; z-index:4; opacity:0.9;}
-  .palm-left{left:-20px; bottom:0; width:220px;}
-  .palm-right{right:-30px; bottom:0; width:260px; transform:scaleX(-1);}
-
   /* SECTION generic */
   section{padding:110px 0;}
   .section-head{text-align:center; max-width:640px; margin:0 auto 64px;}
   .section-head h2{font-size:clamp(1.9rem,3.5vw,2.8rem); color:var(--deep); margin:14px 0 18px;}
   .section-head p{color:#3d5361; font-size:1.02rem; line-height:1.7;}
 
-  /* COUNTDOWN / DATES STRIP */
+  /* DATES STRIP */
   .dates-strip{
     background:var(--deep); color:var(--white); text-align:center;
     padding:26px 0; font-family:'Helvetica Neue', Arial, sans-serif;
@@ -161,10 +134,8 @@
   }
   .dates-strip strong{color:var(--gold); letter-spacing:2px;}
 
-  /* EXPERIENCE CARDS with illustrated icons */
-  .exp-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:34px;
-  }
+  /* EXPERIENCE CARDS */
+  .exp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:34px;}
   @media (max-width:900px){.exp-grid{grid-template-columns:1fr;}}
   .exp-card{
     background:var(--white); border-radius:18px; padding:42px 32px;
@@ -180,23 +151,51 @@
   .exp-card h3{font-size:1.25rem; margin-bottom:12px; color:var(--deep);}
   .exp-card p{color:#5a6f7c; font-size:0.95rem; line-height:1.6;}
 
-  /* SCENE — illustrated overwater bungalow row (all SVG) */
-  .scene{
-    position:relative; height:520px; overflow:hidden;
-    background:linear-gradient(180deg, #bfe9f0 0%, #d8f2ee 35%, #1fb3ac 55%, #0f8a89 100%);
+  /* RESORT CARDS */
+  .resorts{background:var(--deep);}
+  .resorts .section-head h2{color:var(--white);}
+  .resorts .section-head p{color:rgba(255,255,255,0.7);}
+  .resorts .eyebrow{color:var(--gold-soft);}
+  .resort-card{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    background:#062f4a; border-radius:22px; overflow:hidden;
+    margin-bottom:44px; box-shadow:0 30px 70px rgba(0,0,0,0.35);
   }
-  .scene svg{position:absolute; bottom:0; left:0; width:100%; height:auto;}
+  .resort-card:nth-child(even){grid-template-columns:1fr 1fr;}
+  .resort-card:nth-child(even) .resort-photos{order:2;}
+  .resort-photos{display:grid; grid-template-columns:1fr 1fr; gap:2px;}
+  .resort-photos img{width:100%; height:100%; object-fit:cover; min-height:260px;}
+  .resort-photos.single{grid-template-columns:1fr;}
+  .resort-info{padding:44px 44px; color:var(--white); display:flex; flex-direction:column; justify-content:center;}
+  .stars{color:var(--gold); font-size:1.05rem; letter-spacing:3px; margin-bottom:10px;}
+  .resort-info h3{font-size:1.7rem; margin-bottom:6px; color:var(--white);}
+  .resort-info .location{
+    font-family:'Helvetica Neue', Arial, sans-serif; font-size:0.78rem; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--turquoise-soft); margin-bottom:18px; display:block;
+  }
+  .resort-info p{color:rgba(255,255,255,0.78); line-height:1.7; font-size:0.98rem;}
+  @media (max-width:840px){
+    .resort-card, .resort-card:nth-child(even){grid-template-columns:1fr;}
+    .resort-card:nth-child(even) .resort-photos{order:0;}
+    .resort-photos img{min-height:220px;}
+  }
+
+  /* SCENE strip using real photo */
+  .scene{position:relative; height:420px; overflow:hidden;}
+  .scene img{width:100%; height:100%; object-fit:cover;}
+  .scene::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(4,38,59,0.75), rgba(4,38,59,0.1) 55%);
+  }
   .scene-caption{
-    position:absolute; left:50%; top:14%; transform:translateX(-50%);
-    text-align:center; color:var(--deep); z-index:5;
+    position:absolute; left:50%; bottom:12%; transform:translateX(-50%);
+    text-align:center; color:var(--white); z-index:5; width:90%;
   }
-  .scene-caption .eyebrow{color:#0a5e5a;}
-  .scene-caption h2{color:var(--deep); font-size:clamp(1.8rem,4vw,2.6rem); margin-top:10px;}
+  .scene-caption .eyebrow{color:var(--gold-soft);}
+  .scene-caption h2{color:var(--white); font-size:clamp(1.8rem,4vw,2.6rem); margin-top:10px;}
 
   /* ITINERARY */
-  .itinerary{background:var(--deep); color:var(--white);}
-  .itinerary .section-head p{color:rgba(255,255,255,0.7);}
-  .itinerary .section-head h2{color:var(--white);}
+  .itinerary{background:#f0e9d8;}
   .timeline{max-width:760px; margin:0 auto; position:relative;}
   .timeline::before{
     content:""; position:absolute; left:20px; top:0; bottom:0; width:1px;
@@ -207,34 +206,9 @@
     content:""; position:absolute; left:12px; top:4px; width:17px; height:17px;
     border-radius:50%; background:var(--gold); box-shadow:0 0 0 5px rgba(212,175,106,0.15);
   }
-  .day .day-label{font-family:'Helvetica Neue', Arial, sans-serif; letter-spacing:2px; color:var(--gold); font-size:0.78rem; text-transform:uppercase; margin-bottom:6px;}
-  .day h3{font-size:1.3rem; margin-bottom:8px;}
-  .day p{color:rgba(255,255,255,0.75); line-height:1.7; font-size:0.96rem;}
-
-  /* GALLERY (illustrated tiles) */
-  .gallery-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; gap:14px;
-  }
-  .gallery-grid > div:nth-child(1){grid-column:span 2; grid-row:span 2;}
-  .gallery-grid > div:nth-child(4){grid-column:span 2;}
-  @media (max-width:760px){
-    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
-    .gallery-grid > div:nth-child(1){grid-column:span 2; grid-row:span 1;}
-  }
-  .gallery-tile{
-    border-radius:14px; position:relative; overflow:hidden;
-    display:flex; align-items:flex-end; padding:18px;
-  }
-  .gallery-tile span{
-    color:#fff; font-family:'Helvetica Neue', Arial, sans-serif; font-size:0.78rem;
-    letter-spacing:1.5px; text-transform:uppercase; position:relative; z-index:2;
-  }
-  .gallery-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.45), transparent 60%);}
-  .g1{background:linear-gradient(135deg,#0f4f6a,#1fb3ac 60%,#8fe3de);}
-  .g2{background:linear-gradient(135deg,#04263b,#0b3d57);}
-  .g3{background:linear-gradient(135deg,#d4af6a,#f0dcae);}
-  .g4{background:linear-gradient(135deg,#062f4a,#28c9c0);}
-  .g5{background:linear-gradient(135deg,#8fe3de,#1fb3ac);}
+  .day .day-label{font-family:'Helvetica Neue', Arial, sans-serif; letter-spacing:2px; color:#a97f2f; font-size:0.78rem; text-transform:uppercase; margin-bottom:6px;}
+  .day h3{font-size:1.3rem; margin-bottom:8px; color:var(--deep);}
+  .day p{color:#4a5f6c; line-height:1.7; font-size:0.96rem;}
 
   /* INCLUDES / PRICE */
   .package{
@@ -264,11 +238,14 @@
   /* CTA / CONTACT */
   .cta{
     text-align:center; padding:130px 0;
-    background:linear-gradient(180deg, #0f4f6a, var(--deep));
-    color:var(--white); position:relative;
+    position:relative; overflow:hidden;
+    color:var(--white);
   }
+  .cta-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .cta::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(4,38,59,0.85), rgba(4,38,59,0.75));}
+  .cta > *{position:relative; z-index:2;}
   .cta h2{font-size:clamp(2rem,4vw,3rem); margin:16px 0 26px;}
-  .cta p{color:rgba(255,255,255,0.75); max-width:560px; margin:0 auto 40px; line-height:1.7;}
+  .cta p{color:rgba(255,255,255,0.85); max-width:560px; margin:0 auto 40px; line-height:1.7;}
 
   footer{
     background:var(--deep); color:rgba(255,255,255,0.6);
@@ -284,38 +261,21 @@
   <div class="logo">Nueva<span>Web</span> Viajes</div>
   <ul>
     <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#hoteles">Hoteles</a></li>
     <li><a href="#itinerario">Itinerario</a></li>
-    <li><a href="#galeria">Galería</a></li>
     <li><a href="#paquete">Paquete</a></li>
   </ul>
   <a href="#reserva" class="nav-cta">Reservar</a>
 </nav>
 
 <section class="hero">
-  <div class="stars"></div>
-  <div class="hero-water"></div>
-  <svg class="palm-deco palm-left" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 400 C 95 300 90 220 100 150" stroke="#04263b" stroke-width="10" stroke-linecap="round"/>
-    <path d="M100 150 C 40 120 10 90 -10 60" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 160 130 190 100 210 70" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 60 100 40 60 30 20" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 130 95 150 55 155 15" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 90 90 90 50 100 10" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-  </svg>
-  <svg class="palm-deco palm-right" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 400 C 95 300 90 220 100 150" stroke="#04263b" stroke-width="10" stroke-linecap="round"/>
-    <path d="M100 150 C 40 120 10 90 -10 60" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 160 130 190 100 210 70" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 60 100 40 60 30 20" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 130 95 150 55 155 15" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-    <path d="M100 150 C 90 90 90 50 100 10" stroke="#0b3d57" stroke-width="8" stroke-linecap="round"/>
-  </svg>
+  <img class="hero-bg" src="images/maldivas-hero.jpg" alt="Villas sobre el agua en Maldivas">
   <div class="hero-content container">
     <span class="eyebrow">Nueva Web Viajes · Escapada Exclusiva</span>
     <h1>Despide el año en<br><em>Maldivas</em></h1>
     <div class="hero-dates"><span>28 Diciembre</span><span class="dot"></span><span>03 Enero</span><span class="dot"></span><span>Fin de Año 2026 – 2027</span></div>
     <div>
-      <a href="#paquete" class="btn-primary">Ver Paquete</a>
+      <a href="#hoteles" class="btn-primary">Ver Hoteles</a>
       <a href="#reserva" class="btn-outline">Reservar Ahora</a>
     </div>
   </div>
@@ -359,39 +319,60 @@
   </div>
 </section>
 
+<section id="hoteles" class="resorts">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Selección Exclusiva</span>
+      <h2>Elige tu Resort</h2>
+      <p>Tres joyas del Índico, cada una con su propio carácter. Selecciona el resort donde quieres recibir el nuevo año.</p>
+    </div>
+
+    <div class="resort-card">
+      <div class="resort-photos">
+        <img src="images/atollia-centara-aerial.jpg" alt="Vista aérea de The Atollia by Centara Hotels & Resorts, Maldivas">
+        <img src="images/atollia-centara-beach.jpg" alt="Villas de playa en The Atollia by Centara Hotels & Resorts">
+      </div>
+      <div class="resort-info">
+        <div class="stars">★★★★★</div>
+        <span class="location">Atolón de Malé · Maldivas</span>
+        <h3>The Atollia by Centara Hotels &amp; Resorts</h3>
+        <p>El resort más nuevo y espectacular del archipiélago: dos islas unidas por un puente, con villas de playa de diseño contemporáneo, parque acuático familiar y una laguna turquesa infinita. El escenario perfecto para una Nochevieja inolvidable.</p>
+      </div>
+    </div>
+
+    <div class="resort-card">
+      <div class="resort-photos">
+        <img src="images/sun-island-aerial.jpg" alt="Villas sobre el agua en Sun Island Resort & Spa Maldives">
+        <img src="images/sun-island-villa-deck.jpg" alt="Terraza de villa de playa en Sun Island Resort & Spa Maldives">
+      </div>
+      <div class="resort-info">
+        <div class="stars">★★★★★</div>
+        <span class="location">Isla Nalaguraidhoo · Atolón Ari Sur</span>
+        <h3>Sun Island Resort &amp; Spa</h3>
+        <p>Una de las islas resort más grandes de Maldivas, famosa por sus icónicas hileras de villas sobre el agua en forma de "V" que se adentran en el océano. Playas interminables, gastronomía variada y ambiente relajado junto al arrecife.</p>
+      </div>
+    </div>
+
+    <div class="resort-card">
+      <div class="resort-photos single">
+        <img src="images/dhigufaru-pool.jpg" alt="Piscina infinita en Dhigufaru Island Resort, Maldivas">
+      </div>
+      <div class="resort-info">
+        <div class="stars">★★★★★</div>
+        <span class="location">Atolón de Baa · Reserva de la Biosfera UNESCO</span>
+        <h3>Dhigufaru Island Resort</h3>
+        <p>Un refugio íntimo dentro de la Reserva de la Biosfera de Baa, protegida por la UNESCO. Piscina infinita frente al mar, arena de coral y una atmósfera exclusiva ideal para parejas que buscan tranquilidad y naturaleza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="scene">
+  <img src="images/maldivas-island.jpg" alt="Isla paradisíaca en Maldivas rodeada de laguna turquesa">
   <div class="scene-caption">
     <span class="eyebrow">Tu refugio en el atolón</span>
-    <h2>Villas sobre la laguna</h2>
+    <h2>Islas privadas, aguas cristalinas</h2>
   </div>
-  <svg viewBox="0 0 1440 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 260 C 200 240 300 280 500 255 C 700 230 800 270 1000 250 C 1200 230 1300 260 1440 245 L1440 400 L0 400 Z" fill="#0a7a78" opacity="0.6"/>
-    <!-- walkway -->
-    <rect x="660" y="150" width="40" height="250" fill="#7a5230"/>
-    <!-- bungalows -->
-    <g>
-      <rect x="560" y="120" width="120" height="60" rx="4" fill="#5c3a22"/>
-      <polygon points="555,120 620,70 685,120" fill="#3a2414"/>
-      <rect x="590" y="180" width="60" height="70" fill="#4a2e18"/>
-    </g>
-    <g transform="translate(-160,20)">
-      <rect x="560" y="120" width="120" height="60" rx="4" fill="#623d24"/>
-      <polygon points="555,120 620,70 685,120" fill="#40270f"/>
-      <rect x="590" y="180" width="60" height="70" fill="#4a2e18"/>
-    </g>
-    <g transform="translate(220,10)">
-      <rect x="560" y="120" width="120" height="60" rx="4" fill="#5c3a22"/>
-      <polygon points="555,120 620,70 685,120" fill="#3a2414"/>
-      <rect x="590" y="180" width="60" height="70" fill="#4a2e18"/>
-    </g>
-    <g transform="translate(400,25)">
-      <rect x="560" y="120" width="120" height="60" rx="4" fill="#623d24"/>
-      <polygon points="555,120 620,70 685,120" fill="#40270f"/>
-      <rect x="590" y="180" width="60" height="70" fill="#4a2e18"/>
-    </g>
-    <path d="M0 300 C 200 280 300 320 500 300 C 700 280 800 310 1000 295 C 1200 280 1300 300 1440 285 L1440 400 L0 400 Z" fill="#0d9a94"/>
-    <path d="M0 340 C 250 325 350 350 600 335 C 850 320 950 345 1200 330 C 1300 325 1380 335 1440 330 L1440 400 L0 400 Z" fill="#12b3a9"/>
-  </svg>
 </div>
 
 <section id="itinerario" class="itinerary">
@@ -405,7 +386,7 @@
       <div class="day">
         <div class="day-label">28 Diciembre — Día 1</div>
         <h3>Llegada al Atolón</h3>
-        <p>Traslado en hidroavión o lancha rápida hasta tu resort. Bienvenida con cóctel tropical y check-in en tu villa sobre el agua.</p>
+        <p>Traslado en hidroavión o lancha rápida hasta tu resort. Bienvenida con cóctel tropical y check-in en tu villa.</p>
       </div>
       <div class="day">
         <div class="day-label">29–30 Diciembre — Días 2 y 3</div>
@@ -431,24 +412,7 @@
   </div>
 </section>
 
-<section id="galeria">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Un vistazo al paraíso</span>
-      <h2>Galería</h2>
-      <p>Instantáneas del destino que te espera: lagunas turquesa, atardeceres dorados y noches de bioluminiscencia.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-tile g1"><span>Laguna Turquesa</span></div>
-      <div class="gallery-tile g2"><span>Cielo Estrellado</span></div>
-      <div class="gallery-tile g3"><span>Atardecer Dorado</span></div>
-      <div class="gallery-tile g4"><span>Villas de Agua</span></div>
-      <div class="gallery-tile g5"><span>Arena Blanca</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="paquete" style="background:#f0e9d8;">
+<section id="paquete">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Todo Incluido</span>
@@ -456,10 +420,10 @@
     </div>
     <div class="package">
       <div class="package-info">
-        <h3>7 noches · Villa sobre el agua</h3>
+        <h3>7 noches · Resort 5 estrellas a elegir</h3>
         <ul>
           <li>Vuelos ida y vuelta + traslado en hidroavión/lancha</li>
-          <li>Alojamiento en villa overwater con piscina privada</li>
+          <li>Alojamiento en villa de playa o sobre el agua</li>
           <li>Pensión completa con bebidas seleccionadas</li>
           <li>Cena de Gala de Nochevieja con fuegos artificiales</li>
           <li>Excursión de snorkel guiada al arrecife de coral</li>
@@ -478,6 +442,7 @@
 </section>
 
 <section class="cta" id="reserva">
+  <img class="cta-bg" src="images/maldivas-sunset-pool.png" alt="Atardecer junto a la piscina en un resort de Maldivas">
   <div class="container">
     <span class="eyebrow">No dejes pasar esta oportunidad</span>
     <h2>Reserva tu Fin de Año en Maldivas</h2>
