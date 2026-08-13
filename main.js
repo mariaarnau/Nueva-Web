@@ -59,6 +59,30 @@
     });
   }
 
+  /* ---------- Language switcher ---------- */
+  function initLangSwitch() {
+    $$(".lang-switch").forEach(function (item) {
+      var trigger = $(".lang-switch-toggle", item);
+      if (!trigger) return;
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        var open = item.classList.toggle("is-open");
+        trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        $$(".lang-switch.is-open").forEach(function (other) {
+          if (other !== item) { other.classList.remove("is-open"); }
+        });
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest(".lang-switch")) return;
+      $$(".lang-switch.is-open").forEach(function (item) {
+        item.classList.remove("is-open");
+        var trigger = $(".lang-switch-toggle", item);
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
   /* ---------- Service tabs (Servicios page) ---------- */
   function initServiceTabs() {
     var root = $("[data-service-tabs]");
@@ -357,7 +381,12 @@
         var nameField = form.elements.nombre;
         var firstName = nameField && nameField.value ? nameField.value.trim().split(/\s+/)[0] : "";
         if (msg) {
-          msg.textContent = (firstName ? firstName + ", h" : "H") + "emos recibido la solicitud. Nos pondremos en contacto en menos de 24 horas laborables.";
+          var lang = (document.documentElement.lang || "es").slice(0, 2);
+          var texts = {
+            es: (firstName ? firstName + ", h" : "H") + "emos recibido la solicitud. Nos pondremos en contacto en menos de 24 horas laborables.",
+            en: (firstName ? firstName + ", w" : "W") + "e've received your request. We'll be in touch within 24 business hours."
+          };
+          msg.textContent = texts[lang] || texts.es;
         }
         form.classList.remove("is-sending");
         form.classList.add("is-sent");
@@ -382,6 +411,7 @@
   function boot() {
     safe(initNav, "initNav");
     safe(initNavDropdown, "initNavDropdown");
+    safe(initLangSwitch, "initLangSwitch");
     safe(initServiceTabs, "initServiceTabs");
     safe(initSmoothAnchors, "initSmoothAnchors");
     safe(initReveals, "initReveals");
