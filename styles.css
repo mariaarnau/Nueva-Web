@@ -812,6 +812,24 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .article-stat-num .unit { color: var(--olive); }
 .article-stat-label { color: var(--ink-mute); font-size: .96rem; max-width: 34ch; }
 
+/* Article: checklist layout — grouped questions with check icons, no numbers or stats */
+.checklist-group-label {
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--olive-dark); font-weight: 700; margin-top: 2.4rem;
+}
+.checklist { list-style: none; margin-top: 1rem; }
+.checklist li {
+  display: flex; gap: .95rem; align-items: flex-start;
+  padding: 1rem 0; border-top: 1px solid var(--line);
+}
+.checklist li:last-child { border-bottom: 1px solid var(--line); }
+.checklist-icon {
+  flex-shrink: 0; width: 24px; height: 24px; margin-top: .1rem; border-radius: 50%;
+  background: var(--olive); color: var(--cream-dk);
+  display: grid; place-items: center; font-size: .68rem; font-weight: 700;
+}
+.checklist-text { color: var(--ink); font-size: 1rem; }
+
 /* Article: two-column layout with sticky mini table of contents */
 .article-layout { display: grid; gap: 1.8rem; }
 .article-toc { display: none; }

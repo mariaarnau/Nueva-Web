@@ -19,7 +19,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://boostwellness.es/ventajas.html</loc>
+    <loc>https://boostwellness.es/beneficios.html</loc>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -44,6 +44,12 @@
   </url>
   <url>
     <loc>https://boostwellness.es/blog-beneficios-fitness-empresas.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://boostwellness.es/blog-checklist-deporte-empresas.html</loc>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
