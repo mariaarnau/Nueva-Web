@@ -24,6 +24,7 @@
     },
     {
       id: "servicios",
+      generic: true,
       keywords: ["servicio", "actividad fisica", "team building", "evento", "charla", "que haceis", "que ofreceis", "disciplinas", "yoga", "pilates", "hiit", "zumba"],
       answer: "Trabajamos en cuatro formatos, siempre con nuestro propio equipo: actividades físicas (yoga, pilates, GAP, HIIT, zumba, funcional), team building, eventos (torneos, jornadas, ferias) y charlas de salud (nutrición, estrés, ergonomía). Más info en <a href=\"servicios.html\">Servicios</a>."
     },
@@ -74,6 +75,7 @@
     },
     {
       id: "beneficios",
+      generic: true,
       keywords: ["beneficio", "ventaja", "para que sirve", "por que hacerlo", "resultados"],
       answer: "Los equipos que participan reducen bajas laborales, refuerzan la marca de empleador, fortalecen el trabajo en equipo, mejoran el clima laboral y ganan confianza y habilidades blandas. Más en <a href=\"beneficios.html\">Beneficios</a>."
     },
@@ -123,6 +125,11 @@
       answer: "Un programa de deporte y bienestar para empresas también suma dentro de las políticas de responsabilidad social y bienestar corporativo. Podemos adaptarlo a los objetivos y valores de cada compañía."
     },
     {
+      id: "eventos_horario",
+      keywords: ["fin de semana", "sabado", "domingo", "festivo", "fuera de horario laboral"],
+      answer: "Sí, los eventos, torneos y jornadas se pueden organizar en fin de semana, festivos o fuera del horario laboral habitual si el equipo lo necesita. Coordinamos día, horario y logística al diseñar el programa; cuéntanoslo en el <a href=\"" + CONTACT_URL + "\">formulario de contacto</a>."
+    },
+    {
       id: "duracion_frecuencia",
       keywords: ["duracion de las sesiones", "cuanto dura", "cuantas veces por semana", "frecuencia de las clases", "cada cuanto"],
       answer: "Las sesiones de actividad física suelen durar de 45 a 60 minutos y se programan una o varias veces por semana, según lo que decida cada empresa. El resto de formatos (team building, eventos, charlas) se ajustan al calendario que necesitéis."
@@ -141,12 +148,27 @@
 
   var SUGGESTIONS = ["Servicios", "Cómo funciona", "Precio", "Contacto"];
 
+  var SYNONYMS = [
+    [/\bfindes?\b/g, "fin de semana"],
+    [/\bsabados?\b/g, "sabado"],
+    [/\bdomingos?\b/g, "domingo"],
+    [/\bfestivos?\b/g, "festivo"],
+    [/\bpresupuestos?\b/g, "presupuesto"],
+    [/\bpsicologic[oa]\b/g, "salud mental"],
+    [/\bconciliar\b/g, "conciliacion"],
+    [/\bteletrabaj\w*\b/g, "trabajo sentado"]
+  ];
+
   function normalize(str) {
-    return str
+    var text = str
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .trim();
+    for (var i = 0; i < SYNONYMS.length; i++) {
+      text = text.replace(SYNONYMS[i][0], SYNONYMS[i][1]);
+    }
+    return text;
   }
 
   var STOPWORDS = ["de", "del", "la", "el", "en", "que", "un", "una", "unos", "unas", "los", "las",
@@ -170,15 +192,11 @@
     });
   }
 
-  function matchAnswer(rawText) {
-    var text = normalize(rawText);
-    if (!text) return null;
-    var userWords = significantWordsOf(text);
-    if (userWords.length === 0) return null;
+  function bestMatchIn(entries, userWords) {
     var best = null;
     var bestScore = 0;
-    for (var i = 0; i < KB.length; i++) {
-      var entry = KB[i];
+    for (var i = 0; i < entries.length; i++) {
+      var entry = entries[i];
       var score = 0;
       for (var j = 0; j < entry.keywords.length; j++) {
         var keywordWords = significantWordsOf(entry.keywords[j]);
@@ -193,7 +211,20 @@
         best = entry;
       }
     }
-    return bestScore > 0 ? best.answer : null;
+    return bestScore > 0 ? best : null;
+  }
+
+  function matchAnswer(rawText) {
+    var text = normalize(rawText);
+    if (!text) return null;
+    var userWords = significantWordsOf(text);
+    if (userWords.length === 0) return null;
+    // Specific entries are tried first so a precise match (e.g. "eventos en
+    // domingo") isn't shadowed by a broad, generic entry (e.g. "servicios").
+    var specific = KB.filter(function (e) { return !e.generic; });
+    var generic = KB.filter(function (e) { return e.generic; });
+    var match = bestMatchIn(specific, userWords) || bestMatchIn(generic, userWords);
+    return match ? match.answer : null;
   }
 
   function buildWidget() {
