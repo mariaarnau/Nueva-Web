@@ -728,7 +728,97 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
 
 /* =============================================================
-   9. Reduced-motion — only intrusive effects
+   9. Blog — magazine-style listing and article layout
+   ============================================================= */
+
+/* Featured post (magazine cover) */
+.blog-featured {
+  position: relative; overflow: hidden; border-radius: var(--radius);
+  display: block; height: clamp(420px, 62vw, 640px);
+  color: var(--cream-dk);
+}
+.blog-featured-media { position: absolute; inset: 0; z-index: 0; }
+.blog-featured-media img { width: 100%; height: 100%; object-fit: cover; }
+.blog-featured-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(14,16,11,.86) 0%, rgba(14,16,11,.5) 42%, rgba(14,16,11,.12) 75%);
+}
+.blog-featured-body { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; padding: clamp(1.8rem,4vw,3.4rem); max-width: 62ch; box-sizing: border-box; }
+.blog-featured-body .eyebrow { color: var(--olive-2); }
+.blog-featured-body .eyebrow::before { background: var(--olive-2); }
+.blog-featured-body h2 {
+  margin-top: .7rem; color: var(--cream-dk); text-shadow: 0 1px 3px rgba(0,0,0,.7);
+  font-size: clamp(1.9rem, 4.4vw, 3.1rem); max-width: 20ch; width: 100%; text-wrap: wrap;
+}
+.blog-featured-body h2 em { color: var(--olive-2); }
+.blog-featured-body p { margin-top: 1rem; color: var(--cream-dk-mute); max-width: 52ch; }
+.blog-featured-meta {
+  display: flex; gap: 1rem; align-items: center; margin-top: 1.6rem;
+  font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream-dk-mute);
+}
+.blog-featured-meta .btn { margin-left: .4rem; }
+
+/* Editorial index list (below the featured post) */
+.blog-list { margin-top: 2.8rem; border-top: 1px solid var(--line); }
+.blog-list-item {
+  display: grid; grid-template-columns: 96px 1fr; gap: 1.2rem; align-items: center;
+  padding: 1.6rem 0; border-bottom: 1px solid var(--line);
+  text-decoration: none; color: inherit;
+}
+.blog-list-thumb { border-radius: calc(var(--radius) - 8px); overflow: hidden; aspect-ratio: 1/1; }
+.blog-list-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-soft); }
+.blog-list-item:hover .blog-list-thumb img { transform: scale(1.08); }
+.blog-list-tag { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dark); font-weight: 700; }
+.blog-list-item h3 { font-family: var(--serif); font-size: 1.2rem; margin-top: .3rem; }
+.blog-list-desc { color: var(--ink-mute); margin-top: .4rem; font-size: .92rem; max-width: 60ch; }
+.blog-list-arrow { display: none; }
+
+/* Article: drop cap on the opening paragraph */
+.article-lead::first-letter {
+  font-family: var(--serif); font-style: italic; color: var(--olive);
+  font-size: 3.6rem; line-height: .75; float: left; margin: .06em .1em 0 0;
+}
+
+/* Article: pull quote breaking up the reading column */
+.pull-quote {
+  font-family: var(--serif); font-style: italic; color: var(--olive-dark);
+  font-size: clamp(1.4rem, 3vw, 1.9rem); line-height: 1.4;
+  max-width: 42ch; margin: 2.8rem auto; text-align: center;
+  padding-block: 1.6rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+
+/* Article: two-column layout with sticky mini table of contents */
+.article-layout { display: grid; gap: 2.4rem; }
+.article-toc { display: none; }
+.article-toc-title { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--olive-dark); font-weight: 700; margin-bottom: .9rem; }
+.article-toc a {
+  display: block; padding: .45rem 0 .45rem .9rem; margin-bottom: .1rem;
+  border-left: 2px solid var(--line); color: var(--ink-mute); text-decoration: none; font-size: .88rem;
+}
+.article-toc a:hover { color: var(--ink); border-left-color: var(--olive); }
+
+/* Article: "sigue leyendo" closing card, in place of the generic CTA block */
+.next-read { display: block; text-decoration: none; color: inherit; position: relative; overflow: hidden; border-radius: var(--radius); }
+.next-read-media { aspect-ratio: 21/9; overflow: hidden; }
+.next-read-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-soft); }
+.next-read:hover .next-read-media img { transform: scale(1.05); }
+.next-read-body { padding: 1.8rem clamp(1.2rem, 3vw, 2rem) 2rem; background: var(--paper); }
+.next-read-label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--olive-dark); font-weight: 700; }
+.next-read h3 { font-family: var(--serif); font-size: clamp(1.3rem, 2.6vw, 1.7rem); margin-top: .5rem; max-width: 34ch; }
+.next-read p { color: var(--ink-mute); margin-top: .6rem; max-width: 56ch; }
+
+@media (min-width: 720px) {
+  .blog-list-item { grid-template-columns: 140px 1fr auto; gap: 1.8rem; }
+  .blog-list-arrow { display: block; font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--olive); }
+}
+
+@media (min-width: 960px) {
+  .article-layout { grid-template-columns: 200px 1fr; align-items: start; }
+  .article-toc { display: block; position: sticky; top: 6.5rem; }
+}
+
+/* =============================================================
+   10. Reduced-motion — only intrusive effects
    ============================================================= */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
