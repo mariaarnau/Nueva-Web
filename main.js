@@ -369,6 +369,8 @@
       check();
     });
 
+    var errorMsg = $("[data-contact-error]", form.parentNode);
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (form.classList.contains("is-sending")) return;
@@ -376,8 +378,15 @@
 
       form.classList.add("is-sending");
       if (submitBtn) submitBtn.disabled = true;
+      if (errorMsg) errorMsg.hidden = true;
 
-      setTimeout(function () {
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(function (response) {
+        if (!response.ok) throw new Error("submission failed");
+
         var nameField = form.elements.nombre;
         var firstName = nameField && nameField.value ? nameField.value.trim().split(/\s+/)[0] : "";
         if (msg) {
@@ -393,7 +402,11 @@
         form.classList.add("is-sent");
         success.setAttribute("aria-hidden", "false");
         success.classList.add("is-visible");
-      }, 800 + Math.random() * 500);
+      }).catch(function () {
+        form.classList.remove("is-sending");
+        if (submitBtn) submitBtn.disabled = false;
+        if (errorMsg) errorMsg.hidden = false;
+      });
     });
   }
 

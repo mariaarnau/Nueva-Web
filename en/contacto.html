@@ -98,7 +98,9 @@
     <div class="container contact-grid">
 
       <div data-reveal style="position:relative">
-        <form class="cta-form" data-contact-form novalidate>
+        <form class="cta-form" data-contact-form novalidate action="https://formspree.io/f/xbgrkjkp" method="POST">
+          <input type="hidden" name="_subject" value="Nueva solicitud de propuesta - Boost Wellness">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-grid form-grid-2">
             <div class="field">
               <input type="text" id="nombre" name="nombre" required placeholder=" ">
@@ -158,6 +160,8 @@
             <span class="cta-form-spinner" aria-hidden="true"></span>
           </button>
         </form>
+
+        <p class="form-error" data-contact-error hidden style="color:#a3402f; margin-top:.9rem; font-family:var(--sans); font-size:.9rem">We couldn't send your request. Please try again or email us at boostwellness.info@gmail.com.</p>
 
         <div class="cta-success" data-contact-success aria-hidden="true">
           <h3>Received. We'll be in touch soon.</h3>
