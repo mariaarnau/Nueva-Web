@@ -62,12 +62,14 @@
   flex: none;
 }
 .bw-chat-head-avatar {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: var(--olive-2);
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--ink-deep);
   display: flex; align-items: center; justify-content: center;
   flex: none;
+  overflow: hidden;
+  padding: 7px;
 }
-.bw-chat-head-avatar svg { width: 18px; height: 18px; }
+.bw-chat-head-avatar img { width: 100%; height: 100%; object-fit: contain; }
 .bw-chat-head-title { font-family: var(--sans); font-weight: 600; font-size: .95rem; line-height: 1.2; }
 .bw-chat-head-sub { font-size: .76rem; color: var(--cream-dk-mute); }
 

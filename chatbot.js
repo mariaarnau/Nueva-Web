@@ -69,7 +69,7 @@
     },
     {
       id: "espacio",
-      keywords: ["donde se hace", "espacio", "necesitamos gimnasio", "en la oficina", "al aire libre", "exterior"],
+      keywords: ["donde se hace la actividad", "que espacio necesitamos", "necesitamos gimnasio", "tenemos que tener gimnasio", "espacio exterior para la actividad"],
       answer: "Nos adaptamos al espacio disponible: la propia oficina (una sala, una zona común o el espacio de trabajo despejado), un gimnasio si la empresa ya cuenta con uno, o un espacio exterior como un parque o una azotea cercana. Llevamos nosotros el material que haga falta."
     },
     {
@@ -93,6 +93,46 @@
       answer: "Boost Wellness diseña e imparte programas de deporte y fitness para empresas de cualquier tamaño y sector, con nuestro propio equipo de entrenadores, dinamizadores y ponentes, en la oficina, en un gimnasio o al aire libre."
     },
     {
+      id: "sedentarismo",
+      keywords: ["sedentarismo", "trabajo sentado", "estar sentado todo el dia", "vida sedentaria", "pasar el dia sentado"],
+      answer: "El sedentarismo en la oficina se combate con movimiento regular y pausas activas. Nuestras actividades físicas (yoga, pilates, funcional, HIIT) están pensadas justo para eso: sesiones cortas y frecuentes que rompen las horas sentados. Más en <a href=\"servicios.html#actividades\">Actividades físicas</a>."
+    },
+    {
+      id: "estres_salud_mental",
+      keywords: ["estres", "salud mental", "ansiedad", "burnout", "carga de trabajo", "gestion del estres", "sueno", "descanso"],
+      answer: "Trabajamos la gestión del estrés, el sueño y la salud mental tanto con actividad física regular como con charlas específicas sobre el tema. Más en <a href=\"servicios.html#charlas\">Charlas y talleres</a>."
+    },
+    {
+      id: "absentismo_productividad",
+      keywords: ["absentismo", "baja laboral", "bajas medicas", "productividad", "rendimiento del equipo", "falta al trabajo"],
+      answer: "Los equipos con actividad física regular tienen menos bajas y llegan en mejor forma física y mental al día a día, lo que se nota en la productividad y en menos absentismo. Más en <a href=\"beneficios.html\">Beneficios</a>."
+    },
+    {
+      id: "retencion_talento",
+      keywords: ["retencion de talento", "marca empleadora", "employer branding", "atraer talento", "fuga de talento", "employee experience"],
+      answer: "Cuidar el bienestar del equipo refuerza la marca de empleador: hace la empresa más atractiva para el talento nuevo y ayuda a retener al que ya tiene. Más en <a href=\"beneficios.html\">Beneficios</a>."
+    },
+    {
+      id: "conciliacion_clima",
+      keywords: ["conciliacion", "clima laboral", "ambiente de trabajo", "work life balance", "bienestar laboral", "cultura de empresa"],
+      answer: "Los equipos que practican deporte juntos suelen tener un clima laboral más relajado, positivo y colaborativo, con menos conflictos internos. Más en <a href=\"beneficios.html\">Beneficios</a>."
+    },
+    {
+      id: "rsc",
+      keywords: ["responsabilidad social", "rsc", "esg", "sostenibilidad social", "bienestar corporativo"],
+      answer: "Un programa de deporte y bienestar para empresas también suma dentro de las políticas de responsabilidad social y bienestar corporativo. Podemos adaptarlo a los objetivos y valores de cada compañía."
+    },
+    {
+      id: "duracion_frecuencia",
+      keywords: ["duracion de las sesiones", "cuanto dura", "cuantas veces por semana", "frecuencia de las clases", "cada cuanto"],
+      answer: "Las sesiones de actividad física suelen durar de 45 a 60 minutos y se programan una o varias veces por semana, según lo que decida cada empresa. El resto de formatos (team building, eventos, charlas) se ajustan al calendario que necesitéis."
+    },
+    {
+      id: "material_seguro",
+      keywords: ["material necesario", "hay que traer algo", "seguro de responsabilidad", "seguro medico", "material deportivo"],
+      answer: "No hace falta que la empresa aporte material: nuestro propio equipo lleva esterillas, bandas y todo lo necesario para cada sesión, se haga en la oficina, en un gimnasio o al aire libre."
+    },
+    {
       id: "gracias",
       keywords: ["gracias", "genial gracias", "perfecto gracias"],
       answer: "¡De nada! Si tienes cualquier otra pregunta, aquí estoy."
@@ -109,16 +149,44 @@
       .trim();
   }
 
+  var STOPWORDS = ["de", "del", "la", "el", "en", "que", "un", "una", "unos", "unas", "los", "las",
+    "y", "a", "al", "para", "con", "por", "es", "son", "hay", "como", "nos", "se", "lo", "su", "sus",
+    "mi", "mis", "vuestro", "vuestra", "nuestro", "nuestra", "tenemos", "teneis", "podeis", "podemos"];
+
+  function singularize(word) {
+    if (word.length > 4 && /(ciones|siones)$/.test(word)) return word.slice(0, -3) + "n";
+    if (word.length > 3 && /es$/.test(word)) return word.slice(0, -2);
+    if (word.length > 3 && /s$/.test(word)) return word.slice(0, -1);
+    return word;
+  }
+
+  function wordsOf(text) {
+    return text.split(/[^a-z0-9]+/).filter(Boolean).map(singularize);
+  }
+
+  function significantWordsOf(text) {
+    return wordsOf(text).filter(function (w) {
+      return w.length > 2 && STOPWORDS.indexOf(w) === -1;
+    });
+  }
+
   function matchAnswer(rawText) {
     var text = normalize(rawText);
     if (!text) return null;
+    var userWords = significantWordsOf(text);
+    if (userWords.length === 0) return null;
     var best = null;
     var bestScore = 0;
     for (var i = 0; i < KB.length; i++) {
       var entry = KB[i];
       var score = 0;
       for (var j = 0; j < entry.keywords.length; j++) {
-        if (text.indexOf(normalize(entry.keywords[j])) !== -1) score++;
+        var keywordWords = significantWordsOf(entry.keywords[j]);
+        if (keywordWords.length === 0) continue;
+        var allWordsFound = keywordWords.every(function (kw) {
+          return userWords.indexOf(kw) !== -1;
+        });
+        if (allWordsFound) score += keywordWords.length;
       }
       if (score > bestScore) {
         bestScore = score;
@@ -147,7 +215,7 @@
     panel.setAttribute("aria-label", "Asistente de Boost Wellness");
     panel.innerHTML =
       '<div class="bw-chat-head">' +
-        '<div class="bw-chat-head-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>' +
+        '<div class="bw-chat-head-avatar"><img src="assets/img/logo-light.webp" alt="" width="323" height="240"></div>' +
         '<div><div class="bw-chat-head-title">Boost Wellness</div><div class="bw-chat-head-sub">Asistente · responde al instante</div></div>' +
       '</div>' +
       '<div class="bw-chat-body" data-bw-chat-body role="log" aria-live="polite"></div>' +
