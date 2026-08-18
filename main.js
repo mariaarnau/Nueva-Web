@@ -385,7 +385,8 @@
           var texts = {
             es: (firstName ? firstName + ", h" : "H") + "emos recibido la solicitud. Nos pondremos en contacto en menos de 24 horas laborables.",
             en: (firstName ? firstName + ", w" : "W") + "e've received your request. We'll be in touch within 24 business hours.",
-            de: (firstName ? firstName + ", w" : "W") + "ir haben Ihre Anfrage erhalten. Wir melden uns innerhalb von 24 Werktagsstunden."
+            de: (firstName ? firstName + ", w" : "W") + "ir haben Ihre Anfrage erhalten. Wir melden uns innerhalb von 24 Werktagsstunden.",
+            fr: (firstName ? firstName + ", n" : "N") + "ous avons bien reçu votre demande. Nous vous contacterons sous 24 heures ouvrées."
           };
           msg.textContent = texts[lang] || texts.es;
         }

@@ -5,6 +5,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -15,6 +16,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -25,16 +27,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/servicios.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/servicios.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -45,6 +60,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/servicios.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -55,16 +71,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/servicios.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/servicios.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/servicios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/servicios.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/como-funciona.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/como-funciona.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -75,6 +104,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/como-funciona.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -85,16 +115,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/como-funciona.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/como-funciona.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/como-funciona.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/como-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/como-funciona.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/beneficios.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/beneficios.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -105,6 +148,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/beneficios.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -115,16 +159,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/beneficios.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/beneficios.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/beneficios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/beneficios.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/beneficios.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/contacto.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/contacto.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -135,6 +192,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/contacto.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -145,16 +203,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/contacto.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/contacto.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/blog.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -165,6 +236,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -175,16 +247,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/blog-deporte-para-empresas-guia.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -195,6 +280,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -205,16 +291,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-deporte-para-empresas-guia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/blog-deporte-para-empresas-guia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-deporte-para-empresas-guia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-deporte-para-empresas-guia.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/blog-beneficios-fitness-empresas.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -225,6 +324,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -235,16 +335,29 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-beneficios-fitness-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://boostwellness.es/fr/blog-beneficios-fitness-empresas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-beneficios-fitness-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-beneficios-fitness-empresas.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://boostwellness.es/blog-checklist-deporte-empresas.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -255,6 +368,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -265,9 +379,21 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-checklist-deporte-empresas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://boostwellness.es/fr/blog-checklist-deporte-empresas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boostwellness.es/en/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://boostwellness.es/de/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boostwellness.es/fr/blog-checklist-deporte-empresas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boostwellness.es/blog-checklist-deporte-empresas.html"/>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
