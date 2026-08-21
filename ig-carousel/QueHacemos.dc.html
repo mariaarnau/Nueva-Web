@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    :root{
+      --ink:#262620; --ink-soft:#3d3d35; --ink-mute:#77766c;
+      --olive:#5c6a45; --olive-dark:#3d4630; --olive-2:#7c8a5e;
+      --cream:#f1efe2;
+      --line: rgba(38,38,32,0.14);
+    }
+    body{margin:0;font-family:"Inter",-apple-system,sans-serif;}
+  </style>
+</helmet>
+<div style="width:1080px;height:1350px;background:var(--cream);position:relative;display:flex;flex-direction:column;overflow:hidden;">
+
+  <div style="padding:72px 72px 0 72px;display:flex;flex-direction:column;gap:8px;">
+    <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:15px;letter-spacing:3px;color:var(--olive-dark);text-transform:uppercase;">Qué hacemos</div>
+    <div style="font-family:'Fraunces',serif;font-weight:300;font-size:48px;line-height:1.15;color:var(--ink);max-width:880px;">Cuatro formas de cuidar al equipo.</div>
+  </div>
+
+  <div style="margin:56px 72px 0 72px;display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:2px;background:var(--line);border:1px solid var(--line);">
+
+    <div style="background:var(--cream);padding:48px 40px;display:flex;flex-direction:column;gap:16px;min-height:270px;">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.6"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v6M8 20l4-6 4 6M6 12h12"/></svg>
+      <div style="font-family:'Fraunces',serif;font-weight:500;font-size:24px;color:var(--ink);">Actividades físicas</div>
+      <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;color:var(--ink-mute);">Yoga, HIIT, pilates y más — en la oficina, en un gimnasio cercano o al aire libre.</div>
+    </div>
+
+    <div style="background:var(--cream);padding:48px 40px;display:flex;flex-direction:column;gap:16px;min-height:270px;">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 21v-1a5 5 0 0 1 5-5h1M22 21v-1a5 5 0 0 0-5-5h-1"/></svg>
+      <div style="font-family:'Fraunces',serif;font-weight:500;font-size:24px;color:var(--ink);">Team building</div>
+      <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;color:var(--ink-mute);">Cohesión real entre equipos, a través de retos y dinámicas compartidas.</div>
+    </div>
+
+    <div style="background:var(--cream);padding:48px 40px;display:flex;flex-direction:column;gap:16px;min-height:270px;">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.6"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-7h6v7"/></svg>
+      <div style="font-family:'Fraunces',serif;font-weight:500;font-size:24px;color:var(--ink);">Eventos</div>
+      <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;color:var(--ink-mute);">Carreras, retos deportivos y jornadas que se recuerdan mucho después.</div>
+    </div>
+
+    <div style="background:var(--cream);padding:48px 40px;display:flex;flex-direction:column;gap:16px;min-height:270px;">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.6"><path d="M4 4h16v12H8l-4 4z"/></svg>
+      <div style="font-family:'Fraunces',serif;font-weight:500;font-size:24px;color:var(--ink);">Charlas y talleres</div>
+      <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;color:var(--ink-mute);">Nutrición, salud y bienestar: conocimiento práctico que se queda.</div>
+    </div>
+
+  </div>
+
+  <div style="margin:40px 72px 0 72px;font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:22px;line-height:1.5;color:var(--ink-soft);max-width:880px;">
+    La alternativa a montar un gimnasio propio para tu empresa.
+  </div>
+
+  <div style="margin-top:auto;padding:40px 72px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:2px;color:var(--olive-dark);">BOOST WELLNESS</div>
+    <div style="font-family:'Inter',sans-serif;font-weight:500;font-size:14px;letter-spacing:1px;color:var(--ink-mute);">03 / 06</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

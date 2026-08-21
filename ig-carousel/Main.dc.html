@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    :root{
+      --ink-deep:#1d2018;
+      --olive-dark:#3d4630;
+      --olive:#5c6a45;
+      --cream:#f1efe2;
+      --cream-mute: rgba(241,239,226,0.72);
+    }
+    body{margin:0;font-family:"Inter",-apple-system,sans-serif;}
+    a{color:var(--cream);} a:hover{color:var(--olive-2, #7c8a5e);}
+  </style>
+</helmet>
+<div style="width:1080px;height:1350px;background:radial-gradient(120% 90% at 50% 18%, var(--olive-dark) 0%, var(--ink-deep) 62%);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, transparent 0%, rgba(29,32,24,0.35) 100%);"></div>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:40px;z-index:1;">
+    <img src="logo-light.png" alt="Boost Wellness" style="width:220px;height:auto;" />
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <div style="font-family:'Fraunces',serif;font-weight:300;font-size:64px;letter-spacing:2px;color:var(--cream);line-height:1;">BOOST WELLNESS</div>
+      <div style="font-family:'Inter',sans-serif;font-weight:500;font-size:20px;letter-spacing:4px;text-transform:uppercase;color:var(--cream-mute);">Deporte para empresas</div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:64px;left:0;right:0;display:flex;justify-content:center;">
+    <div style="font-family:'Inter',sans-serif;font-size:16px;letter-spacing:2px;color:var(--cream-mute);">VALENCIA · ESPAÑA</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

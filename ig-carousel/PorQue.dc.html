@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    :root{
+      --ink:#262620; --ink-soft:#3d3d35; --ink-mute:#77766c;
+      --olive:#5c6a45; --olive-dark:#3d4630;
+      --cream:#f1efe2;
+      --line: rgba(38,38,32,0.14);
+    }
+    body{margin:0;font-family:"Inter",-apple-system,sans-serif;}
+  </style>
+</helmet>
+<div style="width:1080px;height:1350px;background:var(--cream);position:relative;display:flex;flex-direction:column;overflow:hidden;">
+
+  <div style="padding:72px 72px 0 72px;display:flex;flex-direction:column;gap:8px;">
+    <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:15px;letter-spacing:3px;color:var(--olive-dark);text-transform:uppercase;">Por qué Boost Wellness</div>
+    <div style="font-family:'Fraunces',serif;font-weight:300;font-size:46px;line-height:1.18;color:var(--ink);max-width:880px;">Bienestar corporativo en toda España.</div>
+  </div>
+
+  <div style="margin:44px 72px 0 72px;border-radius:4px;overflow:hidden;height:520px;">
+    <img src="charlas-ponente-publico.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" />
+  </div>
+
+  <div style="margin:48px 72px 0 72px;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;gap:18px;align-items:flex-start;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.8" style="flex-shrink:0;margin-top:4px;"><path d="M20 6L9 17l-5-5"/></svg>
+      <div style="font-family:'Inter',sans-serif;font-size:19px;line-height:1.55;color:var(--ink-soft);">Equipo propio de entrenadores, dinamizadores y ponentes.</div>
+    </div>
+    <div style="display:flex;gap:18px;align-items:flex-start;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.8" style="flex-shrink:0;margin-top:4px;"><path d="M20 6L9 17l-5-5"/></svg>
+      <div style="font-family:'Inter',sans-serif;font-size:19px;line-height:1.55;color:var(--ink-soft);">Programas para empresas de cualquier tamaño y sector.</div>
+    </div>
+    <div style="display:flex;gap:18px;align-items:flex-start;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3d4630" stroke-width="1.8" style="flex-shrink:0;margin-top:4px;"><path d="M20 6L9 17l-5-5"/></svg>
+      <div style="font-family:'Inter',sans-serif;font-size:19px;line-height:1.55;color:var(--ink-soft);">En la oficina, en un gimnasio cercano o al aire libre.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;padding:40px 72px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:2px;color:var(--olive-dark);">BOOST WELLNESS</div>
+    <div style="font-family:'Inter',sans-serif;font-weight:500;font-size:14px;letter-spacing:1px;color:var(--ink-mute);">05 / 06</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
