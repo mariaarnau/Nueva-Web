@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:1080px; height:1920px; overflow:hidden; background:#0f120b; }
@@ -13,7 +12,7 @@
   .darken { position:absolute; inset:0; background:radial-gradient(120% 90% at 50% 60%, rgba(10,13,8,0.25) 0%, rgba(10,13,8,0.65) 100%); z-index:2; }
   .grain { position:absolute; inset:0; z-index:3; opacity:0.05; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   .kinetic-wrap { position:absolute; inset:0; z-index:4; display:flex; align-items:center; justify-content:center; padding:0 90px; }
-  .kinetic-text { position:absolute; font-family:'Fraunces',serif; font-weight:300; font-size:104px; line-height:1.05; color:#faf8ef; text-align:center; opacity:0; letter-spacing:0.5px; text-shadow: 0 4px 40px rgba(0,0,0,0.4); }
+  .kinetic-text { position:absolute; font-family:'Liberation Serif','DejaVu Serif',serif; font-weight:300; font-size:104px; line-height:1.05; color:#faf8ef; text-align:center; opacity:0; letter-spacing:0.5px; text-shadow: 0 4px 40px rgba(0,0,0,0.4); }
   .top-bar { position:absolute; top:70px; left:0; right:0; display:flex; align-items:center; justify-content:center; z-index:5; }
   .top-bar img { width:64px; height:auto; opacity:0.92; }
   .progress-track { position:absolute; top:56px; left:60px; right:60px; height:4px; background:rgba(255,255,255,0.18); border-radius:4px; z-index:5; overflow:hidden; }
@@ -23,9 +22,9 @@
   .cta-scene { position:absolute; inset:0; background:#20261c; opacity:0; z-index:10; animation-name: ctaBgAnim; animation-duration:26.599999999999998s; animation-timing-function:linear; animation-fill-mode:forwards; display:flex; align-items:center; justify-content:center; }
   .cta-inner { display:flex; flex-direction:column; align-items:center; text-align:center; opacity:0; transform:scale(0.92); animation-name: ctaContentAnim; animation-duration:26.599999999999998s; animation-timing-function:ease; animation-fill-mode:forwards; }
   .cta-inner img { width:150px; height:auto; margin-bottom:50px; }
-  .cta-inner .h1 { font-family:'Fraunces',serif; font-weight:300; font-size:64px; color:#faf8ef; line-height:1.2; }
-  .cta-inner .sub { font-family:'Inter',sans-serif; font-size:30px; color:#f0eee2; margin-top:44px; }
-  .cta-inner .contact { font-family:'Inter',sans-serif; font-size:22px; color:#d4dbb0; margin-top:16px; }
+  .cta-inner .h1 { font-family:'Liberation Serif','DejaVu Serif',serif; font-weight:300; font-size:64px; color:#faf8ef; line-height:1.2; }
+  .cta-inner .sub { font-family:'Liberation Sans','DejaVu Sans',sans-serif; font-size:30px; color:#f0eee2; margin-top:44px; }
+  .cta-inner .contact { font-family:'Liberation Sans','DejaVu Sans',sans-serif; font-size:22px; color:#d4dbb0; margin-top:16px; }
 
   
 @keyframes photo0Anim {
@@ -259,57 +258,57 @@
 <div class="stage">
   
   <div class="photo-layer" style="animation-name: photo0Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/teambuilding-abrazo-grupo.jpg" style="animation-name: photo0Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="teambuilding-abrazo-grupo.jpg" style="animation-name: photo0Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo1Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/actividad-crossfit-grupo.jpg" style="animation-name: photo1Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="actividad-crossfit-grupo.jpg" style="animation-name: photo1Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo2Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/equipo-planificando-programa.jpg" style="animation-name: photo2Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="equipo-planificando-programa.jpg" style="animation-name: photo2Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo3Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/actividad-spinning.jpg" style="animation-name: photo3Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="actividad-spinning.jpg" style="animation-name: photo3Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo4Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/video-actividad-pilates-reformer.jpg" style="animation-name: photo4Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="video-actividad-pilates-reformer.jpg" style="animation-name: photo4Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo5Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/actividad-yoga-pilates-grupo.jpg" style="animation-name: photo5Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="actividad-yoga-pilates-grupo.jpg" style="animation-name: photo5Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo6Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/teambuilding-choque-manos-oficina.jpg" style="animation-name: photo6Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="teambuilding-choque-manos-oficina.jpg" style="animation-name: photo6Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo7Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/video-charlas-reunion-circulo.jpg" style="animation-name: photo7Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="video-charlas-reunion-circulo.jpg" style="animation-name: photo7Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo8Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/actividad-trx.jpg" style="animation-name: photo8Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="actividad-trx.jpg" style="animation-name: photo8Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo9Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/video-eventos-ciclismo-grupo.jpg" style="animation-name: photo9Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="video-eventos-ciclismo-grupo.jpg" style="animation-name: photo9Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo10Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/video-eventos-corredores-gradas.jpg" style="animation-name: photo10Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="video-eventos-corredores-gradas.jpg" style="animation-name: photo10Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="photo-layer" style="animation-name: photo11Anim; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;">
-    <img class="photo-img" src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/teambuilding-plancha-risas.jpg" style="animation-name: photo11Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
+    <img class="photo-img" src="teambuilding-plancha-risas.jpg" style="animation-name: photo11Zoom; animation-duration: 26.599999999999998s; animation-timing-function: linear; animation-fill-mode: forwards;" />
     <div class="duotone"></div>
   </div>
   <div class="darken"></div>
   <div class="grain"></div>
   <div class="progress-track"><div class="progress-fill"></div></div>
-  <div class="top-bar"><img src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/logo-light.png" /></div>
+  <div class="top-bar"><img src="logo-light.png" /></div>
   <div class="kinetic-wrap">
     
   <div class="kinetic-text" style="animation-name: text0Anim; animation-duration: 26.599999999999998s; animation-timing-function: ease; animation-fill-mode: forwards;">MOVIMIENTO.</div>
@@ -321,7 +320,7 @@
   </div>
   <div class="cta-scene">
     <div class="cta-inner">
-      <img src="https://raw.githubusercontent.com/mariaarnau/Nueva-Web/claude/instagram-post-multipage-p3lygo/ig-carousel/logo-light.png" />
+      <img src="logo-light.png" />
       <div class="h1">Hablemos del<br/>bienestar de tu equipo.</div>
       <div class="sub">boostwellness.es</div>
       <div class="contact">boostwellness.info@gmail.com &nbsp;·&nbsp; +34 614 374 306</div>
