@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Galiana — Bienestar para tu empresa</title>
-<meta name="description" content="La Galiana, incrustada en su propia pantalla.">
-<link rel="preload" as="image" href="assets/img/spa-piscina-cine.webp" fetchpriority="high">
+<meta name="description" content="La Galiana al amanecer, incrustada en su propia pantalla.">
+<link rel="preload" as="image" href="assets/img/amanecer-hotel-cine.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --sala:#0a0a09;
@@ -54,8 +57,8 @@
   }
 
   /* la imagen vive detrás de todo, discreta, para dar aire a la sala */
-  .pantalla__fondo{ position:absolute; inset:0; z-index:0; }
-  .pantalla__fondo img{ width:100%; height:100%; object-fit:cover; object-position:50% 75%; opacity:.34; filter:saturate(1.1) contrast(1.05); }
+  .pantalla__fondo{ position:absolute; inset:0; z-index:0; overflow:hidden; }
+  .pantalla__fondo img{ width:100%; height:100%; object-fit:cover; object-position:50% 62%; opacity:.4; filter:saturate(1.1) contrast(1.05); transform-origin:50% 55%; will-change:transform; }
   .pantalla__velo{
     position:absolute; inset:0; z-index:1;
     background: linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.15) 45%, rgba(0,0,0,.5) 100%);
@@ -68,11 +71,13 @@
     text-align:center; padding:6% 4%;
   }
   .marca{
+    position:relative;
     margin:0;
-    font-weight:400;
-    font-size:clamp(2.6rem, 15vw, 4.6rem);
-    line-height:.92;
-    letter-spacing:.02em;
+    font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+    font-weight:500;
+    font-size:clamp(2.5rem, 14.5vw, 4.5rem);
+    line-height:.94;
+    letter-spacing:.5em;
     background-image: var(--img-marca);
     background-size: 280% auto;
     background-position: 50% 78%;
@@ -82,15 +87,37 @@
     color: rgba(255,255,255,.06); /* respaldo si el navegador no soporta el recorte */
     -webkit-text-fill-color:transparent;
     clip-path: inset(0 100% 0 0);
+    filter: blur(14px);
   }
   .marca span{ display:block; }
 
+  /* brillo que recorre el texto en bucle, recortado a las mismas letras */
+  .marca-brillo{
+    position:absolute; inset:0;
+    font-family:"Playfair Display", Georgia, serif; font-weight:500; font-size:inherit; line-height:.94; letter-spacing:.01em;
+    margin:0; text-align:center;
+    background-image: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.9) 47%, rgba(255,255,255,.9) 53%, transparent 70%);
+    background-size: 260% 260%;
+    background-position: 130% 50%;
+    background-repeat:no-repeat;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+    mix-blend-mode:overlay;
+    opacity:0;
+    pointer-events:none;
+  }
+  .marca-brillo span{ display:block; visibility:hidden; }
+  .marca-brillo span::before{ content:attr(data-t); visibility:visible; }
+
   .subtitulo{
     position:relative; z-index:2;
-    margin:1.1em 0 0;
+    margin:1.3em 0 0;
+    font-family:"Cormorant Garamond", Georgia, serif;
     font-style:italic; font-weight:400;
-    font-size:clamp(.85rem, 2.6vw, 1.05rem);
-    letter-spacing:.07em;
+    font-size:clamp(1rem, 3vw, 1.3rem);
+    letter-spacing:.09em;
     color:var(--sub);
     opacity:0; transform:translateY(10px);
   }
@@ -113,11 +140,14 @@
 
 <section class="sala">
   <div class="sala__pin">
-    <div class="pantalla" data-pantalla style="--img-marca:url('assets/img/spa-piscina-cine.webp')">
-      <div class="pantalla__fondo"><img src="assets/img/spa-piscina-cine.webp" alt="Piscina interior de La Galiana frente a la montaña" fetchpriority="high" decoding="async"></div>
+    <div class="pantalla" data-pantalla style="--img-marca:url('assets/img/amanecer-hotel-cine.webp')">
+      <div class="pantalla__fondo"><img src="assets/img/amanecer-hotel-cine.webp" alt="Fachada de La Galiana al amanecer" fetchpriority="high" decoding="async"></div>
       <div class="pantalla__velo" aria-hidden="true"></div>
       <div class="marca-wrap">
-        <h1 class="marca" data-marca aria-label="La Galiana"><span>LA</span><span>GALIANA</span></h1>
+        <div style="position:relative;">
+          <h1 class="marca" data-marca aria-label="La Galiana"><span>LA</span><span>GALIANA</span></h1>
+          <h1 class="marca-brillo" data-brillo aria-hidden="true"><span data-t="LA"></span><span data-t="GALIANA"></span></h1>
+        </div>
         <p class="subtitulo" data-subtitulo>Bienestar para tu empresa</p>
       </div>
       <div class="parpadeo" data-parpadeo aria-hidden="true"></div>
@@ -144,7 +174,9 @@
 
   function initCine() {
     var pantalla = document.querySelector("[data-pantalla]");
+    var fondoImg = document.querySelector(".pantalla__fondo img");
     var marca = document.querySelector("[data-marca]");
+    var brillo = document.querySelector("[data-brillo]");
     var sub = document.querySelector("[data-subtitulo]");
     var parpadeo = document.querySelector("[data-parpadeo]");
     if (!pantalla) return;
@@ -154,6 +186,19 @@
     function open() {
       gsap.to(pantalla, { opacity: 1, scale: 1, duration: 1.1, ease: "power3.out" });
       gsap.fromTo(parpadeo, { opacity: 0 }, { opacity: 0.5, duration: 0.06, repeat: 3, yoyo: true, delay: 0.15 });
+
+      // el brillo recorre el nombre en bucle, discreto, en cuanto la sala está encendida
+      if (brillo) {
+        gsap.set(brillo, { opacity: 1 });
+        gsap.to(brillo, {
+          backgroundPosition: "-40% 50%",
+          duration: 3.6,
+          ease: "power1.inOut",
+          repeat: -1,
+          repeatDelay: 2.2,
+          delay: 1.4
+        });
+      }
     }
     if (img && img.decode) { img.decode().then(open).catch(open); } else { open(); }
 
@@ -169,15 +214,24 @@
       }
     });
 
-    // la imagen respira dentro de las letras mientras se revela el nombre
+    // el dron se acerca durante todo el recorrido: la foto de fondo y la
+    // que vive dentro de las letras avanzan juntas, al mismo ritmo
+    if (fondoImg) {
+      tl.fromTo(fondoImg, { scale: 1 }, { scale: 1.38, ease: "none" }, 0);
+    }
     tl.fromTo(marca,
-      { clipPath: "inset(0 100% 0 0)", backgroundPosition: "62% 88%" },
-      { clipPath: "inset(0 0% 0 0)", backgroundPosition: "50% 78%", ease: "none" }, 0.05);
+      { backgroundSize: "280% auto" },
+      { backgroundSize: "410% auto", ease: "none" }, 0);
+
+    // el nombre entra desenfocado y con el tracking abierto, como si enfocara el objetivo
+    tl.fromTo(marca,
+      { clipPath: "inset(0 100% 0 0)", backgroundPosition: "62% 74%", filter: "blur(14px)", letterSpacing: "0.5em" },
+      { clipPath: "inset(0 0% 0 0)", backgroundPosition: "50% 66%", filter: "blur(0px)", letterSpacing: "0.01em", ease: "none" }, 0.05);
 
     tl.fromTo(sub, { opacity: 0, y: 10 }, { opacity: 1, y: 0, ease: "none" }, 0.42);
 
     // leve deriva continua de la foto, como si siguiera grabando
-    tl.to(marca, { backgroundPosition: "38% 66%", ease: "none" }, 0.55);
+    tl.to(marca, { backgroundPosition: "44% 56%", ease: "none" }, 0.55);
 
     // hacia el final, la pantalla se aleja y la sala vuelve a quedar a oscuras
     tl.to(pantalla, { scale: 0.92, opacity: 0, ease: "none" }, 0.85);
