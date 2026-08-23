@@ -34,13 +34,14 @@
     overflow:hidden;
   }
 
-  /* la pantalla: marco vertical, tipo cine/story */
+  /* la pantalla: marco panorámico, tipo cine */
   .pantalla{
     position:relative;
-    width:min(84vw, 46svh);
-    aspect-ratio: 9 / 16;
-    max-height:88svh;
-    border-radius:10px;
+    width:min(92vw, 166svh);
+    max-width:1400px;
+    aspect-ratio: 21 / 9;
+    max-height:82svh;
+    border-radius:6px;
     overflow:hidden;
     background:#000;
     box-shadow:
@@ -73,10 +74,11 @@
   .marca{
     position:relative;
     margin:0;
+    display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:.32em;
     font-family:"Playfair Display", Georgia, "Times New Roman", serif;
     font-weight:500;
-    font-size:clamp(2.5rem, 14.5vw, 4.5rem);
-    line-height:.94;
+    font-size:clamp(1.9rem, 8svh, 4.2rem);
+    line-height:1;
     letter-spacing:.5em;
     background-image: var(--img-marca);
     background-size: 280% auto;
@@ -89,12 +91,13 @@
     clip-path: inset(0 100% 0 0);
     filter: blur(14px);
   }
-  .marca span{ display:block; }
+  .marca span{ display:inline-block; }
 
   /* brillo que recorre el texto en bucle, recortado a las mismas letras */
   .marca-brillo{
     position:absolute; inset:0;
-    font-family:"Playfair Display", Georgia, serif; font-weight:500; font-size:inherit; line-height:.94; letter-spacing:.01em;
+    display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:.32em;
+    font-family:"Playfair Display", Georgia, serif; font-weight:500; font-size:inherit; line-height:1; letter-spacing:.01em;
     margin:0; text-align:center;
     background-image: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.9) 47%, rgba(255,255,255,.9) 53%, transparent 70%);
     background-size: 260% 260%;
@@ -108,7 +111,7 @@
     opacity:0;
     pointer-events:none;
   }
-  .marca-brillo span{ display:block; visibility:hidden; }
+  .marca-brillo span{ display:inline-block; visibility:hidden; }
   .marca-brillo span::before{ content:attr(data-t); visibility:visible; }
 
   .subtitulo{
