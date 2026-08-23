@@ -130,6 +130,24 @@
   footer{padding:50px 40px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);flex-wrap:wrap;gap:20px;}
   .foot-mark{font-family:'Space Grotesk';font-weight:700;font-size:2.6rem;letter-spacing:-.03em;text-transform:uppercase;}
   footer .small{font-size:.75rem;color:var(--muted);}
+
+  /* WAYPOINT NAV — "estás aquí" */
+  .waypoints{position:fixed;right:34px;top:50%;transform:translateY(-50%);z-index:300;display:flex;flex-direction:column;align-items:flex-end;gap:0;opacity:0;transition:opacity .5s ease;pointer-events:none;}
+  .waypoints.show{opacity:1;pointer-events:auto;}
+  .wp-item{display:flex;align-items:center;gap:12px;padding:9px 0;cursor:pointer;}
+  .wp-label{font-family:'Space Grotesk';font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);white-space:nowrap;max-width:0;overflow:hidden;opacity:0;transition:max-width .35s ease, opacity .3s ease;}
+  .wp-item:hover .wp-label,.wp-item.active .wp-label{max-width:140px;opacity:1;}
+  .wp-item.active .wp-label{color:var(--gold);}
+  .wp-dot-col{position:relative;width:9px;height:9px;}
+  .wp-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--line);background:var(--bg);transition:all .3s ease;}
+  .wp-item.active .wp-dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(207,165,68,.18);}
+  .wp-track{position:absolute;top:9px;right:4px;width:1px;height:calc(100% + 0px);background:var(--line);z-index:-1;}
+  .wp-item:last-child .wp-track{display:none;}
+  @media(max-width:760px){.waypoints{display:none;}}
+
+  /* MINI WAYFINDER inside each section — "estás aquí" contextual */
+  .here{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk';font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:14px;}
+  .here::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite;}
 </style>
 </head>
 <body>
@@ -143,6 +161,15 @@
   </div>
   <a href="#reserva" class="nav-mark">Reservar →</a>
 </nav>
+
+<div class="waypoints" id="waypoints">
+  <div class="wp-item" data-target="yoga"><span class="wp-label">Yoga</span><div class="wp-dot-col"><div class="wp-dot"></div><div class="wp-track"></div></div></div>
+  <div class="wp-item" data-target="golf"><span class="wp-label">Golf</span><div class="wp-dot-col"><div class="wp-dot"></div><div class="wp-track"></div></div></div>
+  <div class="wp-item" data-target="piscina"><span class="wp-label">Piscina</span><div class="wp-dot-col"><div class="wp-dot"></div><div class="wp-track"></div></div></div>
+  <div class="wp-item" data-target="almuerzo"><span class="wp-label">Almuerzo</span><div class="wp-dot-col"><div class="wp-dot"></div><div class="wp-track"></div></div></div>
+  <div class="wp-item" data-target="spa"><span class="wp-label">Spa</span><div class="wp-dot-col"><div class="wp-dot"></div><div class="wp-track"></div></div></div>
+  <div class="wp-item" data-target="cena"><span class="wp-label">Cena</span><div class="wp-dot-col"><div class="wp-dot"></div><div class="wp-track"></div></div></div>
+</div>
 
 <section class="hero">
   <div class="wrap">
@@ -169,6 +196,7 @@
 
   <div class="stmt" id="yoga">
     <div class="wrap">
+      <div class="here">Estás en · Terraza de yoga</div>
       <div class="stmt-head">
         <span class="stmt-index"><em>01</em> / 06 — Amanecer</span>
         <span class="stmt-time">08:00 — 09:15</span>
@@ -189,6 +217,7 @@
 
   <div class="stmt" id="golf">
     <div class="wrap">
+      <div class="here">Estás en · Campo de golf</div>
       <div class="stmt-head">
         <span class="stmt-index"><em>02</em> / 06 — Deporte</span>
         <span class="stmt-time">09:45 — 11:30</span>
@@ -209,6 +238,7 @@
 
   <div class="stmt" id="piscina">
     <div class="wrap">
+      <div class="here">Estás en · Piscina</div>
       <div class="stmt-head">
         <span class="stmt-index"><em>03</em> / 06 — Relax</span>
         <span class="stmt-time">12:00 — 13:30</span>
@@ -229,6 +259,7 @@
 
   <div class="stmt" id="almuerzo">
     <div class="wrap">
+      <div class="here">Estás en · Terraza del restaurante</div>
       <div class="stmt-head">
         <span class="stmt-index"><em>04</em> / 06 — Gastronomía</span>
         <span class="stmt-time">13:45 — 15:15</span>
@@ -249,6 +280,7 @@
 
   <div class="stmt" id="spa">
     <div class="wrap">
+      <div class="here">Estás en · Circuito spa</div>
       <div class="stmt-head">
         <span class="stmt-index"><em>05</em> / 06 — Descanso</span>
         <span class="stmt-time">15:30 — 17:30</span>
@@ -269,6 +301,7 @@
 
   <div class="stmt" id="cena">
     <div class="wrap">
+      <div class="here">Estás en · Cena de gala</div>
       <div class="stmt-head">
         <span class="stmt-index"><em>06</em> / 06 — Cierre</span>
         <span class="stmt-time">21:00 — 23:30</span>
@@ -384,6 +417,38 @@
     });
   }, {threshold:0.2});
   revealEls.forEach(el => io.observe(el));
+
+  // Waypoint nav — muestra dónde estás y permite saltar de sección
+  const waypoints = document.getElementById('waypoints');
+  const wpItems = document.querySelectorAll('.wp-item');
+  const sections = ['yoga','golf','piscina','almuerzo','spa','cena'].map(id => document.getElementById(id));
+
+  wpItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = document.getElementById(item.dataset.target);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  const wpObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const item = document.querySelector(`.wp-item[data-target="${id}"]`);
+      if(!item) return;
+      if(entry.isIntersecting){
+        wpItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      }
+    });
+  }, {threshold:0.5});
+  sections.forEach(s => s && wpObserver.observe(s));
+
+  // Mostrar el nav solo mientras se recorre el programa (no en hero ni CTA final)
+  const programSection = document.getElementById('programa');
+  const showObserver = new IntersectionObserver(([entry]) => {
+    waypoints.classList.toggle('show', entry.isIntersecting);
+  }, {threshold:0.05});
+  showObserver.observe(programSection);
 </script>
 
 </body>
