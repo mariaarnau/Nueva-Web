@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Galiana — Bienestar para tu empresa</title>
+<meta name="description" content="La Galiana, vista desde el aire.">
+<link rel="preload" as="image" href="assets/img/exteriores-vista-aerea.webp" fetchpriority="high">
+<style>
+  :root{ --ink:#0b0c0a; }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; background:#000; }
+  body{ font-family: Georgia, "Times New Roman", serif; }
+  img{ display:block; max-width:100%; }
+
+  .escena{ position:relative; height:320vh; background:#000; }
+  .escena__pin{ position:sticky; top:0; height:100svh; overflow:hidden; }
+
+  .fondo{ position:absolute; inset:0; }
+  .fondo img{
+    width:100%; height:100%; object-fit:cover;
+    transform-origin:52% 46%;
+    will-change:transform;
+  }
+
+  .velo{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%);
+    pointer-events:none;
+  }
+  .grano{
+    position:absolute; inset:0; opacity:.08; mix-blend-mode:overlay; pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  .texto{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; color:#f6f3ec; pointer-events:none;
+  }
+
+  .marca{
+    display:flex; gap:.14em;
+    font-weight:400;
+    font-size:clamp(2.4rem, 7vw, 6.5rem);
+    letter-spacing:.12em;
+    line-height:1;
+  }
+  .marca .letra{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(28px);
+  }
+
+  .subtitulo{
+    margin-top:1.6rem;
+    font-family: Georgia, serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1rem, 2vw, 1.4rem);
+    letter-spacing:.06em;
+    color:#e7e1d2;
+    opacity:0;
+    transform:translateY(14px);
+  }
+
+  .linea{
+    position:absolute; bottom:8vh; left:50%; width:1px; height:44px;
+    background:rgba(255,255,255,.3); transform:translateX(-50%);
+    opacity:0;
+  }
+  .linea::after{
+    content:""; position:absolute; left:0; top:0; width:100%; height:0%;
+    background:#fff; animation:crecer 2.6s ease-in-out infinite;
+  }
+  @keyframes crecer{
+    0%{ height:0%; top:0; } 50%{ height:100%; top:0; }
+    51%{ height:100%; top:0; } 100%{ height:0%; top:100%; }
+  }
+</style>
+</head>
+<body>
+
+<section class="escena">
+  <div class="escena__pin">
+    <div class="fondo" data-fondo>
+      <img src="assets/img/exteriores-vista-aerea.webp" width="1200" height="899"
+           alt="Vista aérea de La Galiana entre montañas y campo de golf"
+           fetchpriority="high" decoding="async">
+    </div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="grano" aria-hidden="true"></div>
+
+    <div class="texto">
+      <h1 class="marca" data-marca aria-label="La Galiana">
+        <span class="letra">L</span><span class="letra">A</span><span class="letra">&nbsp;</span><span class="letra">G</span><span class="letra">A</span><span class="letra">L</span><span class="letra">I</span><span class="letra">A</span><span class="letra">N</span><span class="letra">A</span>
+      </h1>
+      <p class="subtitulo" data-subtitulo>Bienestar para tu empresa</p>
+    </div>
+
+    <div class="linea" data-linea aria-hidden="true"></div>
+  </div>
+</section>
+
+<script defer src="lib/gsap/gsap.min.js?v=20260823"></script>
+<script defer src="lib/gsap/ScrollTrigger.min.js?v=20260823"></script>
+<script defer>
+(function(){
+  "use strict";
+  function safe(fn,name){ try{ fn(); }catch(e){ console.error("["+name+"]", e); } }
+
+  function ready(fn){
+    if(document.readyState!=="loading") fn();
+    else document.addEventListener("DOMContentLoaded", fn);
+  }
+
+  function initEngine(){
+    if(!window.gsap||!window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+    window.addEventListener("load", function(){ ScrollTrigger.refresh(); });
+  }
+
+  function initDron(){
+    var img = document.querySelector("[data-fondo] img");
+    var marca = document.querySelectorAll("[data-marca] .letra");
+    var sub = document.querySelector("[data-subtitulo]");
+    var linea = document.querySelector("[data-linea]");
+    if(!img) return;
+
+    function open(){
+      // apertura al cargar: el titular no está ahí hasta que la imagen existe
+      gsap.to(linea, { opacity:1, duration:.8, delay:.4 });
+    }
+    if(img.decode){ img.decode().then(open).catch(open); } else { open(); }
+
+    if(!window.gsap||!window.ScrollTrigger) return;
+
+    var tl = gsap.timeline({
+      scrollTrigger:{
+        trigger:".escena",
+        start:"top top",
+        end:"bottom bottom",
+        scrub:0.7,
+        invalidateOnRefresh:true
+      }
+    });
+
+    // el dron desciende y se acerca: escala + leve deriva hacia el edificio
+    tl.fromTo(img,
+      { scale:1, yPercent:0, xPercent:0 },
+      { scale:1.55, yPercent:-6, xPercent:-2, ease:"none" }, 0);
+
+    // las letras de LA GALIANA aparecen una a una, elegantes
+    tl.fromTo(marca,
+      { opacity:0, y:28 },
+      { opacity:1, y:0, ease:"none", stagger:{ each:0.045 } }, 0.12);
+
+    // el subtítulo llega después, cuando el titular ya se lee
+    tl.fromTo(sub,
+      { opacity:0, y:14 },
+      { opacity:1, y:0, ease:"none" }, 0.34);
+
+    // hacia el final del recorrido el texto se retira, dejando la imagen
+    tl.to([marca, sub], { opacity:0, y:-18, ease:"none" }, 0.78);
+    tl.to(linea, { opacity:0, ease:"none" }, 0.05);
+  }
+
+  ready(function(){
+    safe(initEngine, "initEngine");
+    safe(initDron, "initDron");
+  });
+})();
+</script>
+</body>
+</html>
