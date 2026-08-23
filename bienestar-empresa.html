@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Galiana — Bienestar para tu empresa</title>
-<meta name="description" content="La Galiana al amanecer, incrustada en su propia pantalla.">
-<link rel="preload" as="image" href="assets/img/amanecer-hotel-cine.webp" fetchpriority="high">
+<meta name="description" content="La Galiana, incrustada en su propia pantalla.">
+<link rel="preload" as="image" href="assets/img/golf-panoramica-cine.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
@@ -13,7 +13,6 @@
   :root{
     --sala:#0a0a09;
     --sala-2:#050504;
-    --marco:#1c1a15;
     --brillo: rgba(246,238,214,.14);
     --sub:#cfc6ae;
   }
@@ -30,7 +29,8 @@
   }
   .sala__pin{
     position:sticky; top:0; height:100svh;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:1.6rem;
     overflow:hidden;
   }
 
@@ -40,7 +40,7 @@
     width:min(92vw, 166svh);
     max-width:1400px;
     aspect-ratio: 21 / 9;
-    max-height:82svh;
+    max-height:76svh;
     border-radius:6px;
     overflow:hidden;
     background:#000;
@@ -59,7 +59,7 @@
 
   /* la imagen vive detrás de todo, discreta, para dar aire a la sala */
   .pantalla__fondo{ position:absolute; inset:0; z-index:0; overflow:hidden; }
-  .pantalla__fondo img{ width:100%; height:100%; object-fit:cover; object-position:50% 62%; opacity:.4; filter:saturate(1.1) contrast(1.05); transform-origin:50% 55%; will-change:transform; }
+  .pantalla__fondo img{ width:100%; height:100%; object-fit:cover; object-position:50% 56%; opacity:.4; filter:saturate(1.1) contrast(1.05); transform-origin:50% 52%; will-change:transform; }
   .pantalla__velo{
     position:absolute; inset:0; z-index:1;
     background: linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.15) 45%, rgba(0,0,0,.5) 100%);
@@ -82,7 +82,7 @@
     letter-spacing:.5em;
     background-image: var(--img-marca);
     background-size: 280% auto;
-    background-position: 50% 78%;
+    background-position: 50% 60%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;
     background-clip:text;
@@ -92,27 +92,6 @@
     filter: blur(14px);
   }
   .marca span{ display:inline-block; }
-
-  /* brillo que recorre el texto en bucle, recortado a las mismas letras */
-  .marca-brillo{
-    position:absolute; inset:0;
-    display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:.32em;
-    font-family:"Playfair Display", Georgia, serif; font-weight:500; font-size:inherit; line-height:1; letter-spacing:.01em;
-    margin:0; text-align:center;
-    background-image: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.9) 47%, rgba(255,255,255,.9) 53%, transparent 70%);
-    background-size: 260% 260%;
-    background-position: 130% 50%;
-    background-repeat:no-repeat;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    -webkit-text-fill-color:transparent;
-    mix-blend-mode:overlay;
-    opacity:0;
-    pointer-events:none;
-  }
-  .marca-brillo span{ display:inline-block; visibility:hidden; }
-  .marca-brillo span::before{ content:attr(data-t); visibility:visible; }
 
   .subtitulo{
     position:relative; z-index:2;
@@ -131,11 +110,35 @@
   }
 
   .aviso{
-    position:fixed; left:50%; bottom:3.2svh; transform:translateX(-50%);
-    z-index:9; color:rgba(255,255,255,.4);
+    color:rgba(255,255,255,.4);
     font-family:-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
     pointer-events:none;
+    order: 3;
+  }
+
+  /* controles de exportación en vídeo */
+  .exportar{
+    display:flex; flex-direction:column; align-items:center; gap:.5rem;
+    order:2;
+  }
+  .exportar button{
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:.75rem; letter-spacing:.05em; text-transform:uppercase;
+    color:#f6f3ec; background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.25); border-radius:999px;
+    padding:.6em 1.3em; cursor:pointer;
+  }
+  .exportar button:hover{ background:rgba(255,255,255,.16); }
+  .exportar button:disabled{ opacity:.5; cursor:progress; }
+  .exportar a{
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:.75rem; letter-spacing:.05em;
+    color:#cfe8c9; text-decoration:underline;
+  }
+  .exportar__nota{
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:.66rem; color:rgba(255,255,255,.35); text-align:center; max-width:32ch;
   }
 </style>
 </head>
@@ -143,22 +146,26 @@
 
 <section class="sala">
   <div class="sala__pin">
-    <div class="pantalla" data-pantalla style="--img-marca:url('assets/img/amanecer-hotel-cine.webp')">
-      <div class="pantalla__fondo"><img src="assets/img/amanecer-hotel-cine.webp" alt="Fachada de La Galiana al amanecer" fetchpriority="high" decoding="async"></div>
+    <div class="pantalla" data-pantalla style="--img-marca:url('assets/img/golf-panoramica-cine.webp')">
+      <div class="pantalla__fondo"><img src="assets/img/golf-panoramica-cine.webp" alt="La Galiana entre montañas, con el campo de golf y el estanque en primer término" fetchpriority="high" decoding="async"></div>
       <div class="pantalla__velo" aria-hidden="true"></div>
       <div class="marca-wrap">
-        <div style="position:relative;">
-          <h1 class="marca" data-marca aria-label="La Galiana"><span>LA</span><span>GALIANA</span></h1>
-          <h1 class="marca-brillo" data-brillo aria-hidden="true"><span data-t="LA"></span><span data-t="GALIANA"></span></h1>
-        </div>
+        <h1 class="marca" data-marca aria-label="La Galiana"><span>LA</span><span>GALIANA</span></h1>
         <p class="subtitulo" data-subtitulo>Bienestar para tu empresa</p>
       </div>
       <div class="parpadeo" data-parpadeo aria-hidden="true"></div>
       <div class="pantalla__marco" aria-hidden="true"></div>
     </div>
+
+    <div class="exportar">
+      <button type="button" data-generar>Generar vídeo (7 s)</button>
+      <p class="exportar__nota" data-nota>Graba la secuencia en tiempo real y prepara un .webm para descargar.</p>
+    </div>
   </div>
 </section>
-<p class="aviso">Desplázate</p>
+<p class="aviso" style="position:fixed; left:50%; bottom:2.4svh; transform:translateX(-50%); z-index:9;">Desplázate</p>
+
+<canvas data-canvas style="display:none;"></canvas>
 
 <script defer src="lib/gsap/gsap.min.js?v=20260823"></script>
 <script defer src="lib/gsap/ScrollTrigger.min.js?v=20260823"></script>
@@ -179,7 +186,6 @@
     var pantalla = document.querySelector("[data-pantalla]");
     var fondoImg = document.querySelector(".pantalla__fondo img");
     var marca = document.querySelector("[data-marca]");
-    var brillo = document.querySelector("[data-brillo]");
     var sub = document.querySelector("[data-subtitulo]");
     var parpadeo = document.querySelector("[data-parpadeo]");
     if (!pantalla) return;
@@ -189,19 +195,6 @@
     function open() {
       gsap.to(pantalla, { opacity: 1, scale: 1, duration: 1.1, ease: "power3.out" });
       gsap.fromTo(parpadeo, { opacity: 0 }, { opacity: 0.5, duration: 0.06, repeat: 3, yoyo: true, delay: 0.15 });
-
-      // el brillo recorre el nombre en bucle, discreto, en cuanto la sala está encendida
-      if (brillo) {
-        gsap.set(brillo, { opacity: 1 });
-        gsap.to(brillo, {
-          backgroundPosition: "-40% 50%",
-          duration: 3.6,
-          ease: "power1.inOut",
-          repeat: -1,
-          repeatDelay: 2.2,
-          delay: 1.4
-        });
-      }
     }
     if (img && img.decode) { img.decode().then(open).catch(open); } else { open(); }
 
@@ -228,21 +221,200 @@
 
     // el nombre entra desenfocado y con el tracking abierto, como si enfocara el objetivo
     tl.fromTo(marca,
-      { clipPath: "inset(0 100% 0 0)", backgroundPosition: "62% 74%", filter: "blur(14px)", letterSpacing: "0.5em" },
-      { clipPath: "inset(0 0% 0 0)", backgroundPosition: "50% 66%", filter: "blur(0px)", letterSpacing: "0.01em", ease: "none" }, 0.05);
+      { clipPath: "inset(0 100% 0 0)", backgroundPosition: "62% 68%", filter: "blur(14px)", letterSpacing: "0.5em" },
+      { clipPath: "inset(0 0% 0 0)", backgroundPosition: "50% 60%", filter: "blur(0px)", letterSpacing: "0.01em", ease: "none" }, 0.05);
 
     tl.fromTo(sub, { opacity: 0, y: 10 }, { opacity: 1, y: 0, ease: "none" }, 0.42);
 
     // leve deriva continua de la foto, como si siguiera grabando
-    tl.to(marca, { backgroundPosition: "44% 56%", ease: "none" }, 0.55);
+    tl.to(marca, { backgroundPosition: "44% 52%", ease: "none" }, 0.55);
 
     // hacia el final, la pantalla se aleja y la sala vuelve a quedar a oscuras
     tl.to(pantalla, { scale: 0.92, opacity: 0, ease: "none" }, 0.85);
   }
 
+  /* ---------------- Exportar en vídeo (canvas + MediaRecorder) ---------------- */
+  function initExportar() {
+    var boton = document.querySelector("[data-generar]");
+    var nota = document.querySelector("[data-nota]");
+    var canvas = document.querySelector("[data-canvas]");
+    if (!boton || !canvas) return;
+    if (typeof MediaRecorder === "undefined" || !canvas.captureStream) {
+      boton.disabled = true;
+      boton.textContent = "Exportación no disponible en este navegador";
+      return;
+    }
+
+    var W = 1680, H = Math.round(W * 9 / 21);
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext("2d");
+    var DURATION = 7000;
+
+    var srcImg = new Image();
+    srcImg.src = "assets/img/golf-panoramica-cine.webp";
+
+    function cover(iw, ih, cw, ch, scale, posX, posY) {
+      var s = Math.max(cw / iw, ch / ih) * scale;
+      var dw = iw * s, dh = ih * s;
+      var dx = (cw - dw) * posX;
+      var dy = (ch - dh) * posY;
+      return { dx: dx, dy: dy, dw: dw, dh: dh };
+    }
+
+    function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+    function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function drawTextLetters(c, w, h, gap, sizePx, alignY) {
+      var words = ["LA", "GALIANA"];
+      c.font = '500 ' + sizePx + 'px "Playfair Display", Georgia, serif';
+      c.textBaseline = "alphabetic";
+      var lineGap = sizePx * 0.42;
+      var lineWidths = words.map(function (w2) {
+        var chars = w2.split("");
+        var total = 0;
+        chars.forEach(function (ch2) { total += c.measureText(ch2).width + gap; });
+        return total - gap;
+      });
+      var totalH = sizePx * words.length + lineGap * (words.length - 1);
+      var y = h * alignY - totalH / 2 + sizePx * 0.78;
+      words.forEach(function (w2, li) {
+        var lw = lineWidths[li];
+        var x = (w - lw) / 2;
+        w2.split("").forEach(function (ch2) {
+          c.fillText(ch2, x, y);
+          x += c.measureText(ch2).width + gap;
+        });
+        y += sizePx + lineGap;
+      });
+    }
+
+    function drawFrame(t) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#050504";
+      ctx.fillRect(0, 0, W, H);
+
+      var scale = lerp(1, 1.38, t);
+      var geo = cover(srcImg.naturalWidth, srcImg.naturalHeight, W, H, scale, 0.5, 0.56);
+
+      // capa de fondo, tenue
+      ctx.save();
+      ctx.globalAlpha = 0.4;
+      ctx.filter = "saturate(1.1) contrast(1.05)";
+      ctx.drawImage(srcImg, geo.dx, geo.dy, geo.dw, geo.dh);
+      ctx.restore();
+
+      // viñeta
+      var grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, "rgba(0,0,0,.08)");
+      grad.addColorStop(0.45, "rgba(0,0,0,.15)");
+      grad.addColorStop(1, "rgba(0,0,0,.5)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+
+      // apertura: fundido inicial
+      var openT = clamp01(t / 0.12);
+      ctx.save();
+      ctx.globalAlpha = 1;
+
+      // texto: revelado + enfoque + tracking, con la foto incrustada
+      var revealT = clamp01((t - 0.03) / 0.42);
+      var revealEase = easeInOut(revealT);
+      var blurPx = lerp(11, 0, revealEase);
+      var gap = lerp(26, 1, revealEase);
+      var sizePx = H * 0.24;
+
+      var mask = document.createElement("canvas");
+      mask.width = W; mask.height = H;
+      var mctx = mask.getContext("2d");
+      mctx.filter = "blur(" + blurPx.toFixed(1) + "px)";
+      mctx.fillStyle = "#fff";
+      mctx.save();
+      mctx.beginPath();
+      mctx.rect(0, 0, W * revealT, H);
+      mctx.clip();
+      drawTextLetters(mctx, W, H, gap, sizePx, 0.44);
+      mctx.restore();
+
+      mctx.globalCompositeOperation = "source-in";
+      mctx.filter = "saturate(1.15) contrast(1.08) brightness(1.05)";
+      mctx.drawImage(srcImg, geo.dx, geo.dy, geo.dw, geo.dh);
+
+      ctx.globalAlpha = lerp(0, 1, openT);
+      ctx.drawImage(mask, 0, 0);
+      ctx.restore();
+
+      // subtítulo
+      var subT = clamp01((t - 0.4) / 0.16);
+      if (subT > 0) {
+        ctx.save();
+        ctx.globalAlpha = subT;
+        ctx.fillStyle = "#cfc6ae";
+        ctx.font = 'italic 400 ' + (H * 0.052) + 'px "Cormorant Garamond", Georgia, serif';
+        ctx.textAlign = "center";
+        ctx.translate(0, (1 - subT) * 10);
+        ctx.fillText("Bienestar para tu empresa", W / 2, H * 0.7);
+        ctx.restore();
+      }
+
+      // cierre: se apaga suavemente al final
+      var closeT = clamp01((t - 0.88) / 0.12);
+      if (closeT > 0) {
+        ctx.fillStyle = "rgba(5,5,4," + closeT + ")";
+        ctx.fillRect(0, 0, W, H);
+      }
+    }
+
+    function generar() {
+      boton.disabled = true;
+      boton.textContent = "Grabando…";
+      nota.textContent = "No cierres ni cambies de pestaña mientras se graba.";
+
+      var mimeType = "video/webm;codecs=vp9";
+      if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = "video/webm;codecs=vp8";
+      if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = "video/webm";
+
+      var stream = canvas.captureStream(30);
+      var rec = new MediaRecorder(stream, { mimeType: mimeType, videoBitsPerSecond: 6000000 });
+      var chunks = [];
+      rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+      rec.onstop = function () {
+        var blob = new Blob(chunks, { type: mimeType });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "la-galiana-bienestar-empresa.webm";
+        a.textContent = "Descargar vídeo (.webm)";
+        nota.textContent = "";
+        boton.remove();
+        document.querySelector(".exportar").insertBefore(a, nota);
+      };
+
+      rec.start();
+      var start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var t = clamp01((ts - start) / DURATION);
+        drawFrame(t);
+        if (t < 1) {
+          requestAnimationFrame(step);
+        } else {
+          setTimeout(function () { rec.stop(); }, 60);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function ready2() {
+      boton.addEventListener("click", generar);
+    }
+    if (srcImg.decode) { srcImg.decode().then(ready2).catch(ready2); } else { srcImg.onload = ready2; }
+  }
+
   ready(function () {
     safe(initEngine, "initEngine");
     safe(initCine, "initCine");
+    safe(initExportar, "initExportar");
   });
 })();
 </script>
