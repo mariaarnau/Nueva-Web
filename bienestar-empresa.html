@@ -162,74 +162,67 @@
     text-align:center;
   }
 
-  .itinerario{
-    position:relative;
-    background:#030302;
-    padding:2vh 6vw 14vh;
-  }
+  .itinerario{ position:relative; background:#030302; }
   .itinerario__titulo{
-    text-align:center; margin:0 0 6vh;
+    height:46svh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
     font-family:"Playfair Display", Georgia, serif; font-weight:500;
     font-size:clamp(2rem, 5vw, 3.2rem); color:#f6f3ec;
     letter-spacing:.01em;
   }
 
-  .itinerario__track{ position:relative; max-width:920px; margin:0 auto; }
-  .itinerario__linea{
-    position:absolute; left:15px; top:6px; bottom:6px; width:1px;
-    background:rgba(255,255,255,.12);
-  }
-  .itinerario__linea-fill{
-    position:absolute; left:0; top:0; width:100%; height:100%;
-    background:linear-gradient(to bottom, var(--sub), rgba(207,198,174,.2));
-    transform:scaleY(0); transform-origin:top;
-  }
-
-  .momento2{
+  /* cada momento: foto a sangre, hora+título arriba, texto abajo, como la portada */
+  .momento3{
     position:relative;
-    display:grid;
-    grid-template-columns:32px 1fr;
-    grid-template-areas:
-      "punto hora"
-      ".     contenido";
-    gap:.4em 1.2rem;
-    padding:0 0 5.5vh;
-    opacity:0; transform:translateY(22px);
+    height:100svh;
+    overflow:hidden;
+    display:flex; flex-direction:column; justify-content:space-between;
   }
-  .momento2.is-visible{ opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease; }
-  .momento2__punto{
-    grid-area:punto;
-    width:9px; height:9px; border-radius:50%; background:var(--sub);
-    margin-top:9px; box-shadow:0 0 0 4px rgba(3,3,2,1), 0 0 14px 2px rgba(207,198,174,.35);
+  .momento3__fondo{ position:absolute; inset:0; z-index:0; }
+  .momento3__fondo img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.08) contrast(1.04);
+    transform:scale(1.12);
+    will-change:transform;
   }
-  .momento2__hora{
-    grid-area:hora;
-    font-family:"Cormorant Garamond", Georgia, serif; font-style:italic;
-    font-size:clamp(.95rem, 2vw, 1.15rem); letter-spacing:.04em; color:var(--sub);
-    margin:.15em 0;
+  .momento3__velo{
+    position:absolute; inset:0; z-index:1;
+    background:
+      linear-gradient(to bottom, rgba(3,3,2,.72) 0%, rgba(3,3,2,.08) 26%, rgba(3,3,2,.08) 62%, rgba(3,3,2,.82) 100%);
   }
-  .momento2__contenido{ grid-area:contenido; }
-  .momento2__titulo{
-    font-family:"Playfair Display", Georgia, serif; font-weight:500;
-    font-size:clamp(1.3rem, 3vw, 1.9rem); color:#f6f3ec; margin:0 0 .3em;
-  }
-  .momento2__desc{
-    font-family:"Cormorant Garamond", Georgia, serif; font-size:1.15rem;
-    color:rgba(246,243,236,.6); max-width:42ch; margin:0;
-  }
-  .momento2__foto{
-    margin:1rem 0 0; border-radius:8px; overflow:hidden;
-    aspect-ratio:16/10; max-width:420px;
-  }
-  .momento2__foto img{ width:100%; height:100%; object-fit:cover; filter:saturate(1.06) contrast(1.03); }
+  .momento3--sinfoto{ background: radial-gradient(120% 90% at 50% 40%, #141310 0%, var(--sala-2) 60%, #020201 100%); }
+  .momento3--sinfoto .momento3__velo{ display:none; }
 
-  @media (min-width:820px){
-    .momento2{
-      grid-template-columns:32px 180px 1fr;
-      grid-template-areas:"punto hora contenido";
-      align-items:start;
-    }
-    .momento2__hora{ padding-top:.25em; }
+  .momento3__top, .momento3__bottom{
+    position:relative; z-index:2;
+    padding:6vh 7vw;
+  }
+  .momento3__hora{
+    display:block;
+    font-family:"Cormorant Garamond", Georgia, serif; font-style:italic;
+    font-size:clamp(1rem, 2.4vw, 1.3rem); letter-spacing:.06em;
+    color:var(--sub);
+    opacity:0; transform:translateY(-10px);
+  }
+  .momento3__titulo{
+    margin:.2em 0 0;
+    font-family:"Playfair Display", Georgia, serif; font-weight:500;
+    font-size:clamp(2.2rem, 6vw, 4.4rem); color:#f6f3ec; line-height:1.02;
+    opacity:0; transform:translateY(-14px);
+  }
+  .momento3__bottom{ display:flex; justify-content:center; }
+  .momento3__desc{
+    max-width:52ch; text-align:center; margin:0;
+    font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(1.15rem, 2.4vw, 1.55rem);
+    line-height:1.5; color:rgba(246,243,236,.86);
+    opacity:0; transform:translateY(14px);
+  }
+
+  .momento3__numero{
+    position:absolute; z-index:2; top:6vh; right:7vw;
+    font-family:"Cormorant Garamond", Georgia, serif; font-style:italic;
+    font-size:.85rem; letter-spacing:.08em; color:rgba(246,243,236,.4);
   }
 </style>
 </head>
@@ -263,89 +256,109 @@
 
 <section class="itinerario" id="itinerario">
   <h2 class="itinerario__titulo">El itinerario</h2>
-  <div class="itinerario__track">
-    <div class="itinerario__linea" aria-hidden="true"><div class="itinerario__linea-fill" data-linea-fill></div></div>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">09:00</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Clase de yoga</h3>
-        <p class="momento2__desc">Para empezar el día con calma, al aire libre.</p>
-        <figure class="momento2__foto"><img src="assets/img/yoga-piscina-atardecer.webp" alt="Clase de yoga al aire libre en La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">01 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-yoga.webp" alt="Clase de yoga al aire libre en La Galiana, junto a la piscina" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>09:00</span>
+      <h3 class="momento3__titulo" data-titulo>Clase de yoga</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>La jornada empieza al aire libre, con el sol todavía bajo y la piscina en calma: una sesión guiada para llegar con la mente despierta a todo lo que sigue.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">11:00</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Almuerzo</h3>
-        <p class="momento2__desc">Frente a la piscina, con las vistas por delante.</p>
-        <figure class="momento2__foto"><img src="assets/img/descanso-tumbonas-terraza.webp" alt="Terraza junto a la piscina de La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">02 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-almuerzo.webp" alt="Terraza junto a la piscina de La Galiana con vistas a la sierra" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>11:00</span>
+      <h3 class="momento3__titulo" data-titulo>Almuerzo</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>Una pausa frente al agua, con la sierra como fondo. Café, algo ligero y conversación, antes de que el día siga su curso.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">Hasta las 13:00</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Piscina</h3>
-        <p class="momento2__desc">Tiempo libre junto al agua.</p>
-        <figure class="momento2__foto"><img src="assets/img/yoga-piscina-atardecer.webp" alt="Piscina exterior de La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">03 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-piscina.webp" alt="Piscina exterior de La Galiana" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>Hasta las 13:00</span>
+      <h3 class="momento3__titulo" data-titulo>Piscina</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>Tiempo libre junto al agua. Sin agenda, sin prisa: solo la piscina, el sol de mediodía y el valle alrededor.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">13:30</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Comida</h3>
-        <p class="momento2__desc">La mesa principal del día.</p>
-        <figure class="momento2__foto"><img src="assets/img/restaurante-almuerzo.webp" alt="Comida en el restaurante de La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">04 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-comida.webp" alt="Comida en el restaurante de La Galiana" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>13:30</span>
+      <h3 class="momento3__titulo" data-titulo>Comida</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>La mesa principal del día, con cocina de producto y las puertas abiertas al jardín: el momento para sentarse de verdad.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">Tarde</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Descanso</h3>
-        <p class="momento2__desc">Un rato sin nada programado.</p>
-      </div>
-    </article>
+  <article class="momento3 momento3--sinfoto" data-momento3>
+    <span class="momento3__numero">05 / 08</span>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>Tarde</span>
+      <h3 class="momento3__titulo" data-titulo>Descanso</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>Un rato sin nada programado. Cada cual, a su manera, antes de que vuelva a empezar el ritmo.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">17:00 – 18:00</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Clase de golf</h3>
-        <p class="momento2__desc">Sobre el green, con el valle detrás.</p>
-        <figure class="momento2__foto"><img src="assets/img/golf-jugadores-green.webp" alt="Clase de golf en el green de La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">06 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-golf.webp" alt="Clase de golf en el green de La Galiana al atardecer" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>17:00 – 18:00</span>
+      <h3 class="momento3__titulo" data-titulo>Clase de golf</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>Sobre el green, con el valle detrás y la luz ya de tarde: una clase pensada tanto para quien nunca ha cogido un palo como para quien juega cada semana.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">19:00 – 20:30</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Spa</h3>
-        <p class="momento2__desc">Agua en calma antes de la noche.</p>
-        <figure class="momento2__foto"><img src="assets/img/spa-piscina-cine.webp" alt="Spa de La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">07 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-spa.webp" alt="Spa de La Galiana, piscina cubierta frente a la montaña" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>19:00 – 20:30</span>
+      <h3 class="momento3__titulo" data-titulo>Spa</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>El cuerpo se relaja antes de la cena: agua en calma, piedra y madera, y la sierra al otro lado del cristal.</p>
+    </div>
+  </article>
 
-    <article class="momento2" data-momento2>
-      <span class="momento2__punto"></span>
-      <span class="momento2__hora">21:30</span>
-      <div class="momento2__contenido">
-        <h3 class="momento2__titulo">Cena</h3>
-        <p class="momento2__desc">Las mesas se encienden cuando cae la luz.</p>
-        <figure class="momento2__foto"><img src="assets/img/restaurante-cena-noche.webp" alt="Cena en el restaurante de La Galiana" loading="lazy" decoding="async"></figure>
-      </div>
-    </article>
+  <article class="momento3" data-momento3>
+    <span class="momento3__numero">08 / 08</span>
+    <div class="momento3__fondo" data-momento3-fondo><img src="assets/img/fb-cena.webp" alt="Cena en el restaurante de La Galiana al anochecer" loading="lazy" decoding="async"></div>
+    <div class="momento3__velo" aria-hidden="true"></div>
+    <div class="momento3__top">
+      <span class="momento3__hora" data-hora>21:30</span>
+      <h3 class="momento3__titulo" data-titulo>Cena</h3>
+    </div>
+    <div class="momento3__bottom">
+      <p class="momento3__desc" data-desc>Las mesas se encienden cuando cae la luz: el cierre del día, con calma y buena compañía.</p>
+    </div>
+  </article>
 
-  </div>
 </section>
 
 <canvas data-canvas style="display:none;"></canvas>
@@ -430,34 +443,58 @@
       .fromTo(texto, { opacity: 0, y: 14 }, { opacity: 1, y: 0, ease: "none" }, 0.3);
   }
 
-  /* ---------------- Itinerario: línea + revelado por bloques ---------------- */
+  /* ---------------- Itinerario: cada momento a pantalla completa ---------------- */
   function initItinerario() {
-    var track = document.querySelector(".itinerario__track");
-    var lineaFill = document.querySelector("[data-linea-fill]");
-    var momentos = document.querySelectorAll("[data-momento2]");
-    if (!track || !momentos.length) return;
+    var momentos = document.querySelectorAll("[data-momento3]");
+    if (!momentos.length) return;
+
+    function revelar(m) {
+      var hora = m.querySelector("[data-hora]");
+      var titulo = m.querySelector("[data-titulo]");
+      var desc = m.querySelector("[data-desc]");
+      var tl = gsap.timeline();
+      tl.to(hora, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0);
+      tl.to(titulo, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.12);
+      tl.to(desc, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.32);
+    }
 
     if (window.gsap && window.ScrollTrigger) {
-      if (lineaFill) {
-        gsap.fromTo(lineaFill, { scaleY: 0 }, {
-          scaleY: 1, ease: "none",
-          scrollTrigger: { trigger: track, start: "top 65%", end: "bottom 85%", scrub: 0.6, invalidateOnRefresh: true }
+      momentos.forEach(function (m) {
+        var img = m.querySelector(".momento3__fondo img");
+        if (img) {
+          gsap.fromTo(img, { scale: 1.12 }, {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: { trigger: m, start: "top bottom", end: "bottom top", scrub: 0.8 }
+          });
+        }
+        ScrollTrigger.create({
+          trigger: m,
+          start: "top 65%",
+          once: true,
+          onEnter: function () { revelar(m); }
         });
-      }
-      ScrollTrigger.batch(momentos, {
-        start: "top 88%",
-        onEnter: function (batch) { batch.forEach(function (el) { el.classList.add("is-visible"); }); }
       });
     }
 
     var fallback = setTimeout(function () {
-      momentos.forEach(function (el) { el.classList.add("is-visible"); });
+      momentos.forEach(function (m) {
+        m.querySelectorAll("[data-hora],[data-titulo],[data-desc]").forEach(function (el) {
+          el.style.opacity = 1; el.style.transform = "none";
+        });
+      });
     }, 6000);
 
     var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add("is-visible"); });
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll("[data-hora],[data-titulo],[data-desc]").forEach(function (el) {
+            if (getComputedStyle(el).opacity === "0") { el.style.opacity = 1; el.style.transform = "none"; }
+          });
+        }
+      });
     }, { threshold: 0.05 }) : null;
-    if (io) momentos.forEach(function (el) { io.observe(el); });
+    if (io) momentos.forEach(function (m) { io.observe(m); });
   }
 
   /* ---------------- Exportar en vídeo (canvas + MediaRecorder) ---------------- */
