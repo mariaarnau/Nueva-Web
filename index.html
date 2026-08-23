@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Galiana — Un día en el hotel</title>
+<meta name="description" content="La Galiana: un recorrido por el hotel, de la piscina al golf, del spa a la mesa.">
+<link rel="preload" as="image" href="assets/img/yoga-piscina-atardecer.webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/main.css?v=20260823">
+</head>
+<body>
+
+<a class="skip-link" href="#zonas">Ir al contenido</a>
+
+<!-- ACTO 0-2: PORTADA CINE -->
+<section id="portada" class="portada">
+  <div class="portada__pin">
+
+    <!-- barras de cine (obturador + cierre panorámico) -->
+    <div class="barra barra--top" data-bar="top"></div>
+    <div class="barra barra--bottom" data-bar="bottom"></div>
+
+    <!-- Capa A: fondo -->
+    <div class="capa capa--a" data-layer="a">
+      <img src="assets/img/yoga-piscina-atardecer.webp" alt="" width="1600" height="838" loading="eager" decoding="async">
+    </div>
+
+    <!-- Capa B: nombre del hotel gigante -->
+    <div class="capa capa--b" data-layer="b" aria-hidden="true">LA GALIANA</div>
+
+    <!-- Capa C: secuencia de fotos (tráiler del día) -->
+    <div class="capa capa--c" data-layer="c">
+      <div class="trailer" data-trailer>
+        <figure class="trailer__frame is-active" data-zone="piscina">
+          <img src="assets/img/yoga-piscina-atardecer.webp" width="1600" height="838" alt="Piscina al atardecer, clase de yoga en la terraza de La Galiana" loading="eager" fetchpriority="high" decoding="async">
+        </figure>
+        <figure class="trailer__frame" data-zone="restaurante">
+          <img src="assets/img/restaurante-almuerzo.webp" width="1600" height="1600" alt="Comensales en el restaurante de La Galiana al mediodía" loading="lazy" decoding="async">
+        </figure>
+        <figure class="trailer__frame" data-zone="golf">
+          <img src="assets/img/golf-jugadores-green.webp" width="1200" height="1800" alt="Jugadores en el green del campo de golf de La Galiana" loading="lazy" decoding="async">
+        </figure>
+        <figure class="trailer__frame" data-zone="spa">
+          <img src="assets/img/spa-piscina-interior.webp" width="1800" height="850" alt="Piscina interior del spa de La Galiana" loading="lazy" decoding="async">
+        </figure>
+        <figure class="trailer__frame" data-zone="restaurante">
+          <img src="assets/img/restaurante-cena-noche.webp" width="1920" height="1280" alt="Mesas dispuestas para la cena en La Galiana al anochecer" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+
+    <!-- Capa vignette/grano -->
+    <div class="capa capa--grade" aria-hidden="true"></div>
+
+    <!-- Titular -->
+    <div class="portada__titular">
+      <h1 class="titular">
+        <span class="titular__linea"><span>Un día entero</span></span>
+        <span class="titular__linea"><span>en La Galiana</span></span>
+      </h1>
+    </div>
+
+    <!-- Nombre de zona activa -->
+    <div class="portada__zona" data-zona-activa>piscina</div>
+
+    <!-- Indicador de scroll -->
+    <div class="scroll-indicador" aria-hidden="true"><span></span></div>
+
+  </div>
+</section>
+
+<!-- ACTO 3: ENTREGA — plano de situación -->
+<section class="situacion">
+  <figure class="situacion__foto" data-expand>
+    <img src="assets/img/exteriores-vista-aerea.webp" width="1200" height="899" alt="Vista aérea de La Galiana entre montañas, campo de golf y jardines" loading="lazy" decoding="async">
+  </figure>
+  <p class="situacion__nota">Pendiente de aprobar: una frase de presentación del hotel escrita por el equipo de La Galiana.</p>
+</section>
+
+<!-- ZONAS -->
+<section id="zonas" class="zonas">
+  <h2 class="zonas__titulo">Las zonas</h2>
+
+  <div class="zonas__lista" data-zonas-lista>
+
+    <button class="zona-item is-active" data-zona-nombre="piscina" aria-controls="zona-visor">
+      <span class="zona-item__nombre">piscina</span>
+      <span class="zona-item__linea">La piscina, entre el césped y la sierra.</span>
+    </button>
+
+    <button class="zona-item" data-zona-nombre="golf" aria-controls="zona-visor">
+      <span class="zona-item__nombre">golf</span>
+      <span class="zona-item__linea">Dieciocho hoyos entre pinos y niebla de mañana.</span>
+    </button>
+
+    <button class="zona-item" data-zona-nombre="spa" aria-controls="zona-visor">
+      <span class="zona-item__nombre">spa</span>
+      <span class="zona-item__linea">Una piscina cubierta frente a la roca.</span>
+    </button>
+
+    <button class="zona-item" data-zona-nombre="restaurante" aria-controls="zona-visor">
+      <span class="zona-item__nombre">restaurante</span>
+      <span class="zona-item__linea">Mesas frente al jardín, dentro y fuera.</span>
+    </button>
+
+    <button class="zona-item" data-zona-nombre="habitacion" aria-controls="zona-visor">
+      <span class="zona-item__nombre">habitaciones</span>
+      <span class="zona-item__linea">Vistas al valle desde la cama.</span>
+    </button>
+
+    <button class="zona-item" data-zona-nombre="exteriores" aria-controls="zona-visor">
+      <span class="zona-item__nombre">exteriores</span>
+      <span class="zona-item__linea">El hotel visto desde la montaña.</span>
+    </button>
+
+  </div>
+
+  <div class="zonas__visor" id="zona-visor" data-zonas-visor>
+    <figure class="zona-foto is-active" data-zona-foto="piscina">
+      <img src="assets/img/yoga-piscina-atardecer.webp" width="1600" height="838" alt="Piscina exterior de La Galiana" loading="lazy" decoding="async">
+    </figure>
+    <figure class="zona-foto" data-zona-foto="golf">
+      <img src="assets/img/golf-clubhouse-atardecer.webp" width="1600" height="1279" alt="Campo de golf de La Galiana al atardecer" loading="lazy" decoding="async">
+    </figure>
+    <figure class="zona-foto" data-zona-foto="spa">
+      <img src="assets/img/spa-piscina-interior.webp" width="1800" height="850" alt="Spa de La Galiana, piscina cubierta" loading="lazy" decoding="async">
+    </figure>
+    <figure class="zona-foto" data-zona-foto="restaurante">
+      <img src="assets/img/restaurante-cena-noche.webp" width="1920" height="1280" alt="Restaurante de La Galiana de noche" loading="lazy" decoding="async">
+    </figure>
+    <figure class="zona-foto" data-zona-foto="habitacion">
+      <img src="assets/img/habitacion-salon-vistas.webp" width="815" height="840" alt="Habitación de La Galiana con vistas al valle" loading="lazy" decoding="async">
+    </figure>
+    <figure class="zona-foto" data-zona-foto="exteriores">
+      <img src="assets/img/exteriores-fachada-logo.webp" width="1600" height="1600" alt="Fachada y entrada de La Galiana" loading="lazy" decoding="async">
+    </figure>
+  </div>
+
+  <!-- Tarjetas móvil -->
+  <div class="zonas__cards" data-zonas-cards>
+    <article class="zona-card" id="zona-piscina">
+      <figure><img src="assets/img/yoga-piscina-atardecer.webp" width="1600" height="838" alt="Piscina exterior de La Galiana" loading="lazy" decoding="async"></figure>
+      <h3>piscina</h3><p>La piscina, entre el césped y la sierra.</p>
+    </article>
+    <article class="zona-card" id="zona-golf">
+      <figure><img src="assets/img/golf-clubhouse-atardecer.webp" width="1600" height="1279" alt="Campo de golf de La Galiana" loading="lazy" decoding="async"></figure>
+      <h3>golf</h3><p>Dieciocho hoyos entre pinos y niebla de mañana.</p>
+    </article>
+    <article class="zona-card" id="zona-spa">
+      <figure><img src="assets/img/spa-piscina-interior.webp" width="1800" height="850" alt="Spa de La Galiana" loading="lazy" decoding="async"></figure>
+      <h3>spa</h3><p>Una piscina cubierta frente a la roca.</p>
+    </article>
+    <article class="zona-card" id="zona-restaurante">
+      <figure><img src="assets/img/restaurante-cena-noche.webp" width="1920" height="1280" alt="Restaurante de La Galiana" loading="lazy" decoding="async"></figure>
+      <h3>restaurante</h3><p>Mesas frente al jardín, dentro y fuera.</p>
+    </article>
+    <article class="zona-card" id="zona-habitacion">
+      <figure><img src="assets/img/habitacion-salon-vistas.webp" width="815" height="840" alt="Habitación de La Galiana" loading="lazy" decoding="async"></figure>
+      <h3>habitaciones</h3><p>Vistas al valle desde la cama.</p>
+    </article>
+    <article class="zona-card" id="zona-exteriores">
+      <figure><img src="assets/img/exteriores-fachada-logo.webp" width="1600" height="1600" alt="Fachada de La Galiana" loading="lazy" decoding="async"></figure>
+      <h3>exteriores</h3><p>El hotel visto desde la montaña.</p>
+    </article>
+  </div>
+</section>
+
+<!-- PLAN DEL DÍA -->
+<section id="plan" class="plan">
+  <h2 class="plan__titulo">El plan</h2>
+
+  <div class="plan__track" data-plan-track>
+
+    <article class="momento" data-expand>
+      <span class="momento__hora">Primera hora</span>
+      <h3 class="momento__titulo">Clase de yoga</h3>
+      <p class="momento__desc">Frente a la piscina, antes de que suba el sol.</p>
+      <figure><img src="assets/img/yoga-piscina-atardecer.webp" width="1600" height="838" alt="Clase de yoga frente a la piscina de La Galiana" loading="lazy" decoding="async"></figure>
+      <a class="momento__enlace" href="#zona-piscina">Ver la zona →</a>
+    </article>
+
+    <article class="momento" data-expand>
+      <span class="momento__hora">Media mañana</span>
+      <h3 class="momento__titulo">Almuerzo</h3>
+      <p class="momento__desc">Mesas abiertas al jardín, servicio tranquilo.</p>
+      <figure><img src="assets/img/restaurante-almuerzo.webp" width="1600" height="1600" alt="Almuerzo en el restaurante de La Galiana" loading="lazy" decoding="async"></figure>
+      <a class="momento__enlace" href="#zona-restaurante">Ver la zona →</a>
+    </article>
+
+    <article class="momento" data-expand>
+      <span class="momento__hora">Mediodía</span>
+      <h3 class="momento__titulo">Piscina</h3>
+      <p class="momento__desc">El punto donde se detiene la mañana.</p>
+      <figure><img src="assets/img/yoga-piscina-atardecer.webp" width="1600" height="838" alt="Piscina exterior de La Galiana" loading="lazy" decoding="async"></figure>
+      <a class="momento__enlace" href="#zona-piscina">Ver la zona →</a>
+    </article>
+
+    <article class="momento momento--sin-foto">
+      <span class="momento__hora">Tarde</span>
+      <h3 class="momento__titulo">Descanso</h3>
+      <p class="momento__desc">Nada programado. El hotel se queda en silencio.</p>
+    </article>
+
+    <article class="momento" data-expand>
+      <span class="momento__hora">Tarde</span>
+      <h3 class="momento__titulo">Clase de golf</h3>
+      <p class="momento__desc">Sobre el green, con el valle detrás.</p>
+      <figure><img src="assets/img/golf-jugadores-green.webp" width="1200" height="1800" alt="Clase de golf en el green de La Galiana" loading="lazy" decoding="async"></figure>
+      <a class="momento__enlace" href="#zona-golf">Ver la zona →</a>
+    </article>
+
+    <article class="momento" data-expand>
+      <span class="momento__hora">Última hora</span>
+      <h3 class="momento__titulo">Spa</h3>
+      <p class="momento__desc">Agua en calma frente a la roca.</p>
+      <figure><img src="assets/img/spa-piscina-interior.webp" width="1800" height="850" alt="Spa de La Galiana al final del día" loading="lazy" decoding="async"></figure>
+      <a class="momento__enlace" href="#zona-spa">Ver la zona →</a>
+    </article>
+
+    <article class="momento" data-expand>
+      <span class="momento__hora">Noche</span>
+      <h3 class="momento__titulo">Cena</h3>
+      <p class="momento__desc">Las mesas se encienden cuando cae la luz.</p>
+      <figure><img src="assets/img/restaurante-cena-noche.webp" width="1920" height="1280" alt="Cena en el restaurante de La Galiana" loading="lazy" decoding="async"></figure>
+      <a class="momento__enlace" href="#zona-restaurante">Ver la zona →</a>
+    </article>
+
+  </div>
+</section>
+
+<script defer src="lib/gsap/gsap.min.js?v=20260823"></script>
+<script defer src="lib/gsap/ScrollTrigger.min.js?v=20260823"></script>
+<script defer src="assets/js/main.js?v=20260823"></script>
+</body>
+</html>
