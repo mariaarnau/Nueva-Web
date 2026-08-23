@@ -140,6 +140,97 @@
     font-family:-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:.66rem; color:rgba(255,255,255,.35); text-align:center; max-width:32ch;
   }
+
+  /* ============ TRANSICIÓN + ITINERARIO ============ */
+  .transicion{
+    position:relative;
+    height:38svh;
+    background: linear-gradient(to bottom, var(--sala-2) 0%, #030302 100%);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .transicion__raya{
+    width:1px; height:0; background:rgba(255,255,255,.3);
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+  }
+  .transicion__texto{
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-style:italic; font-weight:400;
+    font-size:clamp(1.1rem, 2.6vw, 1.6rem);
+    color:var(--sub);
+    opacity:0; transform:translateY(14px);
+    text-align:center;
+  }
+
+  .itinerario{
+    position:relative;
+    background:#030302;
+    padding:2vh 6vw 14vh;
+  }
+  .itinerario__titulo{
+    text-align:center; margin:0 0 6vh;
+    font-family:"Playfair Display", Georgia, serif; font-weight:500;
+    font-size:clamp(2rem, 5vw, 3.2rem); color:#f6f3ec;
+    letter-spacing:.01em;
+  }
+
+  .itinerario__track{ position:relative; max-width:920px; margin:0 auto; }
+  .itinerario__linea{
+    position:absolute; left:15px; top:6px; bottom:6px; width:1px;
+    background:rgba(255,255,255,.12);
+  }
+  .itinerario__linea-fill{
+    position:absolute; left:0; top:0; width:100%; height:100%;
+    background:linear-gradient(to bottom, var(--sub), rgba(207,198,174,.2));
+    transform:scaleY(0); transform-origin:top;
+  }
+
+  .momento2{
+    position:relative;
+    display:grid;
+    grid-template-columns:32px 1fr;
+    grid-template-areas:
+      "punto hora"
+      ".     contenido";
+    gap:.4em 1.2rem;
+    padding:0 0 5.5vh;
+    opacity:0; transform:translateY(22px);
+  }
+  .momento2.is-visible{ opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease; }
+  .momento2__punto{
+    grid-area:punto;
+    width:9px; height:9px; border-radius:50%; background:var(--sub);
+    margin-top:9px; box-shadow:0 0 0 4px rgba(3,3,2,1), 0 0 14px 2px rgba(207,198,174,.35);
+  }
+  .momento2__hora{
+    grid-area:hora;
+    font-family:"Cormorant Garamond", Georgia, serif; font-style:italic;
+    font-size:clamp(.95rem, 2vw, 1.15rem); letter-spacing:.04em; color:var(--sub);
+    margin:.15em 0;
+  }
+  .momento2__contenido{ grid-area:contenido; }
+  .momento2__titulo{
+    font-family:"Playfair Display", Georgia, serif; font-weight:500;
+    font-size:clamp(1.3rem, 3vw, 1.9rem); color:#f6f3ec; margin:0 0 .3em;
+  }
+  .momento2__desc{
+    font-family:"Cormorant Garamond", Georgia, serif; font-size:1.15rem;
+    color:rgba(246,243,236,.6); max-width:42ch; margin:0;
+  }
+  .momento2__foto{
+    margin:1rem 0 0; border-radius:8px; overflow:hidden;
+    aspect-ratio:16/10; max-width:420px;
+  }
+  .momento2__foto img{ width:100%; height:100%; object-fit:cover; filter:saturate(1.06) contrast(1.03); }
+
+  @media (min-width:820px){
+    .momento2{
+      grid-template-columns:32px 180px 1fr;
+      grid-template-areas:"punto hora contenido";
+      align-items:start;
+    }
+    .momento2__hora{ padding-top:.25em; }
+  }
 </style>
 </head>
 <body>
@@ -164,6 +255,98 @@
   </div>
 </section>
 <p class="aviso" style="position:fixed; left:50%; bottom:2.4svh; transform:translateX(-50%); z-index:9;">Desplázate</p>
+
+<section class="transicion">
+  <div class="transicion__raya" data-raya aria-hidden="true"></div>
+  <p class="transicion__texto" data-transicion-texto>Así se vivirá el día</p>
+</section>
+
+<section class="itinerario" id="itinerario">
+  <h2 class="itinerario__titulo">El itinerario</h2>
+  <div class="itinerario__track">
+    <div class="itinerario__linea" aria-hidden="true"><div class="itinerario__linea-fill" data-linea-fill></div></div>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">09:00</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Clase de yoga</h3>
+        <p class="momento2__desc">Para empezar el día con calma, al aire libre.</p>
+        <figure class="momento2__foto"><img src="assets/img/yoga-piscina-atardecer.webp" alt="Clase de yoga al aire libre en La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">11:00</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Almuerzo</h3>
+        <p class="momento2__desc">Frente a la piscina, con las vistas por delante.</p>
+        <figure class="momento2__foto"><img src="assets/img/descanso-tumbonas-terraza.webp" alt="Terraza junto a la piscina de La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">Hasta las 13:00</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Piscina</h3>
+        <p class="momento2__desc">Tiempo libre junto al agua.</p>
+        <figure class="momento2__foto"><img src="assets/img/yoga-piscina-atardecer.webp" alt="Piscina exterior de La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">13:30</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Comida</h3>
+        <p class="momento2__desc">La mesa principal del día.</p>
+        <figure class="momento2__foto"><img src="assets/img/restaurante-almuerzo.webp" alt="Comida en el restaurante de La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">Tarde</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Descanso</h3>
+        <p class="momento2__desc">Un rato sin nada programado.</p>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">17:00 – 18:00</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Clase de golf</h3>
+        <p class="momento2__desc">Sobre el green, con el valle detrás.</p>
+        <figure class="momento2__foto"><img src="assets/img/golf-jugadores-green.webp" alt="Clase de golf en el green de La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">19:00 – 20:30</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Spa</h3>
+        <p class="momento2__desc">Agua en calma antes de la noche.</p>
+        <figure class="momento2__foto"><img src="assets/img/spa-piscina-cine.webp" alt="Spa de La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+    <article class="momento2" data-momento2>
+      <span class="momento2__punto"></span>
+      <span class="momento2__hora">21:30</span>
+      <div class="momento2__contenido">
+        <h3 class="momento2__titulo">Cena</h3>
+        <p class="momento2__desc">Las mesas se encienden cuando cae la luz.</p>
+        <figure class="momento2__foto"><img src="assets/img/restaurante-cena-noche.webp" alt="Cena en el restaurante de La Galiana" loading="lazy" decoding="async"></figure>
+      </div>
+    </article>
+
+  </div>
+</section>
 
 <canvas data-canvas style="display:none;"></canvas>
 
@@ -231,6 +414,50 @@
 
     // hacia el final, la pantalla se aleja y la sala vuelve a quedar a oscuras
     tl.to(pantalla, { scale: 0.92, opacity: 0, ease: "none" }, 0.85);
+  }
+
+  /* ---------------- Transición hacia el itinerario ---------------- */
+  function initTransicion() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    var raya = document.querySelector("[data-raya]");
+    var texto = document.querySelector("[data-transicion-texto]");
+    if (!raya || !texto) return;
+
+    gsap.timeline({
+      scrollTrigger: { trigger: ".transicion", start: "top 75%", end: "bottom 60%", scrub: 0.6 }
+    })
+      .fromTo(raya, { height: 0 }, { height: 64, ease: "none" }, 0)
+      .fromTo(texto, { opacity: 0, y: 14 }, { opacity: 1, y: 0, ease: "none" }, 0.3);
+  }
+
+  /* ---------------- Itinerario: línea + revelado por bloques ---------------- */
+  function initItinerario() {
+    var track = document.querySelector(".itinerario__track");
+    var lineaFill = document.querySelector("[data-linea-fill]");
+    var momentos = document.querySelectorAll("[data-momento2]");
+    if (!track || !momentos.length) return;
+
+    if (window.gsap && window.ScrollTrigger) {
+      if (lineaFill) {
+        gsap.fromTo(lineaFill, { scaleY: 0 }, {
+          scaleY: 1, ease: "none",
+          scrollTrigger: { trigger: track, start: "top 65%", end: "bottom 85%", scrub: 0.6, invalidateOnRefresh: true }
+        });
+      }
+      ScrollTrigger.batch(momentos, {
+        start: "top 88%",
+        onEnter: function (batch) { batch.forEach(function (el) { el.classList.add("is-visible"); }); }
+      });
+    }
+
+    var fallback = setTimeout(function () {
+      momentos.forEach(function (el) { el.classList.add("is-visible"); });
+    }, 6000);
+
+    var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add("is-visible"); });
+    }, { threshold: 0.05 }) : null;
+    if (io) momentos.forEach(function (el) { io.observe(el); });
   }
 
   /* ---------------- Exportar en vídeo (canvas + MediaRecorder) ---------------- */
@@ -442,6 +669,8 @@
   ready(function () {
     safe(initEngine, "initEngine");
     safe(initCine, "initCine");
+    safe(initTransicion, "initTransicion");
+    safe(initItinerario, "initItinerario");
     safe(initExportar, "initExportar");
   });
 })();
