@@ -648,6 +648,10 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 /* Page header (non-home pages) */
 .page-header { padding-top: clamp(7.5rem, 14vw, 10rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .page-header .lede { margin-top: 1.2rem; }
+.breadcrumb { padding-top: clamp(5.5rem, 10vw, 7rem); font-size: .82rem; color: var(--ink-mute); }
+.breadcrumb a { color: var(--ink-mute); }
+.breadcrumb a:hover { color: var(--olive-dark); }
+.breadcrumb + .page-header { padding-top: clamp(1.4rem, 3vw, 2.2rem); }
 
 /* Manifesto / intro split */
 .split-intro { display: grid; gap: 2rem; }
