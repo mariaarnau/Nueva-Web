@@ -292,11 +292,12 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .brand-logo, .brand-logo-light { height: 30px; width: auto; }
 .brand-logo { display: block; }
 .brand-logo-light { display: none; }
-.nav-links { display: none; align-items: center; gap: 2.3rem; }
+.nav-links { display: none; align-items: center; gap: 1.5rem; margin-left: 2.6rem; }
 .nav-link {
   position: relative; padding: .25rem 0;
   font-size: .74rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: .12em;
+  white-space: nowrap;
 }
 .nav-link::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
@@ -765,14 +766,17 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 }
 
 @media (min-width: 960px) {
-  .nav-links { display: flex; }
-  .nav-cta { display: inline-flex; }
-  .nav-burger { display: none; }
   .space-grid { grid-template-columns: repeat(3, 1fr); }
   .narrative-grid { grid-template-columns: .9fr 1.1fr; }
   .stats-grid { grid-template-columns: repeat(4, 1fr); }
   .contact-grid { grid-template-columns: 1.2fr .8fr; }
   .bento-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1240px) {
+  .nav-links { display: flex; }
+  .nav-cta { display: inline-flex; }
+  .nav-burger { display: none; }
 }
 
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
