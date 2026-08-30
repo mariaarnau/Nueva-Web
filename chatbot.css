@@ -171,3 +171,6 @@
 @media (prefers-reduced-motion: reduce) {
   .bw-chat-launcher, .bw-chat-panel { transition: none; }
 }
+
+.nav.is-open ~ .bw-chat-launcher,
+.nav.is-open ~ .bw-chat-panel { display: none; }
