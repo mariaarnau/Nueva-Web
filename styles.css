@@ -571,6 +571,11 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .footer-links { display: flex; flex-direction: column; gap: .7rem; }
 .footer-links a:hover { color: var(--cream-dk); }
 .footer-bottom { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; padding-top: 1.6rem; font-size: .82rem; }
+.footer-nap { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.4rem; font-size: .88rem; }
+.footer-nap-line { display: flex; align-items: flex-start; gap: .6rem; color: var(--cream-dk-mute); }
+.footer-nap-line a { color: inherit; }
+.footer-nap-line a:hover { color: var(--cream-dk); }
+.footer-nap-line svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: .15em; color: var(--olive-2); }
 
 /* =============================================================
    6. Sections
@@ -754,6 +759,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   .split-intro { grid-template-columns: auto 1fr; gap: 3rem; }
   .form-grid-2 { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer-top-rich { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
   .bento-4 { grid-template-columns: repeat(2, 1fr); }
   .stat-cinema-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 2.6rem; }
 }
