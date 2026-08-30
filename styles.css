@@ -292,7 +292,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .brand-logo, .brand-logo-light { height: 30px; width: auto; }
 .brand-logo { display: block; }
 .brand-logo-light { display: none; }
-.nav-links { display: none; align-items: center; gap: 1.15rem; margin-left: 2rem; }
+.nav-links { display: none; align-items: center; gap: 2.1rem; margin-left: 2.8rem; }
 .nav-link {
   position: relative; padding: .25rem 0;
   font-size: .74rem; font-weight: 600;
@@ -777,7 +777,7 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
   .bento-row { grid-template-columns: repeat(4, 1fr); }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1080px) {
   .nav-links { display: flex; }
   .nav-cta { display: inline-flex; }
   .nav-burger { display: none; }
