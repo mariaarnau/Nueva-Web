@@ -579,6 +579,8 @@ em, .accent-italic { font-style: italic; color: var(--olive-dark); }
 .footer-nap-line a { color: inherit; }
 .footer-nap-line a:hover { color: var(--cream-dk); }
 .footer-nap-line svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: .15em; color: var(--olive-2); }
+.footer-nap-cta { color: var(--olive-2); font-weight: 600; }
+.footer-nap-cta:hover { color: var(--cream-dk); }
 
 /* =============================================================
    6. Sections
